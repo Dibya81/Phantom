@@ -320,7 +320,7 @@ async def act(state: dict) -> dict:
     proof_result = None
     errors = list(state.get("errors", []))
     try:
-        proof_result = await asyncio.to_thread(generate_proof, threat_assessment)
+        proof_result = await generate_proof(threat_assessment)
         if proof_result:
             print(f"[act] Blockchain anchoring SUCCESS. Hash: {proof_result.get('report_hash')} | Sig: {proof_result.get('solana_tx_sig')[:16]}...")
             await _emit("ACT", "EvidenceAgent", {

@@ -137,7 +137,7 @@ def _sha256_bytes(data: bytes) -> bytes:
 # Step 3 — Upload to IPFS via Pinata
 # ---------------------------------------------------------------------------
 
-def _upload_to_pinata(report_bytes: bytes, report_hash: str) -> str:
+async def _upload_to_pinata(report_bytes: bytes, report_hash: str) -> str:
     """
     Upload report_bytes to Pinata and return the IPFS CID.
     Raises RuntimeError on failure — never returns partial data.
@@ -162,12 +162,16 @@ def _upload_to_pinata(report_bytes: bytes, report_hash: str) -> str:
         "pinataOptions": {"cidVersion": 1},
     }
     log.info("Uploading report to Pinata (hash prefix: %s)…", report_hash[:16])
-    response = httpx.post(url, headers=headers, json=body, timeout=30)
-    if response.status_code != 200:
-        raise RuntimeError(
-            f"Pinata upload failed: HTTP {response.status_code} — {response.text}"
-        )
-    cid = response.json().get("IpfsHash")
+    async with httpx.AsyncClient(timeout=30.0) as client:
+        response = await client.post(url, headers=headers, json=body)
+        if response.status_code != 200:
+            raise RuntimeError(
+                f"Pinata upload failed: HTTP {response.status_code} — {response.text}"
+            )
+        cid = response.json().get("IpfsHash")
+        if not cid:
+            raise RuntimeError(f"Pinata response missing IpfsHash: {response.text}")
+        return cid
     if not cid:
         raise RuntimeError("Pinata returned success but IpfsHash is missing")
     log.info("Pinata upload successful — CID: %s", cid)
@@ -350,7 +354,7 @@ async def _await_confirmation_async(client, sig, timeout: int = 45) -> None:
 # Step 5 — W3C Verifiable Credential via Node.js subprocess
 # ---------------------------------------------------------------------------
 
-def _issue_vc(
+async def _issue_vc(
     user_pseudonym: str,
     ipfs_cid: str,
     solana_tx_sig: str,
@@ -376,17 +380,19 @@ def _issue_vc(
 
     node_bin = os.getenv("NODE_BIN", "node")
     log.info("Invoking vc_issuer subprocess…")
-    result = subprocess.run(
-        [node_bin, str(issuer_script)],
-        input=payload_json.encode(),
-        capture_output=True,
-        timeout=30,
+    
+    proc = await asyncio.create_subprocess_exec(
+        node_bin, str(issuer_script),
+        stdin=asyncio.subprocess.PIPE,
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE,
     )
-    if result.returncode != 0:
-        stderr = result.stderr.decode(errors="replace")
-        raise RuntimeError(f"VC issuer subprocess failed:\n{stderr}")
+    stdout, stderr = await proc.communicate(input=payload_json.encode())
 
-    vc_raw = result.stdout.decode(errors="replace").strip()
+    if proc.returncode != 0:
+        raise RuntimeError(f"VC issuer subprocess failed:\n{stderr.decode()}")
+
+    vc_raw = stdout.decode().strip()
     try:
         vc_json = json.loads(vc_raw)
     except json.JSONDecodeError as exc:
@@ -400,23 +406,10 @@ def _issue_vc(
 # Public contract function
 # ---------------------------------------------------------------------------
 
-def generate_proof(threat_assessment: dict) -> dict:
+async def generate_proof(threat_assessment: dict) -> dict:
     """
     Generate immutable proof for a confirmed identity threat.
-
-    Args:
-        threat_assessment: A dict matching contracts/threat_assessment.schema.json.
-                           Caller is responsible for passing a valid structure,
-                           but this function performs its own validation.
-
-    Returns:
-        A dict matching contracts/proof_result.schema.json exactly.
-        Fields: ipfs_cid, solana_tx_sig, vc_json, report_hash, generated_at
-
-    Raises:
-        jsonschema.ValidationError  — if input schema is violated
-        RuntimeError / TimeoutError — if any pipeline step fails
-        Exception is always raised on failure — never partial data returned.
+    Returns a dict matching contracts/proof_result.schema.json exactly.
     """
     pseudonym_preview = str(threat_assessment.get("user_pseudonym", "?"))[:16] + "…"
     log.info(
@@ -429,17 +422,9 @@ def generate_proof(threat_assessment: dict) -> dict:
     _validate_threat_assessment(threat_assessment)
 
     user_pseudonym: str = threat_assessment["user_pseudonym"]
-    
-    # 1.1 Standardize pseudonym: remove 'anon_' prefix if present (enforce hex-compatibility for Anchor)
     if user_pseudonym.startswith("anon_"):
         user_pseudonym = user_pseudonym[len("anon_"):]
-        log.info("Sanitized user_pseudonym (removed 'anon_' prefix): %s", user_pseudonym)
-    
-    # Validate hex-compatibility
-    try:
-        bytes.fromhex(user_pseudonym)
-    except ValueError:
-        raise ValueError(f"user_pseudonym must be a valid hex string (got {user_pseudonym!r})")
+
     risk_level: str = threat_assessment["risk_level"]
     detection_timestamp: str = threat_assessment["timestamp"]
     threat_level_u8: int = _risk_level_to_u8(risk_level)
@@ -449,28 +434,21 @@ def generate_proof(threat_assessment: dict) -> dict:
     report_hash_hex = _sha256_hex(report_bytes)
     log.info("Report built — hash: %s", report_hash_hex)
 
-    # 3. Upload to IPFS (with demo fallback)
-    try:
-        ipfs_cid = _upload_to_pinata(report_bytes, report_hash_hex)
-    except Exception as e:
-        log.warning("IPFS upload failed (using demo fallback): %s", e)
-        # Standard IPFS placeholder for demo consistency
-        ipfs_cid = f"bafkrei{report_hash_hex[:32]}" 
+    # 3. Upload to IPFS
+    # Note: Pinata JWT must be set in .env. Falling back is no longer allowed to ensure data integrity.
+    ipfs_cid = await _upload_to_pinata(report_bytes, report_hash_hex)
 
     # 4. Anchor to Solana devnet
-    async def _do_anchor():
-        return await _record_on_chain(
-            user_pseudonym_hex=user_pseudonym,
-            report_cid=ipfs_cid,
-            report_hash_hex=report_hash_hex,
-            threat_level=threat_level_u8,
-            timestamp_iso=detection_timestamp,
-        )
-
-    solana_tx_sig = asyncio.run(_do_anchor())
+    solana_tx_sig = await _record_on_chain(
+        user_pseudonym_hex=user_pseudonym,
+        report_cid=ipfs_cid,
+        report_hash_hex=report_hash_hex,
+        threat_level=threat_level_u8,
+        timestamp_iso=detection_timestamp,
+    )
 
     # 5. Issue W3C VC
-    vc_json = _issue_vc(
+    vc_json = await _issue_vc(
         user_pseudonym=user_pseudonym,
         ipfs_cid=ipfs_cid,
         solana_tx_sig=solana_tx_sig,
