@@ -1,38 +1,58 @@
+"""
+agent/notifications/whatsapp.py
+
+Sends WhatsApp alerts via Twilio WhatsApp API.
+Twilio sandbox is free — no Meta Business account needed.
+
+Required .env vars:
+    TWILIO_ACCOUNT_SID       — ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    TWILIO_AUTH_TOKEN        — your auth token
+    TWILIO_WHATSAPP_FROM     — whatsapp:+14155238886  (sandbox number)
+
+Recipient must join sandbox first:
+    WhatsApp → send "join <your-code>" → +14155238886
+"""
+
 import os
-import httpx
+from twilio.rest import Client
 from dotenv import load_dotenv
 
 load_dotenv()
 
-WHATSAPP_API_URL = "https://graph.facebook.com/v19.0/{phone_number_id}/messages"
+
+# ─── Phone normalizer ─────────────────────────────────────────────────────────
 
 def _format_phone(phone: str) -> str:
     """
-    Normalize phone to E.164 format without the '+'.
-    WhatsApp Cloud API expects: 919876543210 (no +, no spaces, no dashes).
-    Handles inputs like: +91-98765-43210, 09876543210, 9876543210
+    Convert any Indian phone format to E.164 with leading +
+    Twilio WhatsApp requires: whatsapp:+919876543210
+
+    Handles:
+        9876543210        → +919876543210
+        09876543210       → +919876543210
+        +91-98765-43210   → +919876543210
+        919876543210      → +919876543210
     """
     digits = "".join(filter(str.isdigit, phone))
 
-    # If 10 digits and starts with non-91 prefix — assume Indian number, prepend 91
     if len(digits) == 10:
         digits = "91" + digits
-
-    # If starts with 0 (local format) — strip leading 0, prepend 91
-    if digits.startswith("0") and len(digits) == 11:
+    elif digits.startswith("0") and len(digits) == 11:
         digits = "91" + digits[1:]
+
+    # Already has country code
+    if not digits.startswith("+"):
+        digits = "+" + digits
 
     return digits
 
 
-def _build_message(
-    match: dict,
-    risk_level: str,
-    user_pseudonym: str,
-) -> str:
-    source        = match.get("source", "Unknown source")
-    exposed       = ", ".join(match.get("exposed_fields", ["unknown data"]))
-    frontend_url  = os.getenv("FRONTEND_URL", "https://phantomid.app")
+# ─── Message builder (unchanged from before) ─────────────────────────────────
+
+def _build_message(match: dict, risk_level: str, user_pseudonym: str) -> str:
+    source       = match.get("source", "Unknown source")
+    exposed      = ", ".join(match.get("exposed_fields", ["unknown data"]))
+    frontend_url = os.getenv("FRONTEND_URL", "https://phantomid.app")
 
     return (
         f"⚠️ PhantomID Alert\n\n"
@@ -46,6 +66,8 @@ def _build_message(
     )
 
 
+# ─── Twilio WhatsApp sender ───────────────────────────────────────────────────
+
 async def send_alert(
     phone: str,
     match: dict,
@@ -53,60 +75,36 @@ async def send_alert(
     user_pseudonym: str,
 ) -> bool:
     """
-    Send WhatsApp notification via Meta Cloud API.
+    Send WhatsApp message via Twilio.
 
-    Returns True on success, False on failure.
-    Never raises — caller must not crash if this fails.
+    Signature is 100% identical to old send_alert() —
+    act node in nodes.py needs zero changes.
 
-    Args:
-        phone:           Raw phone number (any common format)
-        match:           First BreachMatch entry — source + exposed_fields
-        risk_level:      HIGH / CRITICAL / MEDIUM / LOW
-        user_pseudonym:  SHA-256 hex — used in the credential URL
+    Returns True on success, False on failure. Never raises.
     """
-    token           = os.getenv("WHATSAPP_TOKEN")
-    phone_number_id = os.getenv("WHATSAPP_PHONE_NUMBER_ID")
+    account_sid = os.getenv("TWILIO_ACCOUNT_SID")
+    auth_token  = os.getenv("TWILIO_AUTH_TOKEN")
+    from_number = os.getenv("TWILIO_WHATSAPP_FROM", "whatsapp:+14155238886")
 
-    if not token or not phone_number_id:
-        print("[whatsapp] WHATSAPP_TOKEN or WHATSAPP_PHONE_NUMBER_ID not set — skipping")
+    if not account_sid or not auth_token:
+        print("[twilio-whatsapp] TWILIO_ACCOUNT_SID or TWILIO_AUTH_TOKEN not set — skipping")
         return False
 
-    to      = _format_phone(phone)
+    to      = f"whatsapp:{_format_phone(phone)}"
     message = _build_message(match, risk_level, user_pseudonym)
-    url     = WHATSAPP_API_URL.format(phone_number_id=phone_number_id)
-
-    payload = {
-        "messaging_product": "whatsapp",
-        "recipient_type":    "individual",
-        "to":                to,
-        "type":              "text",
-        "text": {
-            "preview_url": False,
-            "body":        message,
-        },
-    }
-
-    headers = {
-        "Authorization": f"Bearer {token}",
-        "Content-Type":  "application/json",
-    }
 
     try:
-        async with httpx.AsyncClient(timeout=10.0) as client:
-            response = await client.post(url, json=payload, headers=headers)
+        client = Client(account_sid, auth_token)
 
-        if response.status_code == 200:
-            data = response.json()
-            msg_id = data.get("messages", [{}])[0].get("id", "unknown")
-            print(f"[whatsapp] Message sent. ID: {msg_id} → {to[:6]}***")
-            return True
-        else:
-            print(f"[whatsapp] API error {response.status_code}: {response.text}")
-            return False
+        msg = client.messages.create(
+            from_=from_number,
+            to=to,
+            body=message,
+        )
 
-    except httpx.TimeoutException:
-        print(f"[whatsapp] Timeout sending to {to[:6]}***")
-        return False
+        print(f"[twilio-whatsapp] Message sent. SID: {msg.sid} → {to[:20]}***")
+        return True
+
     except Exception as e:
-        print(f"[whatsapp] Unexpected error (non-fatal): {e}")
+        print(f"[twilio-whatsapp] Failed (non-fatal): {e}")
         return False
