@@ -1,0 +1,1001 @@
+Main_ID,Name,Breach_Source,Date,How_It_Got_Breached
+vikram.das1006@gmail.com,Vikram Das,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+aditi.verma7555@example.com,Aditi Verma,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+jessica.desai5627@yahoo.com,Jessica Desai,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+sanjay.sharma733@yahoo.com,Sanjay Sharma,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+matt.rao122@gmail.com,Matt Rao,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+nitin.chauhan9241@company.org,Nitin Chauhan,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+9813946242,Sarah Jain,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+rahul.kumar4081@outlook.com,Rahul Kumar,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+dibya.nair3341@example.com,Dibya Nair,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+michael.rodriguez2563@outlook.com,Michael Rodriguez,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+amit.brown197@mail.net,Amit Brown,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+aarti.menon9010@hotmail.com,Aarti Menon,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+manas.reddy8691@example.com,Manas Reddy,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+ashley.menon5506@mail.net,Ashley Menon,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+rakesh.rodriguez2229@mail.net,Rakesh Rodriguez,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+aarav.bhusal380@yahoo.com,Aarav Bhusal,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+jane.smith8505@company.org,Jane Smith,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+aarti.nair5432@hotmail.com,Aarti Nair,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+aarti.brown4321@outlook.com,Aarti Brown,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+8932359671,Rahul Miller,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+sneha.menon5146@hotmail.com,Sneha Menon,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+kavya.reddy2347@yahoo.com,Kavya Reddy,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+arjun.davis4206@gmail.com,Arjun Davis,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+kavya.menon2485@outlook.com,Kavya Menon,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+karan.williams6480@hotmail.com,Karan Williams,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+suresh.miller617@outlook.com,Suresh Miller,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+anjali.patel116@hotmail.com,Anjali Patel,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+raj.iyer521@gmail.com,Raj Iyer,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+fatima.chauhan9660@company.org,Fatima Chauhan,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+aditi.yadav6826@yahoo.com,Aditi Yadav,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+tariq.smith35@outlook.com,Tariq Smith,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+7808453177,John Desai,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+aarti.jones6282@company.org,Aarti Jones,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+neha.gupta6462@mail.net,Neha Gupta,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+dibya.miller3109@mail.net,Dibya Miller,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+diya.jain1913@example.com,Diya Jain,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+michael.martinez8190@mail.net,Michael Martinez,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+arjun.menon1062@outlook.com,Arjun Menon,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+manas.williams5545@hotmail.com,Manas Williams,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+rahul.davis3236@yahoo.com,Rahul Davis,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+rakesh.miller8098@hotmail.com,Rakesh Miller,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+gita.kumar4058@example.com,Gita Kumar,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+nitin.jain2942@yahoo.com,Nitin Jain,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+vivek.bhat1434@example.com,Vivek Bhat,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+karan.miller9309@company.org,Karan Miller,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+john.gupta949@mail.net,John Gupta,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+neha.bhat3805@outlook.com,Neha Bhat,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+7225718996,Diya Rao,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+arjun.williams1480@yahoo.com,Arjun Williams,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+7502273152,Vivek Iyer,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+priya.nair5265@gmail.com,Priya Nair,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+rakesh.bhusal5557@gmail.com,Rakesh Bhusal,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+9768262067,Ashley Reddy,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+sarah.garcia7720@gmail.com,Sarah Garcia,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+matt.reddy8583@yahoo.com,Matt Reddy,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+amit.rao6182@yahoo.com,Amit Rao,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+diya.bhat491@gmail.com,Diya Bhat,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+manas.reddy3221@yahoo.com,Manas Reddy,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+aditi.das4425@gmail.com,Aditi Das,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+6353599070,Anjali Williams,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+vikram.martinez6347@company.org,Vikram Martinez,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+aarav.jain5971@outlook.com,Aarav Jain,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+rakesh.mehta6057@company.org,Rakesh Mehta,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+deepak.chauhan6567@example.com,Deepak Chauhan,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+deepak.davis7668@mail.net,Deepak Davis,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+sanjay.desai5885@mail.net,Sanjay Desai,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+rohan.iyer2942@yahoo.com,Rohan Iyer,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+8038870930,Amit Verma,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+7934849668,Aditi Johnson,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+raj.menon9072@mail.net,Raj Menon,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+9686729202,Amit Rao,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+6614725470,Karan Mehta,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+emily.singh5689@mail.net,Emily Singh,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+simran.verma8102@outlook.com,Simran Verma,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+john.desai7927@mail.net,John Desai,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+8856943343,Karan Singh,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+aarav.brown7375@gmail.com,Aarav Brown,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+aditi.yadav4733@gmail.com,Aditi Yadav,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+rohan.menon8665@gmail.com,Rohan Menon,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+sarah.sharma2424@example.com,Sarah Sharma,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+dibya.sharma9103@gmail.com,Dibya Sharma,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+fatima.brown517@company.org,Fatima Brown,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+sarah.johnson4180@mail.net,Sarah Johnson,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+anjali.patel6966@yahoo.com,Anjali Patel,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+jane.reddy1467@mail.net,Jane Reddy,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+arjun.bhusal9627@example.com,Arjun Bhusal,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+deepak.martinez4997@hotmail.com,Deepak Martinez,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+vikram.yadav5841@gmail.com,Vikram Yadav,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+tariq.das3683@gmail.com,Tariq Das,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+chris.kumar4312@example.com,Chris Kumar,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+john.mehta5392@outlook.com,John Mehta,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+vivek.williams8317@yahoo.com,Vivek Williams,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+aarav.reddy4693@outlook.com,Aarav Reddy,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+9586699044,Dibya Williams,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+sarah.brown6981@gmail.com,Sarah Brown,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+6659574000,Vivek Rodriguez,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+sarah.brown5163@mail.net,Sarah Brown,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+jane.johnson1169@gmail.com,Jane Johnson,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+manas.johnson2112@example.com,Manas Johnson,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+arjun.jones6690@outlook.com,Arjun Jones,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+riya.sharma9426@gmail.com,Riya Sharma,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+manas.johnson8134@gmail.com,Manas Johnson,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+neha.patel9262@mail.net,Neha Patel,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+8617445520,Suresh Sharma,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+pooja.smith985@yahoo.com,Pooja Smith,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+riya.martinez5730@example.com,Riya Martinez,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+vikram.desai8032@outlook.com,Vikram Desai,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+aarav.brown9703@hotmail.com,Aarav Brown,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+nitin.miller7516@gmail.com,Nitin Miller,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+aarav.sharma3524@company.org,Aarav Sharma,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+emily.chauhan3023@hotmail.com,Emily Chauhan,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+nitin.martinez1508@outlook.com,Nitin Martinez,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+fatima.patel3762@mail.net,Fatima Patel,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+priya.bhusal7115@gmail.com,Priya Bhusal,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+8802469188,Rakesh Williams,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+raj.davis9033@outlook.com,Raj Davis,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+tariq.yadav2575@company.org,Tariq Yadav,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+aarav.iyer9739@gmail.com,Aarav Iyer,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+gita.jones1053@example.com,Gita Jones,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+ashley.chauhan756@hotmail.com,Ashley Chauhan,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+chris.miller708@mail.net,Chris Miller,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+gita.chauhan1452@mail.net,Gita Chauhan,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+priya.chauhan1902@gmail.com,Priya Chauhan,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+vikram.verma6185@mail.net,Vikram Verma,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+sanjay.mehta6629@mail.net,Sanjay Mehta,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+manas.kumar598@gmail.com,Manas Kumar,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+diya.johnson2878@example.com,Diya Johnson,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+pooja.iyer3167@gmail.com,Pooja Iyer,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+pooja.garcia4552@mail.net,Pooja Garcia,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+chris.gupta9246@outlook.com,Chris Gupta,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+sarah.gupta527@example.com,Sarah Gupta,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+vivek.nair6640@hotmail.com,Vivek Nair,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+rakesh.jain9951@mail.net,Rakesh Jain,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+diya.jones2116@outlook.com,Diya Jones,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+7485901018,Riya Johnson,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+michael.williams7977@mail.net,Michael Williams,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+rahul.mehta8590@gmail.com,Rahul Mehta,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+nitin.davis449@company.org,Nitin Davis,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+michael.brown301@gmail.com,Michael Brown,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+sarah.yadav4010@example.com,Sarah Yadav,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+kavya.reddy901@example.com,Kavya Reddy,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+neha.williams6682@yahoo.com,Neha Williams,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+simran.williams1730@yahoo.com,Simran Williams,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+david.kumar8159@hotmail.com,David Kumar,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+kavya.sharma9537@company.org,Kavya Sharma,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+priya.miller5685@yahoo.com,Priya Miller,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+john.miller2903@gmail.com,John Miller,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+sarah.mehta8004@outlook.com,Sarah Mehta,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+7418797173,Tariq Iyer,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+diya.verma6347@gmail.com,Diya Verma,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+manas.bhusal2508@company.org,Manas Bhusal,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+gita.nair9644@mail.net,Gita Nair,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+raj.rao6250@company.org,Raj Rao,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+manas.gupta8938@company.org,Manas Gupta,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+ashley.patel3978@company.org,Ashley Patel,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+6525984625,Dibya Bose,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+gita.garcia8807@mail.net,Gita Garcia,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+chris.rodriguez9861@yahoo.com,Chris Rodriguez,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+sanjay.johnson7328@company.org,Sanjay Johnson,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+7815020620,Gita Das,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+amit.menon5102@outlook.com,Amit Menon,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+emily.jones292@gmail.com,Emily Jones,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+6712916619,Rahul Smith,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+amit.singh5399@company.org,Amit Singh,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+john.yadav8279@mail.net,John Yadav,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+nitin.nair7498@company.org,Nitin Nair,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+6395777815,Dibya Reddy,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+neha.jones6240@mail.net,Neha Jones,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+deepak.gupta191@hotmail.com,Deepak Gupta,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+kavya.bhat2515@mail.net,Kavya Bhat,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+7052434255,Sneha Garcia,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+sneha.nair3985@outlook.com,Sneha Nair,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+rahul.bhat3083@company.org,Rahul Bhat,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+karan.mehta5600@company.org,Karan Mehta,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+emily.menon3415@company.org,Emily Menon,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+sanjay.jain4686@yahoo.com,Sanjay Jain,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+sneha.bhat3724@hotmail.com,Sneha Bhat,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+suresh.mehta4015@example.com,Suresh Mehta,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+9487997996,Aarav Davis,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+simran.rao7644@example.com,Simran Rao,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+gita.patel133@mail.net,Gita Patel,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+david.rodriguez641@gmail.com,David Rodriguez,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+john.sharma5146@company.org,John Sharma,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+simran.davis7730@outlook.com,Simran Davis,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+rahul.martinez99@gmail.com,Rahul Martinez,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+jane.jain9675@hotmail.com,Jane Jain,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+rakesh.bhat8464@company.org,Rakesh Bhat,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+vivek.verma4179@gmail.com,Vivek Verma,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+arjun.kumar6953@yahoo.com,Arjun Kumar,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+anjali.kumar2528@example.com,Anjali Kumar,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+fatima.davis7553@company.org,Fatima Davis,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+emily.yadav7601@gmail.com,Emily Yadav,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+gita.miller2202@gmail.com,Gita Miller,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+emily.das7014@outlook.com,Emily Das,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+9791994788,Sneha Bhusal,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+aarav.garcia2708@mail.net,Aarav Garcia,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+gita.williams1141@hotmail.com,Gita Williams,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+8601517554,David Bose,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+david.bose4757@company.org,David Bose,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+vikram.patel6584@mail.net,Vikram Patel,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+kavya.garcia2945@outlook.com,Kavya Garcia,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+matt.mehta1266@mail.net,Matt Mehta,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+priya.davis3059@mail.net,Priya Davis,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+diya.davis9857@outlook.com,Diya Davis,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+simran.bhusal3011@outlook.com,Simran Bhusal,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+manas.davis3885@mail.net,Manas Davis,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+matt.martinez8374@hotmail.com,Matt Martinez,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+aarav.das3522@outlook.com,Aarav Das,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+9408097714,Nitin Reddy,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+sneha.miller5618@outlook.com,Sneha Miller,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+karan.bhat6229@hotmail.com,Karan Bhat,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+ashley.brown2348@outlook.com,Ashley Brown,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+rahul.martinez928@yahoo.com,Rahul Martinez,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+nitin.bhat3452@mail.net,Nitin Bhat,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+aditi.garcia9237@example.com,Aditi Garcia,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+manas.nair1438@example.com,Manas Nair,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+priya.garcia9842@yahoo.com,Priya Garcia,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+jessica.rao3312@example.com,Jessica Rao,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+sanjay.rao9786@hotmail.com,Sanjay Rao,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+simran.jain9639@example.com,Simran Jain,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+vivek.jones8923@example.com,Vivek Jones,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+sarah.desai5923@outlook.com,Sarah Desai,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+matt.rodriguez6601@example.com,Matt Rodriguez,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+pooja.das8040@example.com,Pooja Das,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+matt.johnson4855@yahoo.com,Matt Johnson,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+gita.bhusal6276@example.com,Gita Bhusal,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+7881913354,Anjali Patel,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+david.nair8737@company.org,David Nair,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+fatima.bose1603@mail.net,Fatima Bose,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+9046961390,Manas Desai,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+emily.patel3042@company.org,Emily Patel,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+manas.das2570@mail.net,Manas Das,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+raj.iyer9152@hotmail.com,Raj Iyer,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+amit.das5689@example.com,Amit Das,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+john.desai5284@mail.net,John Desai,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+rakesh.rodriguez3772@gmail.com,Rakesh Rodriguez,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+vikram.sharma237@gmail.com,Vikram Sharma,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+aarti.williams9301@company.org,Aarti Williams,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+gita.patel930@gmail.com,Gita Patel,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+aarav.mehta3367@yahoo.com,Aarav Mehta,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+deepak.johnson5743@gmail.com,Deepak Johnson,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+suresh.smith1131@gmail.com,Suresh Smith,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+karan.smith9646@gmail.com,Karan Smith,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+michael.verma8254@company.org,Michael Verma,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+suresh.menon6926@company.org,Suresh Menon,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+vikram.garcia5359@mail.net,Vikram Garcia,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+8888251140,Jane Bhat,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+chris.chauhan9258@company.org,Chris Chauhan,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+vivek.williams6337@mail.net,Vivek Williams,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+rahul.jones4817@mail.net,Rahul Jones,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+jessica.chauhan3461@company.org,Jessica Chauhan,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+simran.singh8028@example.com,Simran Singh,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+amit.reddy6513@gmail.com,Amit Reddy,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+gita.gupta4041@hotmail.com,Gita Gupta,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+vivek.nair786@company.org,Vivek Nair,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+9886399770,Rahul Iyer,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+emily.mehta97@mail.net,Emily Mehta,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+aditi.garcia5886@gmail.com,Aditi Garcia,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+rakesh.patel3505@gmail.com,Rakesh Patel,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+manas.bhat894@yahoo.com,Manas Bhat,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+karan.brown8229@yahoo.com,Karan Brown,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+vikram.verma2698@gmail.com,Vikram Verma,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+jessica.kumar2579@gmail.com,Jessica Kumar,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+gita.kumar4019@outlook.com,Gita Kumar,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+diya.das2133@mail.net,Diya Das,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+emily.das7145@outlook.com,Emily Das,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+matt.garcia9013@gmail.com,Matt Garcia,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+emily.verma5720@gmail.com,Emily Verma,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+sanjay.sharma9847@outlook.com,Sanjay Sharma,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+emily.singh3050@outlook.com,Emily Singh,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+deepak.martinez2478@yahoo.com,Deepak Martinez,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+amit.menon5200@company.org,Amit Menon,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+neha.davis3457@example.com,Neha Davis,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+rahul.sharma3128@outlook.com,Rahul Sharma,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+9878858481,Rohan Rodriguez,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+8340273642,Manas Chauhan,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+chris.rodriguez2165@hotmail.com,Chris Rodriguez,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+neha.das8745@yahoo.com,Neha Das,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+sneha.williams2176@yahoo.com,Sneha Williams,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+kavya.mehta764@example.com,Kavya Mehta,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+vivek.jain4633@yahoo.com,Vivek Jain,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+aarti.singh5744@mail.net,Aarti Singh,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+kavya.das9278@company.org,Kavya Das,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+kavya.patel4922@yahoo.com,Kavya Patel,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+aarti.miller545@example.com,Aarti Miller,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+nitin.rao3123@gmail.com,Nitin Rao,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+amit.bhat4105@gmail.com,Amit Bhat,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+pooja.kumar7627@example.com,Pooja Kumar,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+simran.das5069@gmail.com,Simran Das,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+dibya.jones8202@mail.net,Dibya Jones,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+priya.reddy2696@outlook.com,Priya Reddy,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+rahul.bhusal7046@hotmail.com,Rahul Bhusal,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+diya.singh5766@example.com,Diya Singh,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+michael.nair5010@mail.net,Michael Nair,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+rahul.jain1073@mail.net,Rahul Jain,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+gita.sharma9817@mail.net,Gita Sharma,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+vikram.sharma2434@gmail.com,Vikram Sharma,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+6952724157,Tariq Johnson,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+aditi.gupta7597@yahoo.com,Aditi Gupta,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+john.jain8950@company.org,John Jain,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+matt.martinez6100@company.org,Matt Martinez,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+neha.verma2466@company.org,Neha Verma,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+suresh.chauhan4465@yahoo.com,Suresh Chauhan,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+diya.mehta734@outlook.com,Diya Mehta,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+karan.johnson3883@hotmail.com,Karan Johnson,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+david.das2368@mail.net,David Das,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+diya.menon1787@yahoo.com,Diya Menon,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+priya.williams3506@yahoo.com,Priya Williams,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+arjun.jain4633@hotmail.com,Arjun Jain,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+8348099135,Rakesh Gupta,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+rohan.yadav8809@company.org,Rohan Yadav,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+rohan.smith3014@mail.net,Rohan Smith,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+vivek.chauhan9127@gmail.com,Vivek Chauhan,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+raj.johnson5337@gmail.com,Raj Johnson,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+rohan.gupta9717@yahoo.com,Rohan Gupta,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+michael.kumar9742@mail.net,Michael Kumar,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+7393664078,Pooja Smith,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+neha.smith5200@example.com,Neha Smith,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+chris.sharma656@hotmail.com,Chris Sharma,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+7169443244,Ashley Mehta,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+gita.rodriguez9470@hotmail.com,Gita Rodriguez,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+riya.chauhan1264@mail.net,Riya Chauhan,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+rakesh.reddy7560@outlook.com,Rakesh Reddy,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+amit.singh3423@mail.net,Amit Singh,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+gita.yadav9293@example.com,Gita Yadav,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+manas.jain6472@company.org,Manas Jain,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+john.rao929@hotmail.com,John Rao,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+fatima.mehta6060@gmail.com,Fatima Mehta,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+karan.brown6620@yahoo.com,Karan Brown,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+tariq.verma9665@yahoo.com,Tariq Verma,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+suresh.rodriguez2878@hotmail.com,Suresh Rodriguez,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+pooja.mehta6008@company.org,Pooja Mehta,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+amit.brown5987@company.org,Amit Brown,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+riya.davis1964@company.org,Riya Davis,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+chris.johnson8507@example.com,Chris Johnson,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+deepak.jain4471@gmail.com,Deepak Jain,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+priya.smith9471@yahoo.com,Priya Smith,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+jane.verma2500@gmail.com,Jane Verma,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+rohan.kumar6481@outlook.com,Rohan Kumar,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+fatima.bhusal7327@hotmail.com,Fatima Bhusal,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+diya.singh1537@outlook.com,Diya Singh,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+suresh.miller4283@mail.net,Suresh Miller,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+priya.kumar3328@mail.net,Priya Kumar,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+john.reddy6882@example.com,John Reddy,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+anjali.chauhan4992@outlook.com,Anjali Chauhan,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+6109136166,Jane Gupta,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+neha.miller5941@mail.net,Neha Miller,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+diya.bose4011@outlook.com,Diya Bose,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+chris.davis1973@gmail.com,Chris Davis,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+jane.sharma9993@example.com,Jane Sharma,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+fatima.martinez978@hotmail.com,Fatima Martinez,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+6908121744,Aditi Rao,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+jessica.williams822@gmail.com,Jessica Williams,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+rohan.johnson8694@hotmail.com,Rohan Johnson,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+fatima.jones3199@mail.net,Fatima Jones,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+tariq.jones5634@company.org,Tariq Jones,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+neha.miller6747@example.com,Neha Miller,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+sanjay.johnson1625@mail.net,Sanjay Johnson,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+anjali.bhusal4820@company.org,Anjali Bhusal,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+7497824694,Aditi Yadav,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+6628343110,Ashley Kumar,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+rakesh.menon5317@yahoo.com,Rakesh Menon,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+rahul.garcia3957@example.com,Rahul Garcia,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+chris.nair8890@company.org,Chris Nair,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+rahul.martinez3390@example.com,Rahul Martinez,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+7144515371,Chris Chauhan,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+manas.patel7140@company.org,Manas Patel,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+manas.rao7018@gmail.com,Manas Rao,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+7687634791,Aarti Desai,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+rohan.davis9725@yahoo.com,Rohan Davis,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+9705384307,Dibya Smith,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+john.sharma9287@yahoo.com,John Sharma,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+jessica.davis9733@hotmail.com,Jessica Davis,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+kavya.patel7805@example.com,Kavya Patel,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+matt.yadav4028@company.org,Matt Yadav,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+pooja.reddy2996@company.org,Pooja Reddy,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+suresh.martinez4523@company.org,Suresh Martinez,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+riya.bhusal4571@gmail.com,Riya Bhusal,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+david.chauhan3975@yahoo.com,David Chauhan,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+rohan.miller5444@gmail.com,Rohan Miller,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+deepak.kumar9196@gmail.com,Deepak Kumar,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+riya.bose3191@gmail.com,Riya Bose,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+aarav.jain904@mail.net,Aarav Jain,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+jessica.nair9169@outlook.com,Jessica Nair,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+jessica.rodriguez1372@yahoo.com,Jessica Rodriguez,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+manas.brown7337@hotmail.com,Manas Brown,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+jane.gupta1703@company.org,Jane Gupta,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+6996233624,Priya Yadav,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+rahul.bhat8053@example.com,Rahul Bhat,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+vikram.kumar5939@yahoo.com,Vikram Kumar,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+arjun.gupta8297@company.org,Arjun Gupta,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+john.smith1188@example.com,John Smith,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+sneha.verma5184@hotmail.com,Sneha Verma,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+david.martinez8516@mail.net,David Martinez,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+karan.miller6676@hotmail.com,Karan Miller,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+gita.smith217@outlook.com,Gita Smith,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+8056538850,John Smith,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+aditi.chauhan1851@yahoo.com,Aditi Chauhan,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+9490343988,Suresh Williams,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+rakesh.garcia659@example.com,Rakesh Garcia,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+6508022685,Sneha Singh,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+dibya.smith1994@mail.net,Dibya Smith,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+aarti.rao8037@example.com,Aarti Rao,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+tariq.davis7303@hotmail.com,Tariq Davis,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+michael.davis1497@hotmail.com,Michael Davis,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+nitin.rao2295@company.org,Nitin Rao,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+kavya.jain4756@example.com,Kavya Jain,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+emily.miller9338@company.org,Emily Miller,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+aarti.bhusal7086@gmail.com,Aarti Bhusal,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+vikram.singh7021@hotmail.com,Vikram Singh,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+raj.bose983@example.com,Raj Bose,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+7577694469,Suresh Singh,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+sneha.yadav62@company.org,Sneha Yadav,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+jessica.nair489@company.org,Jessica Nair,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+deepak.martinez3917@gmail.com,Deepak Martinez,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+aarav.rao3742@yahoo.com,Aarav Rao,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+suresh.yadav1974@outlook.com,Suresh Yadav,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+sneha.rao217@mail.net,Sneha Rao,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+kavya.bhusal2948@gmail.com,Kavya Bhusal,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+7265111555,Deepak Rodriguez,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+7267709849,David Brown,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+manas.verma9312@company.org,Manas Verma,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+karan.reddy2935@outlook.com,Karan Reddy,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+sneha.jain5177@company.org,Sneha Jain,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+karan.das783@example.com,Karan Das,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+deepak.johnson1266@example.com,Deepak Johnson,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+pooja.bhusal8499@outlook.com,Pooja Bhusal,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+rohan.iyer6679@company.org,Rohan Iyer,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+ashley.menon2236@hotmail.com,Ashley Menon,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+rahul.gupta8660@company.org,Rahul Gupta,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+rakesh.kumar6867@company.org,Rakesh Kumar,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+rakesh.rodriguez7639@gmail.com,Rakesh Rodriguez,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+fatima.sharma1813@company.org,Fatima Sharma,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+arjun.nair2660@example.com,Arjun Nair,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+sarah.martinez6918@hotmail.com,Sarah Martinez,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+rakesh.garcia2333@hotmail.com,Rakesh Garcia,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+6661976515,Jane Jain,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+jane.gupta7578@mail.net,Jane Gupta,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+arjun.jain1436@yahoo.com,Arjun Jain,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+8949811605,Arjun Verma,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+karan.iyer1711@company.org,Karan Iyer,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+neha.jones1540@gmail.com,Neha Jones,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+chris.bhusal417@gmail.com,Chris Bhusal,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+aditi.verma1909@example.com,Aditi Verma,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+8219888622,Amit Singh,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+rahul.verma9002@gmail.com,Rahul Verma,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+aarti.smith5572@gmail.com,Aarti Smith,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+9246784020,Sanjay Bhusal,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+rahul.rao4951@hotmail.com,Rahul Rao,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+rahul.desai4281@gmail.com,Rahul Desai,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+simran.kumar2366@mail.net,Simran Kumar,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+aditi.sharma3884@hotmail.com,Aditi Sharma,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+michael.singh2236@gmail.com,Michael Singh,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+arjun.nair6369@gmail.com,Arjun Nair,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+david.gupta4739@outlook.com,David Gupta,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+amit.rodriguez1979@gmail.com,Amit Rodriguez,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+suresh.garcia6822@company.org,Suresh Garcia,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+priya.bhusal9802@company.org,Priya Bhusal,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+diya.chauhan5278@hotmail.com,Diya Chauhan,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+rahul.mehta6167@outlook.com,Rahul Mehta,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+simran.chauhan3712@hotmail.com,Simran Chauhan,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+raj.johnson2229@mail.net,Raj Johnson,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+dibya.chauhan7907@outlook.com,Dibya Chauhan,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+tariq.desai5061@example.com,Tariq Desai,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+pooja.rao6175@hotmail.com,Pooja Rao,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+amit.miller5790@yahoo.com,Amit Miller,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+gita.sharma1986@hotmail.com,Gita Sharma,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+manas.mehta6955@example.com,Manas Mehta,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+chris.smith8372@company.org,Chris Smith,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+manas.kumar4177@gmail.com,Manas Kumar,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+9139052472,Amit Gupta,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+kavya.yadav1789@hotmail.com,Kavya Yadav,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+sneha.rodriguez4366@mail.net,Sneha Rodriguez,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+aditi.gupta9215@mail.net,Aditi Gupta,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+ashley.jain418@outlook.com,Ashley Jain,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+john.jain4529@yahoo.com,John Jain,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+aditi.mehta6739@company.org,Aditi Mehta,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+rohan.mehta5536@example.com,Rohan Mehta,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+sneha.jain4898@hotmail.com,Sneha Jain,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+fatima.rao8282@yahoo.com,Fatima Rao,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+tariq.gupta9483@company.org,Tariq Gupta,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+arjun.bhat8826@gmail.com,Arjun Bhat,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+vikram.brown1772@hotmail.com,Vikram Brown,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+rohan.bose8558@yahoo.com,Rohan Bose,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+amit.bose6983@example.com,Amit Bose,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+rahul.iyer5609@company.org,Rahul Iyer,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+nitin.smith953@example.com,Nitin Smith,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+vikram.verma1218@example.com,Vikram Verma,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+riya.jain9348@outlook.com,Riya Jain,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+vikram.mehta2126@outlook.com,Vikram Mehta,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+tariq.miller2116@company.org,Tariq Miller,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+arjun.martinez970@example.com,Arjun Martinez,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+sarah.martinez2798@gmail.com,Sarah Martinez,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+jessica.patel3403@gmail.com,Jessica Patel,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+vivek.yadav7106@yahoo.com,Vivek Yadav,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+vivek.desai5574@mail.net,Vivek Desai,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+gita.desai2544@gmail.com,Gita Desai,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+8638817451,Neha Smith,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+riya.iyer3021@outlook.com,Riya Iyer,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+matt.davis4228@gmail.com,Matt Davis,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+fatima.iyer8274@example.com,Fatima Iyer,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+david.smith5841@mail.net,David Smith,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+suresh.miller7389@hotmail.com,Suresh Miller,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+david.chauhan7772@example.com,David Chauhan,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+ashley.jones9879@mail.net,Ashley Jones,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+9676663527,Ashley Miller,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+kavya.reddy9674@example.com,Kavya Reddy,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+aditi.jain6982@hotmail.com,Aditi Jain,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+emily.davis7757@company.org,Emily Davis,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+rohan.das3282@example.com,Rohan Das,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+dibya.martinez3061@outlook.com,Dibya Martinez,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+aarti.garcia1137@outlook.com,Aarti Garcia,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+rohan.williams5810@mail.net,Rohan Williams,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+priya.bhusal7057@example.com,Priya Bhusal,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+amit.menon9487@example.com,Amit Menon,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+nitin.yadav5165@outlook.com,Nitin Yadav,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+ashley.iyer6833@yahoo.com,Ashley Iyer,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+rakesh.verma3035@hotmail.com,Rakesh Verma,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+karan.bhat3181@company.org,Karan Bhat,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+raj.johnson3329@yahoo.com,Raj Johnson,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+sarah.bose7440@company.org,Sarah Bose,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+rahul.patel8413@company.org,Rahul Patel,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+ashley.bhat4276@outlook.com,Ashley Bhat,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+8321193968,Sanjay Brown,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+riya.garcia6306@outlook.com,Riya Garcia,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+kavya.mehta2130@company.org,Kavya Mehta,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+fatima.jones8190@company.org,Fatima Jones,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+neha.brown9847@gmail.com,Neha Brown,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+rahul.singh6980@mail.net,Rahul Singh,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+vikram.kumar2486@hotmail.com,Vikram Kumar,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+aarti.rodriguez6879@mail.net,Aarti Rodriguez,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+jessica.rao1252@company.org,Jessica Rao,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+aarti.jain489@gmail.com,Aarti Jain,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+nitin.yadav3388@mail.net,Nitin Yadav,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+fatima.rodriguez4382@company.org,Fatima Rodriguez,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+pooja.chauhan9784@yahoo.com,Pooja Chauhan,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+diya.iyer903@example.com,Diya Iyer,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+amit.chauhan5094@gmail.com,Amit Chauhan,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+david.davis8179@company.org,David Davis,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+john.yadav1130@outlook.com,John Yadav,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+jane.reddy6699@hotmail.com,Jane Reddy,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+9835354166,Matt Miller,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+john.kumar6555@gmail.com,John Kumar,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+ashley.bhusal6401@mail.net,Ashley Bhusal,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+suresh.rodriguez4114@example.com,Suresh Rodriguez,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+matt.sharma8801@example.com,Matt Sharma,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+john.nair5511@yahoo.com,John Nair,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+john.nair7393@yahoo.com,John Nair,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+diya.williams4904@example.com,Diya Williams,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+jessica.mehta6608@yahoo.com,Jessica Mehta,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+sanjay.garcia4440@mail.net,Sanjay Garcia,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+sarah.menon86@mail.net,Sarah Menon,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+jane.sharma5324@gmail.com,Jane Sharma,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+sneha.verma510@yahoo.com,Sneha Verma,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+michael.rodriguez9522@hotmail.com,Michael Rodriguez,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+jessica.rodriguez9834@outlook.com,Jessica Rodriguez,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+8559084992,Nitin Bhat,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+matt.gupta7345@company.org,Matt Gupta,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+aarti.rodriguez7029@yahoo.com,Aarti Rodriguez,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+nitin.jones675@gmail.com,Nitin Jones,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+michael.rodriguez9100@company.org,Michael Rodriguez,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+9516328495,Aarti Bhat,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+sneha.yadav6251@yahoo.com,Sneha Yadav,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+gita.johnson5209@outlook.com,Gita Johnson,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+jane.jones725@outlook.com,Jane Jones,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+rakesh.desai6006@yahoo.com,Rakesh Desai,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+9792180691,Priya Rao,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+rahul.singh5922@yahoo.com,Rahul Singh,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+sneha.miller9395@gmail.com,Sneha Miller,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+6174847790,Sneha Bhat,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+karan.rao1451@outlook.com,Karan Rao,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+sneha.garcia8230@yahoo.com,Sneha Garcia,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+simran.nair2432@example.com,Simran Nair,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+simran.bhusal7897@company.org,Simran Bhusal,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+tariq.kumar2327@hotmail.com,Tariq Kumar,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+amit.sharma3702@hotmail.com,Amit Sharma,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+karan.reddy2976@outlook.com,Karan Reddy,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+8210855029,Priya Sharma,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+gita.smith240@yahoo.com,Gita Smith,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+karan.jain2709@outlook.com,Karan Jain,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+dibya.rodriguez4442@mail.net,Dibya Rodriguez,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+rahul.menon4294@example.com,Rahul Menon,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+priya.smith3346@outlook.com,Priya Smith,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+deepak.gupta6033@outlook.com,Deepak Gupta,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+vikram.verma1049@hotmail.com,Vikram Verma,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+raj.patel3183@company.org,Raj Patel,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+rahul.nair9530@company.org,Rahul Nair,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+9120440945,Tariq Jain,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+tariq.yadav6158@hotmail.com,Tariq Yadav,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+sanjay.chauhan3256@yahoo.com,Sanjay Chauhan,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+rohan.patel2406@outlook.com,Rohan Patel,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+dibya.chauhan4789@hotmail.com,Dibya Chauhan,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+david.bose1620@hotmail.com,David Bose,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+chris.patel8386@company.org,Chris Patel,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+gita.yadav9090@company.org,Gita Yadav,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+arjun.patel3687@outlook.com,Arjun Patel,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+chris.gupta612@mail.net,Chris Gupta,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+sneha.mehta3148@gmail.com,Sneha Mehta,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+deepak.johnson1405@gmail.com,Deepak Johnson,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+aarav.jones2856@yahoo.com,Aarav Jones,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+ashley.jain3380@gmail.com,Ashley Jain,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+anjali.mehta6220@yahoo.com,Anjali Mehta,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+9954871615,John Jain,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+jane.iyer9963@example.com,Jane Iyer,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+michael.mehta8929@mail.net,Michael Mehta,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+jane.jones3613@outlook.com,Jane Jones,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+gita.bose1919@outlook.com,Gita Bose,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+michael.johnson5095@outlook.com,Michael Johnson,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+ashley.menon2836@mail.net,Ashley Menon,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+8321373558,Neha Chauhan,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+deepak.nair9555@example.com,Deepak Nair,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+kavya.jones893@mail.net,Kavya Jones,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+deepak.sharma2110@gmail.com,Deepak Sharma,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+jane.jones9591@gmail.com,Jane Jones,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+sanjay.iyer6262@mail.net,Sanjay Iyer,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+rakesh.nair2168@company.org,Rakesh Nair,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+manas.bhat8846@mail.net,Manas Bhat,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+emily.rodriguez9796@yahoo.com,Emily Rodriguez,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+neha.jain9705@gmail.com,Neha Jain,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+neha.bose7747@example.com,Neha Bose,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+vivek.davis1013@hotmail.com,Vivek Davis,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+aarav.rao2665@mail.net,Aarav Rao,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+chris.sharma8570@mail.net,Chris Sharma,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+diya.garcia9516@hotmail.com,Diya Garcia,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+amit.sharma7914@mail.net,Amit Sharma,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+john.desai783@example.com,John Desai,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+9156358962,Raj Davis,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+chris.verma380@example.com,Chris Verma,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+vikram.das5732@outlook.com,Vikram Das,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+rahul.iyer50@hotmail.com,Rahul Iyer,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+aarav.menon4558@hotmail.com,Aarav Menon,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+nitin.das2583@yahoo.com,Nitin Das,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+rahul.singh8591@outlook.com,Rahul Singh,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+sanjay.jain9550@example.com,Sanjay Jain,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+sarah.reddy846@company.org,Sarah Reddy,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+suresh.martinez6410@mail.net,Suresh Martinez,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+dibya.desai1770@example.com,Dibya Desai,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+amit.williams5320@hotmail.com,Amit Williams,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+john.williams4224@example.com,John Williams,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+pooja.rao192@outlook.com,Pooja Rao,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+chris.gupta2983@example.com,Chris Gupta,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+gita.johnson9752@gmail.com,Gita Johnson,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+7156368349,Rahul Brown,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+kavya.williams1900@company.org,Kavya Williams,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+ashley.jain4323@gmail.com,Ashley Jain,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+sanjay.williams5477@mail.net,Sanjay Williams,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+gita.desai6576@outlook.com,Gita Desai,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+pooja.bhusal4357@gmail.com,Pooja Bhusal,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+rahul.williams8069@outlook.com,Rahul Williams,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+vivek.johnson8720@gmail.com,Vivek Johnson,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+diya.bhat8023@example.com,Diya Bhat,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+raj.verma9135@hotmail.com,Raj Verma,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+deepak.reddy5450@gmail.com,Deepak Reddy,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+nitin.desai4065@outlook.com,Nitin Desai,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+gita.johnson1394@outlook.com,Gita Johnson,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+aarti.reddy6112@yahoo.com,Aarti Reddy,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+8554726275,Priya Singh,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+arjun.bhat5079@yahoo.com,Arjun Bhat,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+nitin.sharma6201@gmail.com,Nitin Sharma,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+diya.rao1884@yahoo.com,Diya Rao,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+neha.nair1528@mail.net,Neha Nair,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+jane.iyer7556@mail.net,Jane Iyer,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+matt.yadav8287@outlook.com,Matt Yadav,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+karan.williams1315@hotmail.com,Karan Williams,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+aarav.brown1728@yahoo.com,Aarav Brown,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+7142682979,John Davis,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+amit.sharma6257@outlook.com,Amit Sharma,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+vikram.bose8496@hotmail.com,Vikram Bose,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+karan.rodriguez5397@company.org,Karan Rodriguez,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+7517015169,Karan Williams,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+rahul.smith6798@mail.net,Rahul Smith,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+david.patel7439@example.com,David Patel,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+diya.singh6211@yahoo.com,Diya Singh,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+neha.garcia1666@example.com,Neha Garcia,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+neha.chauhan391@yahoo.com,Neha Chauhan,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+deepak.reddy4477@company.org,Deepak Reddy,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+ashley.garcia795@mail.net,Ashley Garcia,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+8075313309,David Iyer,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+simran.menon3968@yahoo.com,Simran Menon,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+manas.davis7878@outlook.com,Manas Davis,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+raj.bhat8441@example.com,Raj Bhat,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+6962182840,Aarav Davis,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+dibya.patel6681@yahoo.com,Dibya Patel,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+david.menon5455@example.com,David Menon,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+fatima.kumar8600@outlook.com,Fatima Kumar,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+sneha.johnson8364@example.com,Sneha Johnson,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+rohan.singh6881@mail.net,Rohan Singh,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+aarti.davis8593@outlook.com,Aarti Davis,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+6707199808,Jane Rodriguez,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+kavya.brown9494@gmail.com,Kavya Brown,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+deepak.gupta4351@mail.net,Deepak Gupta,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+nitin.miller8980@mail.net,Nitin Miller,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+aarti.bhusal4611@outlook.com,Aarti Bhusal,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+aarav.johnson4439@yahoo.com,Aarav Johnson,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+diya.kumar4843@yahoo.com,Diya Kumar,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+michael.reddy7478@yahoo.com,Michael Reddy,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+arjun.bhat645@yahoo.com,Arjun Bhat,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+diya.sharma4209@hotmail.com,Diya Sharma,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+sarah.johnson8003@yahoo.com,Sarah Johnson,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+arjun.desai3687@example.com,Arjun Desai,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+arjun.nair8058@gmail.com,Arjun Nair,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+simran.kumar2525@company.org,Simran Kumar,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+ashley.chauhan4727@mail.net,Ashley Chauhan,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+gita.bhat3142@hotmail.com,Gita Bhat,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+sarah.garcia6104@gmail.com,Sarah Garcia,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+tariq.verma8583@yahoo.com,Tariq Verma,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+gita.verma8478@yahoo.com,Gita Verma,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+suresh.williams3870@mail.net,Suresh Williams,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+arjun.johnson6851@example.com,Arjun Johnson,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+tariq.bhat999@yahoo.com,Tariq Bhat,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+aarti.chauhan6100@mail.net,Aarti Chauhan,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+arjun.desai1009@mail.net,Arjun Desai,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+tariq.bhusal3730@example.com,Tariq Bhusal,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+sanjay.verma9903@yahoo.com,Sanjay Verma,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+rohan.sharma5526@mail.net,Rohan Sharma,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+manas.jones5827@mail.net,Manas Jones,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+michael.mehta9763@hotmail.com,Michael Mehta,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+jane.mehta2951@hotmail.com,Jane Mehta,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+jessica.rao201@hotmail.com,Jessica Rao,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+neha.iyer7772@yahoo.com,Neha Iyer,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+riya.bhusal4991@example.com,Riya Bhusal,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+chris.bose1902@company.org,Chris Bose,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+raj.reddy5069@gmail.com,Raj Reddy,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+8814394947,Michael Reddy,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+priya.johnson4516@gmail.com,Priya Johnson,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+arjun.bhat9930@gmail.com,Arjun Bhat,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+neha.jain3710@example.com,Neha Jain,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+nitin.bhusal6819@example.com,Nitin Bhusal,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+david.garcia2849@yahoo.com,David Garcia,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+vikram.iyer6847@hotmail.com,Vikram Iyer,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+rahul.bose8252@mail.net,Rahul Bose,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+arjun.das5371@outlook.com,Arjun Das,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+rahul.bhusal2689@mail.net,Rahul Bhusal,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+kavya.verma8044@yahoo.com,Kavya Verma,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+simran.desai2657@yahoo.com,Simran Desai,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+tariq.iyer4515@mail.net,Tariq Iyer,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+kavya.gupta1134@yahoo.com,Kavya Gupta,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+nitin.davis1644@hotmail.com,Nitin Davis,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+priya.desai716@hotmail.com,Priya Desai,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+aditi.bhusal4044@gmail.com,Aditi Bhusal,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+aarav.menon4118@mail.net,Aarav Menon,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+arjun.garcia573@mail.net,Arjun Garcia,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+7470801295,Suresh Brown,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+rakesh.davis5008@gmail.com,Rakesh Davis,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+pooja.williams7832@example.com,Pooja Williams,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+7737955409,Raj Singh,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+pooja.mehta569@mail.net,Pooja Mehta,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+sarah.brown9890@yahoo.com,Sarah Brown,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+jessica.bhusal9475@hotmail.com,Jessica Bhusal,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+dibya.gupta9618@company.org,Dibya Gupta,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+karan.verma3151@yahoo.com,Karan Verma,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+jane.sharma6610@hotmail.com,Jane Sharma,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+david.smith1641@company.org,David Smith,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+neha.jones162@company.org,Neha Jones,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+aarti.das2569@gmail.com,Aarti Das,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+neha.johnson6606@company.org,Neha Johnson,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+rahul.jones1524@hotmail.com,Rahul Jones,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+suresh.yadav3893@yahoo.com,Suresh Yadav,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+nitin.kumar8013@outlook.com,Nitin Kumar,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+neha.martinez8585@example.com,Neha Martinez,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+chris.iyer9283@outlook.com,Chris Iyer,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+8846862303,Rakesh Iyer,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+amit.brown3666@company.org,Amit Brown,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+6626650478,Rakesh Kumar,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+rahul.reddy3265@yahoo.com,Rahul Reddy,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+priya.bose6960@gmail.com,Priya Bose,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+fatima.johnson3058@company.org,Fatima Johnson,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+priya.gupta4123@example.com,Priya Gupta,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+arjun.yadav4817@gmail.com,Arjun Yadav,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+emily.miller8371@mail.net,Emily Miller,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+vivek.miller401@yahoo.com,Vivek Miller,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+8235804951,Anjali Gupta,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+aditi.miller7560@hotmail.com,Aditi Miller,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+pooja.nair821@company.org,Pooja Nair,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+neha.reddy4220@gmail.com,Neha Reddy,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+dibya.jain7432@outlook.com,Dibya Jain,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+aditi.johnson5771@mail.net,Aditi Johnson,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+jane.bhat389@outlook.com,Jane Bhat,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+david.reddy296@outlook.com,David Reddy,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+anjali.nair9667@example.com,Anjali Nair,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+suresh.singh6257@yahoo.com,Suresh Singh,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+6211907496,Amit Gupta,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+karan.rao66@example.com,Karan Rao,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+rahul.sharma5553@outlook.com,Rahul Sharma,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+john.williams7551@mail.net,John Williams,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+neha.sharma9070@gmail.com,Neha Sharma,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+manas.gupta4073@mail.net,Manas Gupta,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+neha.patel9538@example.com,Neha Patel,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+rohan.nair4208@hotmail.com,Rohan Nair,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+john.patel6715@hotmail.com,John Patel,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+rahul.patel4393@outlook.com,Rahul Patel,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+michael.das1183@company.org,Michael Das,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+jessica.kumar2184@mail.net,Jessica Kumar,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+aarti.sharma937@mail.net,Aarti Sharma,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+9869369544,David Rodriguez,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+6281340192,Vikram Iyer,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+vivek.davis4856@hotmail.com,Vivek Davis,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+priya.chauhan2346@company.org,Priya Chauhan,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+kavya.rodriguez1862@company.org,Kavya Rodriguez,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+aditi.jones5977@company.org,Aditi Jones,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+arjun.kumar6039@gmail.com,Arjun Kumar,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+vikram.johnson5161@outlook.com,Vikram Johnson,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+sanjay.garcia1414@company.org,Sanjay Garcia,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+karan.jones9119@yahoo.com,Karan Jones,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+rohan.jain3159@outlook.com,Rohan Jain,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+deepak.garcia7337@company.org,Deepak Garcia,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+dibya.bhat7145@gmail.com,Dibya Bhat,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+rohan.johnson3118@mail.net,Rohan Johnson,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+gita.jones923@gmail.com,Gita Jones,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+jane.bhusal3245@outlook.com,Jane Bhusal,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+emily.bhat1663@outlook.com,Emily Bhat,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+vivek.williams2789@mail.net,Vivek Williams,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+priya.das9163@example.com,Priya Das,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+fatima.bhat1334@example.com,Fatima Bhat,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+raj.menon4620@outlook.com,Raj Menon,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+john.singh9044@yahoo.com,John Singh,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+rohan.patel2450@company.org,Rohan Patel,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+priya.bhusal8898@example.com,Priya Bhusal,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+amit.jones1280@example.com,Amit Jones,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+6274977695,Aditi Desai,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+8544607489,Matt Singh,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+raj.reddy2527@mail.net,Raj Reddy,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+matt.nair3557@company.org,Matt Nair,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+rakesh.jones9385@hotmail.com,Rakesh Jones,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+arjun.miller7949@company.org,Arjun Miller,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+vivek.reddy4284@yahoo.com,Vivek Reddy,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+amit.verma5678@outlook.com,Amit Verma,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+sneha.johnson510@mail.net,Sneha Johnson,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+dibya.smith534@hotmail.com,Dibya Smith,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+9534596018,Sneha Mehta,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+9679272432,Aarti Brown,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+sneha.reddy9173@outlook.com,Sneha Reddy,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+tariq.verma1932@company.org,Tariq Verma,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+vikram.smith2402@example.com,Vikram Smith,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+fatima.patel3539@yahoo.com,Fatima Patel,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+karan.jain4928@yahoo.com,Karan Jain,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+dibya.yadav7759@mail.net,Dibya Yadav,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+tariq.rodriguez6837@yahoo.com,Tariq Rodriguez,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+nitin.brown6898@yahoo.com,Nitin Brown,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+rahul.mehta2127@mail.net,Rahul Mehta,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+deepak.miller1462@outlook.com,Deepak Miller,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+7702520990,Pooja Bhat,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+nitin.miller4635@outlook.com,Nitin Miller,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+fatima.jain6070@mail.net,Fatima Jain,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+karan.mehta5128@company.org,Karan Mehta,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+aarav.reddy2020@example.com,Aarav Reddy,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+rakesh.patel3391@gmail.com,Rakesh Patel,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+nitin.verma5834@outlook.com,Nitin Verma,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+arjun.smith7090@gmail.com,Arjun Smith,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+sneha.das9677@company.org,Sneha Das,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+ashley.verma8779@mail.net,Ashley Verma,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+diya.smith3188@gmail.com,Diya Smith,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+jessica.miller3491@mail.net,Jessica Miller,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+9792986201,Suresh Iyer,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+dibya.rodriguez8037@hotmail.com,Dibya Rodriguez,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+deepak.iyer536@gmail.com,Deepak Iyer,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+neha.brown6778@yahoo.com,Neha Brown,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+amit.rao3500@gmail.com,Amit Rao,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+rahul.chauhan4089@mail.net,Rahul Chauhan,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+rakesh.nair9445@company.org,Rakesh Nair,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+simran.brown7602@hotmail.com,Simran Brown,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+fatima.rao3700@outlook.com,Fatima Rao,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+sarah.bhat1798@company.org,Sarah Bhat,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+jessica.singh1775@example.com,Jessica Singh,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+chris.gupta7142@example.com,Chris Gupta,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+aarti.smith2990@example.com,Aarti Smith,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+gita.yadav2278@gmail.com,Gita Yadav,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+9664637954,Fatima Singh,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+aarav.das585@yahoo.com,Aarav Das,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+rohan.martinez5093@outlook.com,Rohan Martinez,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+emily.nair7726@mail.net,Emily Nair,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+dibya.verma5739@example.com,Dibya Verma,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+simran.miller4663@yahoo.com,Simran Miller,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+simran.mehta8963@outlook.com,Simran Mehta,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+8217066838,Rohan Jones,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+matt.garcia6853@yahoo.com,Matt Garcia,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+chris.bhusal1718@company.org,Chris Bhusal,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+aditi.reddy516@mail.net,Aditi Reddy,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+arjun.bose4470@yahoo.com,Arjun Bose,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+aditi.desai9120@hotmail.com,Aditi Desai,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+vikram.kumar4363@yahoo.com,Vikram Kumar,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+6435900997,Suresh Yadav,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+gita.kumar103@hotmail.com,Gita Kumar,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+diya.desai6321@hotmail.com,Diya Desai,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+rohan.jain1298@hotmail.com,Rohan Jain,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+deepak.rao4192@yahoo.com,Deepak Rao,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+aditi.martinez3503@outlook.com,Aditi Martinez,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+tariq.verma8586@hotmail.com,Tariq Verma,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+tariq.reddy2581@example.com,Tariq Reddy,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+anjali.davis4173@hotmail.com,Anjali Davis,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+8460940052,Raj Reddy,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+rohan.rao9529@gmail.com,Rohan Rao,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+sanjay.smith2525@hotmail.com,Sanjay Smith,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+suresh.reddy9869@gmail.com,Suresh Reddy,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+chris.sharma4633@yahoo.com,Chris Sharma,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+arjun.johnson5805@hotmail.com,Arjun Johnson,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+rahul.brown89@company.org,Rahul Brown,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+fatima.kumar8247@outlook.com,Fatima Kumar,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+amit.mehta8132@hotmail.com,Amit Mehta,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+6731468795,Riya Sharma,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+jessica.garcia59@mail.net,Jessica Garcia,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+sarah.rao4491@mail.net,Sarah Rao,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+vivek.iyer8899@company.org,Vivek Iyer,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+kavya.verma3712@mail.net,Kavya Verma,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+fatima.patel8633@mail.net,Fatima Patel,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+rahul.bhusal6560@outlook.com,Rahul Bhusal,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+nitin.yadav9572@gmail.com,Nitin Yadav,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+vikram.williams1167@yahoo.com,Vikram Williams,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+rakesh.martinez4749@example.com,Rakesh Martinez,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+diya.das5348@company.org,Diya Das,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+rakesh.jain8574@outlook.com,Rakesh Jain,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+8252158846,Neha Verma,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+manas.miller4461@mail.net,Manas Miller,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+dibya.smith8699@outlook.com,Dibya Smith,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+aditi.verma639@hotmail.com,Aditi Verma,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+dibya.bhusal5202@outlook.com,Dibya Bhusal,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+matt.singh4150@company.org,Matt Singh,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+arjun.garcia3006@outlook.com,Arjun Garcia,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+riya.chauhan6928@example.com,Riya Chauhan,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+dibya.kumar8896@gmail.com,Dibya Kumar,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+suresh.yadav4814@company.org,Suresh Yadav,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+rohan.yadav685@company.org,Rohan Yadav,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+jessica.iyer9322@yahoo.com,Jessica Iyer,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+pooja.bhusal1737@example.com,Pooja Bhusal,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+fatima.das738@gmail.com,Fatima Das,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+gita.sharma404@example.com,Gita Sharma,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+simran.bose6921@gmail.com,Simran Bose,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+rohan.menon1260@outlook.com,Rohan Menon,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+gita.rao8838@company.org,Gita Rao,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+riya.garcia7981@company.org,Riya Garcia,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+john.davis1376@mail.net,John Davis,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+fatima.miller8580@gmail.com,Fatima Miller,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+matt.johnson6373@gmail.com,Matt Johnson,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+rakesh.bhusal3965@example.com,Rakesh Bhusal,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+sanjay.smith4545@outlook.com,Sanjay Smith,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+pooja.reddy3083@hotmail.com,Pooja Reddy,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+jane.singh6103@hotmail.com,Jane Singh,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+amit.bose40@company.org,Amit Bose,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+vikram.rao1614@outlook.com,Vikram Rao,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+deepak.das23@mail.net,Deepak Das,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+anjali.verma4596@gmail.com,Anjali Verma,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+aarav.davis1849@yahoo.com,Aarav Davis,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+pooja.smith7431@outlook.com,Pooja Smith,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+karan.verma4575@mail.net,Karan Verma,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+sarah.sharma6772@outlook.com,Sarah Sharma,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+emily.yadav3062@gmail.com,Emily Yadav,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+pooja.menon8788@yahoo.com,Pooja Menon,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+jessica.reddy857@mail.net,Jessica Reddy,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+anjali.smith3793@example.com,Anjali Smith,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+david.sharma2862@yahoo.com,David Sharma,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+jane.miller3794@mail.net,Jane Miller,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+dibya.bose6251@yahoo.com,Dibya Bose,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+emily.jones408@gmail.com,Emily Jones,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+rahul.yadav813@yahoo.com,Rahul Yadav,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+rahul.nair9329@example.com,Rahul Nair,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+michael.patel9080@outlook.com,Michael Patel,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+anjali.reddy3221@hotmail.com,Anjali Reddy,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+tariq.smith301@yahoo.com,Tariq Smith,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+ashley.johnson5738@outlook.com,Ashley Johnson,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+vikram.desai4171@hotmail.com,Vikram Desai,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+9901205723,Aarav Jain,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+vivek.chauhan901@outlook.com,Vivek Chauhan,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+8658924573,Jane Verma,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+john.yadav3451@gmail.com,John Yadav,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+amit.rodriguez663@gmail.com,Amit Rodriguez,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+9617225379,Amit Yadav,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+fatima.desai2156@gmail.com,Fatima Desai,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+anjali.das9865@company.org,Anjali Das,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+tariq.das7987@mail.net,Tariq Das,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+sanjay.miller9546@yahoo.com,Sanjay Miller,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+arjun.bhusal3339@outlook.com,Arjun Bhusal,MobiKwik,2021-02-24,Misconfigured cloud storage / unsecured database left publicly accessible
+rakesh.yadav862@gmail.com,Rakesh Yadav,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+david.sharma5188@mail.net,David Sharma,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+rohan.singh8916@mail.net,Rohan Singh,LinkedIn,2012-06-05,SQL injection leading to theft of poorly hashed (SHA-1 without salt) passwords
+9260471328,Deepak Garcia,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+anjali.kumar3986@company.org,Anjali Kumar,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+rahul.brown3508@outlook.com,Rahul Brown,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+aarti.rodriguez9805@example.com,Aarti Rodriguez,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+9823533612,David Garcia,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+vivek.yadav7333@outlook.com,Vivek Yadav,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+manas.patel8304@hotmail.com,Manas Patel,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+dibya.desai31@outlook.com,Dibya Desai,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+amit.kumar9536@company.org,Amit Kumar,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+9005247955,Priya Gupta,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+rahul.reddy3048@gmail.com,Rahul Reddy,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+john.bose2412@gmail.com,John Bose,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+priya.bhusal3145@mail.net,Priya Bhusal,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+dibya.sharma3842@hotmail.com,Dibya Sharma,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+pooja.williams7300@mail.net,Pooja Williams,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+amit.mehta7169@yahoo.com,Amit Mehta,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+kavya.sharma1165@example.com,Kavya Sharma,Dominos India,2021-04-18,Unauthorized access to internal APIs leading to mass data scraping
+matt.miller7333@company.org,Matt Miller,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code
+diya.desai5962@hotmail.com,Diya Desai,Canva,2019-05-24,Access via compromised developer credentials allowing read access to user database
+8769401833,Pooja Gupta,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+amit.menon881@mail.net,Amit Menon,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+sneha.menon3067@mail.net,Sneha Menon,Equifax,2017-09-07,Exploitation of unpatched Apache Struts vulnerability (CVE-2017-5638) allowing remote code execution
+simran.kumar5643@company.org,Simran Kumar,Dubsmash,2018-12-01,Database vulnerability exploited as part of a massive coordinated credential theft campaign
+priya.bose872@hotmail.com,Priya Bose,Yahoo,2013-08-01,Spear-phishing of a semi-privileged employee followed by lateral movement and database backup extraction
+amit.williams19@company.org,Amit Williams,MyFitnessPal,2018-02-01,Unauthorized server access leading to theft of user account data
+vivek.bose660@example.com,Vivek Bose,Adobe,2013-10-04,Network intrusion via stolen credentials leading to exfiltration of customer database and source code

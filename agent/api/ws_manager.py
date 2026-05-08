@@ -50,4 +50,13 @@ class WSManager:
                     conns.remove(ws)
 
 
+    def get_token_from_request(self, request) -> str | None:
+        """Helper to extract token from query params or headers."""
+        # Check query params first (for WebSockets)
+        token = request.query_params.get("token")
+        if token:
+            return token
+        # Check X-User-Token header (for REST)
+        return request.headers.get("X-User-Token")
+
 manager = WSManager()

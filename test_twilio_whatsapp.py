@@ -11,7 +11,7 @@ sys.path.insert(0, ".")
 from agent.notifications.whatsapp import send_alert
 
 asyncio.run(send_alert(
-    phone="+919876543210",        # ← put YOUR phone number here (must have joined sandbox)
+    phone="+916299266546",        # ← put YOUR phone number here (must have joined sandbox)
     match={
         "source": "MobiKwik_2021",
         "exposed_fields": ["email", "phone", "password_hash"],

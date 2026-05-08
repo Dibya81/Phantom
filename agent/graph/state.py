@@ -2,6 +2,7 @@ from typing import TypedDict, Optional, Any
 
 class AgentState(TypedDict):
     hashed_identifier: str
+    raw_identifier: Optional[str]
     user_pseudonym: str
     phone_number: str
     breach_match: Optional[dict]
@@ -9,3 +10,4 @@ class AgentState(TypedDict):
     proof_result: Optional[dict]
     loop_count: int
     broadcaster: Optional[Any]
+    errors: list[str]

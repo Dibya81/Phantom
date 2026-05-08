@@ -2,95 +2,24 @@ import { useEffect, useRef, useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useI18n } from '../contexts/I18nContext'
 
-const WS_PROTOCOL = window.location.protocol === 'https:' ? 'wss:' : 'ws:'
-const WS_URL = `${WS_PROTOCOL}//${window.location.host}/ws/agent`
+const WS_URL = `ws://127.0.0.1:8000/ws/agent`
 
-// ─── Simulation Data ──────────────────────────────────────────────────────────
-const STEPS = ['perceive', 'reason', 'act']
-
-const SIM_LOGS = {
-  perceive: [
-    'Binding neural input channels...',
-    'Signal scan: 847 endpoints checked.',
-    'Entropy delta: +0.0032 detected.',
-    'Identity vector extracted from stream.',
-    'Threat surface mapped: 12 nodes.',
-  ],
-  reason: [
-    'Cross-referencing identity fingerprint...',
-    'Pattern match: 94.7% confidence.',
-    'Anomaly cluster found at layer 3.',
-    'Risk score computed: 72/100.',
-    'Selecting countermeasure protocol...',
-  ],
-  act: [
-    'Dispatching cryptographic proof...',
-    'Anchoring record to Solana devnet...',
-    'IPFS upload: chunk 1/3 complete.',
-    'Seal applied. Evidence immutable.',
-    'Response cycle complete. Standby.',
-  ],
-}
-
-const INSIGHTS = [
-  'No anomalies detected. System integrity remains intact.',
-  'Monitoring active. No unusual patterns observed.',
-  'Cryptographic layers stable. Awaiting vector input.',
-  'Surveillance matrix operating at optimal efficiency.',
-  'Network topology secure. Zero hostile signatures.',
-  'Entropy levels nominal. All nodes synchronized.',
-  'Threat surface: minimal. Perimeter holding.',
-]
-
-// ─── Hooks ────────────────────────────────────────────────────────────────────
-function fmtTime() {
-  return new Date().toLocaleTimeString('en-US', { hour12: false })
-}
-
-function useTypingLog() {
-  const [logs, setLogs] = useState([
-    { id: 0, text: '> System initialized.', done: true, ts: fmtTime() },
-    { id: 1, text: '> Awaiting command vector...', done: true, ts: fmtTime() },
-  ])
-  const idRef = useRef(2)
-  const typingRef = useRef(null)
-
-  const pushLog = useCallback((raw) => {
-    const id = idRef.current++
-    const ts = fmtTime()
-    const full = `> ${raw}`
-    setLogs(prev => [...prev, { id, text: '', done: false, ts }].slice(-30))
-    let i = 0
-    clearInterval(typingRef.current)
-    typingRef.current = setInterval(() => {
-      i++
-      setLogs(prev => prev.map(l => l.id === id ? { ...l, text: full.slice(0, i) } : l))
-      if (i >= full.length) {
-        clearInterval(typingRef.current)
-        setLogs(prev => prev.map(l => l.id === id ? { ...l, done: true } : l))
-      }
-    }, 18)
-  }, [])
-
-  useEffect(() => () => clearInterval(typingRef.current), [])
-  return [logs, pushLog]
-}
-
+// ─── Metrics Hook ─────────────────────────────────────────────────────────────
 function useMetrics(active) {
-  const [m, setM] = useState({ cpu: 8, mem: 31, tasks: 0, latency: 4 })
+  const [m, setM] = useState({ cpu: 0.8, mem: 12.4, tasks: 0, latency: 2 })
   useEffect(() => {
     const iv = setInterval(() => {
       if (active) {
         setM({
-          cpu: Math.floor(Math.random() * 45) + 18,
-          mem: Math.floor(Math.random() * 15) + 38,
-          tasks: Math.floor(Math.random() * 4) + 1,
-          latency: Math.floor(Math.random() * 60) + 8,
+          cpu: (Math.random() * 15 + 5).toFixed(1),
+          mem: (Math.random() * 10 + 35).toFixed(1),
+          tasks: 1,
+          latency: Math.floor(Math.random() * 30 + 15),
         })
       } else {
-        setM(p => ({ cpu: Math.max(2, p.cpu - 2), mem: Math.max(28, p.mem - 1), tasks: 0, latency: Math.max(2, p.latency - 1) }))
+        setM({ cpu: 0.8, mem: 12.4, tasks: 0, latency: 2 })
       }
-    }, 1200)
+    }, 2000)
     return () => clearInterval(iv)
   }, [active])
   return m
@@ -149,32 +78,56 @@ function MetricCard({ label, value, unit = '', color = '#3B82F6' }) {
 }
 
 // ─── Main Component ───────────────────────────────────────────────────────────
+import DetectionModal from '../components/DetectionModal'
+
+const STEPS = ['perceive', 'reason', 'act']
+
+function fmtTime() {
+  return new Date().toLocaleTimeString('en-US', { hour12: false })
+}
+
+function useTypingLog() {
+  const [logs, setLogs] = useState([
+    { id: 'init', text: '> PhantomID Intelligence Layer v2.1', done: true, ts: fmtTime() },
+    { id: 'init2', text: '> Neural-Blockchain Bridge Active', done: true, ts: fmtTime() },
+  ])
+  const idRef = useRef(2)
+
+  const pushLog = useCallback((raw) => {
+    const id = Date.now() + Math.random()
+    setLogs(prev => [...prev, { id, text: `> ${raw}`, done: true, ts: fmtTime() }].slice(-30))
+  }, [])
+
+  return [logs, pushLog]
+}
+
+// ─── Metrics Hook ─────────────────────────────────────────────────────────────
+// (Already updated in previous step)
+
+// ... existing sub-components ...
+
 export default function LiveAgent() {
   const { t } = useI18n()
-  const [step, setStep] = useState(0)
   const [cyclePhase, setCyclePhase] = useState('idle')
   const [nodeStates, setNodeStates] = useState({ perceive: 'idle', reason: 'idle', act: 'idle' })
   const [streamText, setStreamText] = useState('')
-  const [insightIdx, setInsightIdx] = useState(0)
   const [riskLevel, setRiskLevel] = useState(null)
+  const [matches, setMatches] = useState([])
   const [logs, pushLog] = useTypingLog()
   const metrics = useMetrics(cyclePhase === 'running')
+  const [showModal, setShowModal] = useState(false)
+  const [detectionData, setDetectionData] = useState(null)
+  const [hashToast, setHashToast] = useState(null) // { hash, sig }
+
+  // Ad-hoc check state
+  const [checkEmail, setCheckEmail] = useState('')
+  const [checking, setChecking] = useState(false)
 
   const wsRef = useRef(null)
   const streamRef = useRef(null)
   const logsEndRef = useRef(null)
-  const cycleRef = useRef(null)
   const token = localStorage.getItem('phantom-token')
   const isRunning = cyclePhase === 'running'
-
-  useEffect(() => {
-    if (logsEndRef.current) logsEndRef.current.scrollTop = logsEndRef.current.scrollHeight
-  }, [logs])
-
-  useEffect(() => {
-    const iv = setInterval(() => setInsightIdx(i => (i + 1) % INSIGHTS.length), 5000)
-    return () => clearInterval(iv)
-  }, [])
 
   const typeText = useCallback((text) => {
     if (streamRef.current) clearInterval(streamRef.current)
@@ -182,66 +135,133 @@ export default function LiveAgent() {
     streamRef.current = setInterval(() => {
       i++; setStreamText(text.slice(0, i))
       if (i >= text.length) clearInterval(streamRef.current)
-    }, 14)
+    }, 12)
   }, [])
 
-  // ── Autonomous simulation loop
-  useEffect(() => {
-    let stepIdx = 0
-    let logIdx = 0
+  const initiateScan = useCallback(async (targetEmail) => {
+    if (cyclePhase === 'running') return
+    const email = targetEmail || localStorage.getItem('phantom-email')
+    if (!email) return
 
-    const advance = () => {
-      const stepName = STEPS[stepIdx]
-      setNodeStates(prev => ({ ...prev, [stepName]: 'active' }))
-      setCyclePhase('running')
-      const pool = SIM_LOGS[stepName]
-      pushLog(pool[logIdx % pool.length])
-      logIdx++
-      if (stepName === 'reason') {
-        typeText('Cross-referencing identity fingerprint against known threat vectors. Pattern match confidence: 94.7%. Anomaly cluster isolated at layer 3.')
-      }
-      const dur = stepName === 'reason' ? 4000 : 2500
-      cycleRef.current = setTimeout(() => {
-        setNodeStates(prev => ({ ...prev, [stepName]: 'complete' }))
-        stepIdx = (stepIdx + 1) % 3
-        if (stepIdx === 0) {
-          setCyclePhase('paused')
-          setRiskLevel(['LOW', 'MEDIUM', 'HIGH'][Math.floor(Math.random() * 3)])
-          cycleRef.current = setTimeout(() => {
-            setNodeStates({ perceive: 'idle', reason: 'idle', act: 'idle' })
-            setStreamText('')
-            setCyclePhase('idle')
-            cycleRef.current = setTimeout(advance, 1200)
-          }, 2000)
-        } else {
-          cycleRef.current = setTimeout(advance, 400)
-        }
-      }, dur)
-      setStep(stepIdx)
+    setCyclePhase('running')
+    setNodeStates({ perceive: 'active', reason: 'idle', act: 'idle' })
+    pushLog(`Initiating neural audit for: ${email}`)
+
+    try {
+      const res = await fetch('/api/detect-breach', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'X-User-Token': token || ''
+        },
+        body: JSON.stringify({ email })
+      })
+      
+      if (!res.ok) throw new Error('API failure')
+      
+      pushLog(`Analysis request accepted by neural core. Monitoring stream...`)
+      // Note: We don't setNodeStates here anymore, 
+      // we let the WebSocket 'PERCEIVE' and 'REASON' events drive the UI.
+      
+    } catch (err) {
+      pushLog(`CRITICAL: Neural bridge failure. ${err.message}`)
+      setCyclePhase('idle')
     }
+  }, [cyclePhase, pushLog, typeText])
 
-    cycleRef.current = setTimeout(advance, 800)
-    return () => clearTimeout(cycleRef.current)
-  }, [pushLog, typeText])
+  useEffect(() => {
+    // Auto-run on mount if first time
+    const email = localStorage.getItem('phantom-email')
+    if (email) setTimeout(() => initiateScan(email), 2000)
+  }, [])
 
-  // ── Real WebSocket overlay
   useEffect(() => {
     try {
       const url = token ? `${WS_URL}?token=${token}` : WS_URL
       const ws = new WebSocket(url)
       wsRef.current = ws
+
+      ws.onopen = () => {
+        pushLog("Neural stream connection established.")
+      }
+
+      ws.onerror = (err) => {
+        pushLog("CRITICAL: Neural stream connection error.")
+      }
+
       ws.onmessage = ({ data }) => {
         try {
           const ev = JSON.parse(data)
-          if (ev.event === 'PERCEIVE') pushLog('WS: Perceive event received.')
-          if (ev.event === 'REASON' && ev.payload?.threat_summary) typeText(ev.payload.threat_summary)
-          if (ev.event === 'COMPLETE') pushLog('WS: Execution cycle complete.')
-          if (ev.event === 'ERROR') pushLog(`WS ERROR: ${ev.node || 'unknown'} module failed.`)
-        } catch {}
+          const payload = ev.payload || {}
+
+          if (ev.event === 'CONNECTED') {
+            pushLog(`SYNC: Handshake verified.`)
+          }
+          
+          if (ev.event === 'PERCEIVE') {
+            if (payload.status === 'complete') {
+              setNodeStates(prev => ({ ...prev, perceive: 'complete' }))
+              if (payload.match_count === 0) {
+                 typeText("Intelligence scan complete. No active data breaches detected in global repositories.")
+              }
+            } else {
+              setNodeStates({ perceive: 'active', reason: 'idle', act: 'idle' })
+              pushLog(`AUDIT: Neural scan initiated.`)
+            }
+          }
+          if (ev.event === 'REASON') {
+            setNodeStates({ perceive: 'complete', reason: 'active', act: 'idle' })
+            pushLog(`REASON: Analyzing data patterns.`)
+            if (payload.status === 'reasoning') {
+               pushLog(`SYNTHESIS: LLM processing intelligence signals…`)
+            }
+            if (payload.threat_assessment) {
+              setRiskLevel(payload.threat_assessment.risk_level)
+              setMatches(payload.threat_assessment.matches || [])
+              setDetectionData(payload.threat_assessment)
+              if (payload.threat_assessment.threat_summary) {
+                typeText(payload.threat_assessment.threat_summary)
+              }
+            }
+          }
+          if (ev.event === 'ACT') {
+            setNodeStates({ perceive: 'complete', reason: 'complete', act: 'active' })
+            if (payload.status === 'anchoring') {
+              pushLog(`BLOCKCHAIN: Initiating cryptographic anchoring…`)
+            }
+            if (payload.status === 'anchored') {
+              pushLog(`SUCCESS: Transaction signature confirmed on Solana.`)
+              setHashToast({ hash: payload.report_hash, sig: payload.solana_tx_sig })
+              setTimeout(() => setHashToast(null), 8000)
+            }
+            if (payload.proof_result) {
+              setDetectionData(prev => ({ ...prev, proof_result: payload.proof_result }))
+            }
+          }
+          if (ev.event === 'ERROR') {
+            pushLog(`ERROR: ${payload.error || 'System fault'}`)
+            setCyclePhase('idle')
+          }
+          
+          if (ev.event === 'COMPLETE') {
+              pushLog(`SYNC: Neural intelligence and blockchain ledger synchronized.`)
+              setNodeStates({ perceive: 'complete', reason: 'complete', act: 'complete' })
+              setCyclePhase('idle')
+              setShowModal(true)
+          }
+        } catch (err) {
+          console.error("WS Parse Error:", err)
+        }
       }
       return () => ws.close()
     } catch {}
-  }, [token, pushLog, typeText])
+  }, [token, pushLog])
+
+  const handleManualCheck = (e) => {
+    e.preventDefault()
+    if (!checkEmail) return
+    initiateScan(checkEmail)
+  }
 
   return (
     <>
@@ -265,7 +285,7 @@ export default function LiveAgent() {
                 <motion.div animate={{ opacity: isRunning ? [1, 0.2, 1] : 1 }} transition={{ repeat: Infinity, duration: 1.2 }}
                   style={{ width: 8, height: 8, borderRadius: '50%', background: isRunning ? '#10B981' : 'var(--text-muted)', boxShadow: isRunning ? '0 0 12px #10B981' : 'none' }} />
                 <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: isRunning ? '#10B981' : 'var(--text-muted)' }}>
-                  {cyclePhase === 'running' ? `PROCESSING · ${STEPS[step].toUpperCase()}` : cyclePhase === 'paused' ? 'CYCLE COMPLETE' : 'STANDBY'}
+                  {cyclePhase === 'running' ? 'PROCESSING · ACTIVE' : cyclePhase === 'paused' ? 'CYCLE COMPLETE' : 'STANDBY'}
                 </span>
               </div>
             </div>
@@ -326,6 +346,39 @@ export default function LiveAgent() {
               </div>
             </motion.div>
 
+            {/* Manual Exposure Check */}
+            <motion.div whileHover={{ y: -2, boxShadow: 'var(--shadow-premium)' }}
+              style={{ padding: 24, background: 'var(--sys-panel)', border: '1px solid var(--sys-panel-border)', borderRadius: 20, backdropFilter: 'blur(16px)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 20 }}>
+                <span style={{ width: 4, height: 18, background: '#10B981', borderRadius: 2 }} />
+                <h2 style={{ fontFamily: 'Outfit,sans-serif', fontWeight: 700, fontSize: 16, color: 'var(--text-primary)', margin: 0 }}>Intelligence Check</h2>
+              </div>
+              <form onSubmit={handleManualCheck} style={{ display: 'flex', gap: 12 }}>
+                <input 
+                  type="email" 
+                  value={checkEmail}
+                  onChange={(e) => setCheckEmail(e.target.value)}
+                  placeholder="Enter email to check exposure..."
+                  style={{
+                    flex: 1, background: 'var(--bg-soft)', border: '1px solid var(--border-strong)',
+                    borderRadius: 12, padding: '12px 16px', fontSize: 14, color: 'var(--text-primary)',
+                    outline: 'none', transition: 'border-color 0.2s'
+                  }}
+                />
+                <motion.button
+                  whileTap={{ scale: 0.96 }}
+                  disabled={isRunning || !checkEmail}
+                  style={{
+                    padding: '0 24px', background: isRunning ? 'var(--text-muted)' : '#007AFF',
+                    color: '#fff', borderRadius: 12, fontSize: 14, fontWeight: 700,
+                    border: 'none', cursor: isRunning ? 'not-allowed' : 'pointer'
+                  }}
+                >
+                  Scan
+                </motion.button>
+              </form>
+            </motion.div>
+
             {/* Terminal */}
             <div style={{ background: 'var(--sys-terminal)', border: '1px solid var(--sys-term-border)', borderRadius: 20, overflow: 'hidden' }}>
               <div style={{ padding: '12px 20px', borderBottom: '1px solid var(--sys-term-border)', display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -338,12 +391,7 @@ export default function LiveAgent() {
                 {logs.map(log => (
                   <div key={log.id} style={{ display: 'flex', gap: 12, color: '#10B981', marginBottom: 2 }}>
                     <span style={{ color: '#1E3A5F', flexShrink: 0 }}>{log.ts}</span>
-                    <span style={{ opacity: log.done ? 0.85 : 1 }}>{log.text}
-                      {!log.done && (
-                        <motion.span animate={{ opacity: [1, 0, 1] }} transition={{ repeat: Infinity, duration: 0.6 }}
-                          style={{ display: 'inline-block', width: 6, height: 12, background: '#10B981', marginLeft: 3, verticalAlign: 'middle' }} />
-                      )}
-                    </span>
+                    <span style={{ opacity: log.done ? 0.85 : 1 }}>{log.text}</span>
                   </div>
                 ))}
               </div>
@@ -352,18 +400,30 @@ export default function LiveAgent() {
 
           {/* RIGHT */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-
-            {/* Dynamic Insight */}
-            <motion.div whileHover={{ y: -2, boxShadow: 'var(--shadow-premium)' }}
-              style={{ padding: 24, background: 'var(--accent-soft)', border: '1px solid var(--accent-mid)', borderRadius: 16, backdropFilter: 'blur(12px)' }}>
-              <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.18em', color: 'var(--accent)', display: 'block', marginBottom: 12 }}>PHANTOM INSIGHT</span>
-              <AnimatePresence mode="wait">
-                <motion.p key={insightIdx} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
-                  style={{ fontFamily: 'Outfit,sans-serif', fontSize: 15, fontWeight: 500, color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>
-                  "{INSIGHTS[insightIdx]}"
-                </motion.p>
-              </AnimatePresence>
-            </motion.div>
+            {/* Real Matches List */}
+            <AnimatePresence>
+              {matches?.length > 0 && (
+                <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
+                  style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                  <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.18em', color: '#EF4444', display: 'block' }}>THREATS DETECTED</span>
+                  {matches.map((m, i) => (
+                    <motion.div key={i} initial={{ x: -10 }} animate={{ x: 0 }}
+                      style={{ padding: 16, background: 'rgba(239,68,68,0.05)', border: '1px solid rgba(239,68,68,0.1)', borderRadius: 12 }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--text-primary)' }}>{m.breach}</span>
+                        <span style={{ fontSize: 10, color: 'var(--text-muted)' }}>{m.date}</span>
+                      </div>
+                      <p style={{ fontSize: 11, color: 'var(--text-secondary)', marginTop: 4, marginBottom: 8 }}>{m.summary}</p>
+                      <div style={{ display: 'flex', gap: 6 }}>
+                        {m.exposed_fields?.map(f => (
+                          <span key={f} style={{ fontSize: 9, padding: '2px 6px', background: 'rgba(255,255,255,0.05)', borderRadius: 4, color: 'var(--text-muted)' }}>{f}</span>
+                        ))}
+                      </div>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             {/* Metrics */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
@@ -390,10 +450,48 @@ export default function LiveAgent() {
                   style={{ fontSize: 10, color: '#10B981', fontFamily: 'JetBrains Mono,monospace' }}>● LIVE</motion.span>
               </div>
             </motion.div>
-
           </div>
         </div>
       </div>
+
+      <AnimatePresence>
+        {hashToast && (
+          <motion.div
+            initial={{ opacity: 0, x: 100, y: 20 }}
+            animate={{ opacity: 1, x: 0, y: 0 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            style={{
+              position: 'fixed', bottom: 40, right: 40, zIndex: 1100,
+              width: 320, background: 'rgba(15, 23, 42, 0.95)',
+              border: '1px solid #3B82F6', borderRadius: 16, padding: 20,
+              backdropFilter: 'blur(12px)', boxShadow: '0 20px 40px rgba(0,0,0,0.5), 0 0 20px rgba(59,130,246,0.3)'
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
+              <div style={{ width: 32, height: 32, borderRadius: '50%', background: 'rgba(59,130,246,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16 }}>⛓️</div>
+              <span style={{ fontSize: 13, fontWeight: 800, color: '#3B82F6', letterSpacing: '0.05em' }}>HASH ANCHORED</span>
+            </div>
+            <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.6)', marginBottom: 8, fontWeight: 700 }}>REPORT FINGERPRINT</p>
+            <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: '#fff', wordBreak: 'break-all', marginBottom: 16, background: 'rgba(0,0,0,0.3)', padding: 8, borderRadius: 8 }}>
+              {hashToast.hash}
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ fontSize: 9, color: '#10B981', fontWeight: 800 }}>VERIFIED ON SOLANA</span>
+              <a href={`https://explorer.solana.com/tx/${hashToast.sig}?cluster=devnet`} target="_blank" rel="noreferrer" style={{ fontSize: 9, color: '#3B82F6', fontWeight: 700 }}>VIEW TX</a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showModal && (
+          <DetectionModal 
+            isOpen={showModal} 
+            onClose={() => setShowModal(false)} 
+            data={detectionData} 
+          />
+        )}
+      </AnimatePresence>
     </>
   )
 }

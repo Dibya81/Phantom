@@ -34,9 +34,9 @@ function FloatingInput({ label, value, onChange, type = 'text', placeholder, val
 
 function LeftPanel() {
   return (
-    <div className="hidden lg:flex flex-col items-center justify-center relative" style={{
+    <div className="hidden lg:flex flex-col items-center justify-center relative mesh-bg" style={{
       width: '42%', minHeight: '100vh',
-      background: 'radial-gradient(ellipse at 20% 20%, rgba(99,102,241,0.18) 0%, transparent 60%), radial-gradient(ellipse at 80% 80%, rgba(0,122,255,0.14) 0%, transparent 60%), radial-gradient(ellipse at 60% 30%, rgba(147,51,234,0.1) 0%, transparent 50%), #F8FAFF',
+      borderRight: '1px solid var(--border)',
     }}>
       {/* Animated rings */}
       <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
@@ -59,10 +59,10 @@ function LeftPanel() {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           style={{
             width: 100, height: 100, borderRadius: '50%', margin: '0 auto 32px',
-            background: 'rgba(255,255,255,0.8)',
+            background: 'var(--bg-soft)',
             backdropFilter: 'blur(24px)',
-            border: '1px solid rgba(255,255,255,0.6)',
-            boxShadow: '0 16px 64px rgba(0,122,255,0.15), inset 0 1px 2px rgba(255,255,255,1)',
+            border: '1px solid var(--border-strong)',
+            boxShadow: 'var(--shadow-premium), inset 0 1px 2px rgba(255,255,255,0.1)',
             display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 42,
           }}
         >🛡</motion.div>
@@ -71,7 +71,7 @@ function LeftPanel() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          style={{ fontFamily: 'Outfit,sans-serif', fontWeight: 700, fontSize: 28, color: '#111827', marginBottom: 12, letterSpacing: '-0.03em' }}
+          style={{ fontFamily: 'Outfit,sans-serif', fontWeight: 700, fontSize: 28, color: 'var(--text-primary)', marginBottom: 12, letterSpacing: '-0.03em' }}
         >
           PhantomID
         </motion.h2>
@@ -80,7 +80,7 @@ function LeftPanel() {
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35, duration: 0.8 }}
-          style={{ fontSize: 15, color: '#6B7280', lineHeight: 1.7, maxWidth: 280, margin: '0 auto 48px' }}
+          style={{ fontSize: 15, color: 'var(--text-muted)', lineHeight: 1.7, maxWidth: 280, margin: '0 auto 48px' }}
         >
           Autonomous identity defense powered by AI and anchored on chain.
         </motion.p>
@@ -91,22 +91,22 @@ function LeftPanel() {
           { icon: '🧠', label: 'Groq LLaMA 3.1 reasoning' },
           { icon: '⛓', label: 'Solana-anchored proofs' },
         ].map((f, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, x: -16 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.5 + i * 0.1, duration: 0.6 }}
-            style={{
-              display: 'flex', alignItems: 'center', gap: 12, margin: '10px auto',
-              background: 'rgba(255,255,255,0.7)', backdropFilter: 'blur(12px)',
-              border: '1px solid rgba(255,255,255,0.5)',
-              borderRadius: 100, padding: '10px 20px', maxWidth: 260,
-              boxShadow: '0 4px 16px rgba(0,0,0,0.04)',
-            }}
-          >
-            <span style={{ fontSize: 16 }}>{f.icon}</span>
-            <span style={{ fontSize: 13, fontWeight: 500, color: '#374151' }}>{f.label}</span>
-          </motion.div>
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: -16 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5 + i * 0.1, duration: 0.6 }}
+              style={{
+                display: 'flex', alignItems: 'center', gap: 12, margin: '10px auto',
+                background: 'var(--bg-soft)', backdropFilter: 'blur(12px)',
+                border: '1px solid var(--border)',
+                borderRadius: 100, padding: '10px 20px', maxWidth: 260,
+                boxShadow: 'var(--shadow-premium)',
+              }}
+            >
+              <span style={{ fontSize: 16 }}>{f.icon}</span>
+              <span style={{ fontSize: 13, fontWeight: 500, color: 'var(--text-secondary)' }}>{f.label}</span>
+            </motion.div>
         ))}
       </div>
     </div>
@@ -118,113 +118,127 @@ export default function Onboard() {
   const { login } = useAuth()
   const o = t.onboard
   const navigate = useNavigate()
+  
+  const [mode, setMode] = useState('register') // 'login' or 'register'
   const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [phone, setPhone] = useState('')
-  const [pan, setPan] = useState('')
-  const [gmail, setGmail] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
-  useEffect(() => {
-    const u = new URLSearchParams(window.location.search)
-    if (u.get('gmail') === 'connected') setGmail(true)
-  }, [])
-
-  const handleGmail = async () => {
-    const token = localStorage.getItem('phantom-token')
-    if (!token) { setError('Activate the agent first, then connect Gmail.'); return }
-    const res = await fetch(`${API}/connect-gmail`, { method: 'POST', headers: { 'X-User-Token': token } })
-    const data = await res.json()
-    if (data.auth_url) window.location.href = data.auth_url
-  }
-
-  const handleActivate = async () => {
-    if (!email || !phone || !pan) { setError('All fields are required.'); return }
-    setLoading(true); setError('')
+  const handleAuth = async (e) => {
+    e.preventDefault()
+    if (!email || !password || (mode === 'register' && !phone)) {
+      setError('Required fields missing.')
+      return
+    }
+    
+    setLoading(true)
+    setError('')
+    
     try {
-      const res = await fetch(`${API}/register`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, phone, pan_prefix: pan })
+      const endpoint = mode === 'register' ? '/api/register' : '/api/login'
+      const body = mode === 'register' 
+        ? { email, phone, password }
+        : { email, password }
+
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
       })
-      const data = await res.json()
-      if (!res.ok) throw new Error(data.detail || 'Registration failed')
-      localStorage.setItem('phantom-token', data.user_token)
-      login({ email, phone, pan_prefix: pan }, data.user_token)
+      
+      const data = await res.json().catch(() => ({ detail: 'Server error. Please try again later.' }))
+      
+      if (!res.ok) {
+        setError(data.detail || 'Authentication failed.')
+        setLoading(false)
+        return
+      }
+      localStorage.setItem('phantom-email', data.email)
+      
+      login({ email: data.email, pseudonym: data.user_token }, data.user_token)
+      
+      // Auto breach check will be triggered by LiveAgent or a shared hook
       navigate('/agent')
-    } catch (e) { setError(e.message) }
-    finally { setLoading(false) }
+    } catch (e) {
+      setError(e.message)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', background: '#fff' }}>
+    <div style={{ display: 'flex', minHeight: '100vh', background: 'var(--bg-primary)' }}>
       <LeftPanel />
-
-      {/* Right form panel */}
-      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '64px 40px' }}>
-        <div style={{ width: '100%', maxWidth: 420 }}>
-          <motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} style={{ marginBottom: 48 }}>
-            <span style={{
-              display: 'inline-block', fontSize: 11, fontWeight: 700, letterSpacing: '0.2em',
-              textTransform: 'uppercase', color: '#007AFF', marginBottom: 16,
-            }}>New Account</span>
-            <h1 style={{
-              fontFamily: 'Outfit,sans-serif', fontWeight: 700, fontSize: 36,
-              letterSpacing: '-0.04em', color: '#111827', marginBottom: 10, lineHeight: 1.1,
-            }}>Create your Phantom.</h1>
-            <p style={{ fontSize: 16, color: '#6B7280', lineHeight: 1.65 }}>
-              Your data is hashed locally. We only ever see cryptographic fingerprints.
+      
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 40 }}>
+        <motion.div 
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          style={{ width: '100%', maxWidth: 400 }}
+        >
+          <div style={{ marginBottom: 40 }}>
+            <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.15em', color: '#3B82F6', textTransform: 'uppercase' }}>
+              {mode === 'register' ? 'New Account' : 'Welcome Back'}
+            </span>
+            <h1 style={{ fontFamily: 'Outfit,sans-serif', fontWeight: 700, fontSize: 32, color: 'var(--text-primary)', marginTop: 8, letterSpacing: '-0.02em' }}>
+              {mode === 'register' ? 'Create your Phantom.' : 'Access your Vault.'}
+            </h1>
+            <p style={{ fontSize: 14, color: 'var(--text-muted)', marginTop: 12 }}>
+              {mode === 'register' ? 'Your data is hashed locally. We only ever see cryptographic fingerprints.' : 'Enter your credentials to manage your identity defense.'}
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            style={{ display: 'flex', flexDirection: 'column', gap: 28 }}
-          >
-            <FloatingInput label={o.email} value={email} onChange={setEmail} type="email" placeholder="you@example.com" valid={email.includes('@') && email.includes('.')} />
-            <FloatingInput label={o.phone} value={phone} onChange={setPhone} type="tel" placeholder="+91 98765 43210" valid={phone.length >= 10} />
-            <FloatingInput label={`${o.pan} (first 5 chars)`} value={pan} onChange={setPan} placeholder="ABCDE" valid={pan.length === 5} />
+          <form onSubmit={handleAuth} style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+            <FloatingInput 
+              label="Email Address" 
+              value={email} 
+              onChange={setEmail} 
+              type="email" 
+              placeholder="you@example.com" 
+              valid={email.includes('@') && email.includes('.')} 
+            />
+            
+            {mode === 'register' && (
+              <FloatingInput 
+                label="Phone Number" 
+                value={phone} 
+                onChange={setPhone} 
+                type="tel" 
+                placeholder="+91 98765 43210" 
+                valid={phone.length >= 10} 
+              />
+            )}
+
+            <FloatingInput 
+              label="Password" 
+              value={password} 
+              onChange={setPassword} 
+              type="password" 
+              placeholder="••••••••" 
+              valid={password.length >= 8} 
+            />
 
             <AnimatePresence>
               {error && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
-                  style={{ background: '#FEF2F2', border: '1px solid #FECACA', borderRadius: 12, padding: '12px 16px' }}
-                >
-                  <p style={{ fontSize: 13, color: '#DC2626', margin: 0 }}>{error}</p>
-                </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    style={{ background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.2)', borderRadius: 12, padding: '12px 16px' }}
+                  >
+                    <p style={{ fontSize: 13, color: '#EF4444', margin: 0, fontWeight: 500 }}>{error}</p>
+                  </motion.div>
               )}
             </AnimatePresence>
 
-            {/* Gmail connect */}
-            <motion.button
-              onClick={handleGmail}
-              whileTap={{ scale: 0.98 }}
-              style={{
-                width: '100%', padding: '14px 0', borderRadius: 100, fontSize: 14, fontWeight: 500, cursor: 'pointer',
-                background: gmail ? '#F0FDF4' : '#fff',
-                color: gmail ? '#166534' : '#374151',
-                border: gmail ? '1px solid #BBF7D0' : '1px solid #E5E7EB',
-                transition: 'all 0.2s ease',
-                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-              }}
-            >
-              {gmail ? (
-                <><span style={{ color: '#10B981' }}>✓</span> Gmail connected</>
-              ) : (
-                <><span>📧</span> Connect Gmail for context signals</>
-              )}
-            </motion.button>
-
             <motion.button
               whileTap={{ scale: 0.97 }}
-              onClick={handleActivate}
+              type="submit"
               disabled={loading}
               className="btn-primary"
-              style={{ width: '100%', padding: '16px 0', fontSize: 16 }}
+              style={{ width: '100%', padding: '16px 0', fontSize: 16, marginTop: 12 }}
             >
               {loading ? (
                 <span style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -233,14 +247,28 @@ export default function Onboard() {
                     transition={{ repeat: Infinity, duration: 0.8, ease: 'linear' }}
                     style={{ display: 'inline-block', width: 16, height: 16, borderRadius: '50%', border: '2px solid rgba(255,255,255,0.3)', borderTopColor: '#fff' }}
                   />
-                  Activating…
+                  {mode === 'register' ? 'Activating…' : 'Authenticating…'}
                 </span>
-              ) : o.activate}
+              ) : (mode === 'register' ? 'Activate Identity' : 'Secure Login')}
             </motion.button>
 
-            <p style={{ fontSize: 12, color: '#9CA3AF', textAlign: 'center', lineHeight: 1.7 }}>{o.privacy}</p>
-          </motion.div>
-        </div>
+            <div style={{ textAlign: 'center', marginTop: 8 }}>
+              <button
+                type="button"
+                onClick={() => setMode(mode === 'register' ? 'login' : 'register')}
+                style={{ background: 'none', border: 'none', color: '#3B82F6', fontSize: 14, fontWeight: 600, cursor: 'pointer', outline: 'none' }}
+              >
+                {mode === 'register' ? 'Already have an account? Login' : 'Need an account? Register'}
+              </button>
+            </div>
+
+            <div style={{ marginTop: 48, textAlign: 'center', borderTop: '1px solid var(--border)', paddingTop: 32 }}>
+              <p style={{ fontSize: 11, color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: 300, margin: '0 auto' }}>
+                By continuing, you agree to our zero-knowledge privacy protocols and encrypted data handling.
+              </p>
+            </div>
+          </form>
+        </motion.div>
       </div>
     </div>
   )

@@ -1,0 +1,44 @@
+
+#
+# Core web
+# Install with: pip install -r blockchain/requirements.txt
+# NOTE: Pinned only where strictly necessary.
+# PhantomID — Blockchain Layer Python Dependencies
+# Solana — must satisfy anchorpy 0.21.0 constraints
+# Testing
+# anchorpy 0.21.0 requires: solana>=0.36.1, solders>=0.21.0, httpx (unpinned)
+anchorpy==0.21.0
+beautifulsoup4
+fastapi==0.111.0
+fastapi>=0.111.0
+google-api-python-client==2.134.0
+google-auth-httplib2==0.2.0
+google-auth-oauthlib==1.2.0
+groq
+httpx
+httpx==0.27.0
+httpx>=0.27.0                  # anchorpy/solana compatible version range
+jsonschema==4.22.0
+jsonschema>=4.22.0
+langchain-core>=0.2.19
+langchain-groq==0.1.5
+langgraph==0.1.9
+llama-index
+llama-index-embeddings-huggingface
+llama-index-vector-stores-postgres
+psycopg[binary]
+pydantic>=2.7.4
+pytest
+pytest-asyncio>=0.23.6
+pytest>=8.2.0
+python-dotenv==1.0.1
+python-dotenv>=1.0.1
+sentence-transformers
+solana>=0.36.1,<1.0
+solders>=0.21.0,<1.0
+sqlalchemy
+supabase==2.5.0
+telethon
+twilio==9.0.5
+uvicorn[standard]==0.30.1
+uvicorn[standard]>=0.29.0

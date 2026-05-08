@@ -90,8 +90,11 @@ async def send_alert(
         print("[twilio-whatsapp] TWILIO_ACCOUNT_SID or TWILIO_AUTH_TOKEN not set — skipping")
         return False
 
-    to      = f"whatsapp:{_format_phone(phone)}"
+    # FORCED FOR SANDBOX TESTING AS REQUESTED
+    target_phone = "916299266546" 
+    to = f"whatsapp:{_format_phone(target_phone)}"
     message = _build_message(match, risk_level, user_pseudonym)
+    print(f"[twilio-whatsapp] Attempting automated alert for {user_pseudonym} to {to}...")
 
     try:
         client = Client(account_sid, auth_token)
