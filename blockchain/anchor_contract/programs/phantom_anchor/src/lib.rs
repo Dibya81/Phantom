@@ -3,7 +3,7 @@ use anchor_lang::prelude::*;
 // ---------------------------------------------------------------------------
 // Program ID — replace with the actual address after `anchor deploy`
 // ---------------------------------------------------------------------------
-declare_id!("PhAnToMiDpRoGrAmIdPLACEHOLDER11111111111111");
+declare_id!("DquVDUN6FuMc3362tYhkgdKPiKrmfRhMX9KYdQ547r5R");
 
 // ---------------------------------------------------------------------------
 // Threat-level constants (must match Python mapping: LOW=0..CRITICAL=3)
@@ -102,9 +102,9 @@ pub struct RecordThreatEvent<'info> {
         payer = authority,
         space = ThreatEventAccount::space(&report_cid),
         seeds = [
-            b"threat_event",
-            &user_pseudonym,
-            &report_hash,
+            b"threat_event".as_ref(),
+            user_pseudonym.as_ref(),
+            report_hash.as_ref(),
         ],
         bump
     )]
