@@ -1,0 +1,47 @@
+export default {
+  nav: { brand: 'PHANTOM/ID', onboard: 'पंजीकरण', agent: 'लाइव एजेंट', vault: 'वॉल्ट' },
+  onboard: {
+    headline: 'स्वायत्त पहचान सुरक्षा',
+    sub: 'PhantomID डेटा उल्लंघन, डार्क वेब और खतरे के स्रोतों को 24/7 मॉनिटर करता है।',
+    email: 'ईमेल पता',
+    phone: 'फ़ोन नंबर',
+    pan: 'PAN उपसर्ग (पहले 5 अक्षर)',
+    connectGmail: 'Gmail कनेक्ट करें',
+    gmailConnected: 'Gmail कनेक्टेड ✓',
+    activate: 'एजेंट सक्रिय करें',
+    activating: 'सक्रिय हो रहा है...',
+    privacy: 'सभी पहचानकर्ताओं को संग्रहीत करने से पहले SHA-256 हैश किया जाता है।',
+  },
+  agent: {
+    headline: 'एजेंट कंसोल',
+    status: { idle: 'स्टैंडबाय', running: 'सक्रिय', complete: 'हल किया', error: 'त्रुटि' },
+    nodes: {
+      perceive: { label: 'पहचान', sub: 'निगरानी एजेंट' },
+      reason:   { label: 'विश्लेषण', sub: 'संदर्भ एजेंट' },
+      act:      { label: 'कार्रवाई', sub: 'प्रतिक्रिया एजेंट' },
+    },
+    noThreat: 'कोई सक्रिय खतरा नहीं। एजेंट निगरानी कर रहा है।',
+    riskLabel: 'जोखิม स्तर',
+    signalLabel: 'संदर्भ संकेत',
+    historyLabel: 'खतरे का इतिहास',
+    noHistory: 'अभी तक कोई खतरा नहीं मिला।',
+  },
+  vault: {
+    headline: 'क्रेडेंशियल वॉल्ट',
+    sub: 'Solana पर एंकर किए गए अपरिवर्तनीय प्रमाण रिकॉर्ड।',
+    noCredentials: 'अभी तक कोई क्रेडेंशियल जारी नहीं।',
+    ipfs: 'IPFS रिपोर्ट',
+    solana: 'Solana Tx',
+    download: 'PDF डाउनलोड',
+    riskLevel: 'जोखिम स्तर',
+    detected: 'पता चला',
+    threatType: 'खतरे का प्रकार',
+  },
+  settings: {
+    theme: 'थीम',
+    dark: 'डार्क', light: 'लाइट', system: 'सिस्टम',
+    language: 'भाषा',
+    en: 'English', hi: 'हिन्दी', kn: 'ಕನ್ನಡ',
+  },
+  risk: { LOW: 'कम', MEDIUM: 'मध्यम', HIGH: 'उच्च', CRITICAL: 'गंभीर' }
+}

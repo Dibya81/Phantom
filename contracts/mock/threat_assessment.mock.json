@@ -1,0 +1,26 @@
+{
+  "user_pseudonym": "a3f5c2d1e4b6789012345678abcdef0123456789abcdef0123456789abcdef01",
+  "threat_summary": "The identity associated with this account was found in 2 breach datasets including MobiKwik_2021 and LinkedIn_2021. Exposed data includes email, phone number, and hashed password. Immediate action is recommended.",
+  "matches": [
+    {
+      "source": "MobiKwik_2021",
+      "date": "2021-03-01T00:00:00Z",
+      "exposed_fields": ["email", "phone", "password_hash"],
+      "confidence": 0.95,
+      "raw_preview": "user@example.com | +91-XXXXXXXXXX | $2b$..."
+    },
+    {
+      "source": "LinkedIn_2021",
+      "date": "2021-06-22T00:00:00Z",
+      "exposed_fields": ["email", "name"],
+      "confidence": 0.88,
+      "raw_preview": "user@example.com | John D..."
+    }
+  ],
+  "risk_level": "HIGH",
+  "context_signals": [
+    "Gmail security alert 3 days ago",
+    "Unknown login from new device"
+  ],
+  "timestamp": "2024-01-15T10:30:00Z"
+}

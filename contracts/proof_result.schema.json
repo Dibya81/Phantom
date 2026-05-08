@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "proof_result.schema.json",
+  "title": "ProofResult",
+  "description": "Returned by blockchain/proof_service/. Stored by agent, surfaced in frontend VC vault.",
+  "type": "object",
+  "required": ["ipfs_cid", "solana_tx_sig", "vc_json", "report_hash", "generated_at"],
+  "additionalProperties": false,
+  "properties": {
+    "ipfs_cid": {
+      "type": "string",
+      "description": "Pinata CID of full JSON report"
+    },
+    "solana_tx_sig": {
+      "type": "string",
+      "description": "Devnet transaction signature"
+    },
+    "vc_json": {
+      "type": "object",
+      "description": "W3C Verifiable Credential object"
+    },
+    "report_hash": {
+      "type": "string",
+      "description": "SHA-256 hex of uploaded JSON report bytes",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 timestamp of proof generation"
+    }
+  }
+}

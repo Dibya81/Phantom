@@ -1,0 +1,18 @@
+{
+  "name": "phantomid-vc-issuer",
+  "version": "1.0.0",
+  "description": "W3C Verifiable Credential issuer for PhantomID using @digitalbazaar/vc",
+  "main": "issue_vc.js",
+  "type": "module",
+  "scripts": {
+    "issue": "node issue_vc.js",
+    "test": "node test_vc.js"
+  },
+  "dependencies": {
+    "@digitalbazaar/ed25519-signature-2020": "^5.2.0",
+    "@digitalbazaar/ed25519-verification-key-2020": "^4.1.0",
+    "@digitalbazaar/vc": "^6.0.2",
+    "credentials-context": "^2.0.0",
+    "ed25519-signature-2020-context": "^1.1.0"
+  }
+}

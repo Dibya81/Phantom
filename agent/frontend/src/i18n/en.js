@@ -1,0 +1,47 @@
+export default {
+  nav: { brand: 'PHANTOM/ID', onboard: 'Onboard', agent: 'Live Agent', vault: 'Vault' },
+  onboard: {
+    headline: 'Autonomous Identity Defense',
+    sub: 'PhantomID monitors breach databases, dark web channels, and threat feeds — 24/7.',
+    email: 'Email Address',
+    phone: 'Phone Number',
+    pan: 'PAN Prefix (first 5 chars)',
+    connectGmail: 'Connect Gmail',
+    gmailConnected: 'Gmail Connected ✓',
+    activate: 'Activate Agent',
+    activating: 'Activating...',
+    privacy: 'All identifiers are SHA-256 hashed before storage. We never see your raw data.',
+  },
+  agent: {
+    headline: 'Agent Console',
+    status: { idle: 'STANDBY', running: 'ACTIVE', complete: 'RESOLVED', error: 'ERROR' },
+    nodes: {
+      perceive: { label: 'PERCEIVE', sub: 'Surveillance Agent' },
+      reason:   { label: 'REASON',  sub: 'Context Agent' },
+      act:      { label: 'ACT',     sub: 'Response Agent' },
+    },
+    noThreat: 'No active threats. Agent is monitoring.',
+    riskLabel: 'Risk Level',
+    signalLabel: 'Context Signals',
+    historyLabel: 'Threat History',
+    noHistory: 'No threats detected yet.',
+  },
+  vault: {
+    headline: 'Credential Vault',
+    sub: 'Immutable proof records anchored on Solana.',
+    noCredentials: 'No credentials issued yet.',
+    ipfs: 'IPFS Report',
+    solana: 'Solana Tx',
+    download: 'Download PDF',
+    riskLevel: 'Risk Level',
+    detected: 'Detected',
+    threatType: 'Threat Type',
+  },
+  settings: {
+    theme: 'Theme',
+    dark: 'Dark', light: 'Light', system: 'System',
+    language: 'Language',
+    en: 'English', hi: 'हिन्दी', kn: 'ಕನ್ನಡ',
+  },
+  risk: { LOW: 'LOW', MEDIUM: 'MEDIUM', HIGH: 'HIGH', CRITICAL: 'CRITICAL' }
+}

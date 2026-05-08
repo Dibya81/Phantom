@@ -1,0 +1,27 @@
+{
+  "ipfs_cid": "QmXoypizjW3WknFiJnKLwHCnL72vedxjQkDDP1mXWo6uco",
+  "solana_tx_sig": "5j7m2KpXnQzRVwdVzBfYQtLU4YvN3mA9cXo8wD1hGfRkPsE2LqM3NvT4oWxYjZa",
+  "vc_json": {
+    "@context": ["https://www.w3.org/2018/credentials/v1"],
+    "type": ["VerifiableCredential", "IdentityThreatCredential"],
+    "issuer": "did:key:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK",
+    "issuanceDate": "2024-01-15T10:30:05Z",
+    "credentialSubject": {
+      "id": "did:phantom:a3f5c2d1e4b6789012345678abcdef0123456789abcdef0123456789abcdef01",
+      "threatDetected": true,
+      "evidenceCid": "QmXoypizjW3WknFiJnKLwHCnL72vedxjQkDDP1mXWo6uco",
+      "onChainTx": "5j7m2KpXnQzRVwdVzBfYQtLU4YvN3mA9cXo8wD1hGfRkPsE2LqM3NvT4oWxYjZa",
+      "riskLevel": "HIGH",
+      "detectionTimestamp": "2024-01-15T10:30:00Z"
+    },
+    "proof": {
+      "type": "Ed25519Signature2020",
+      "created": "2024-01-15T10:30:05Z",
+      "verificationMethod": "did:key:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK#z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK",
+      "proofPurpose": "assertionMethod",
+      "proofValue": "z3FXQjecWufY57eMRoGkJoXLaQTyMfPiGBO34UBSaEdTMwxJLUisCfLY7p1n4N1DvpgdDpVoNA8cJT3n1oF4tDW9"
+    }
+  },
+  "report_hash": "b94f5d2a1c3e6789012345678abcdef0123456789abcdef0123456789abcdef0",
+  "generated_at": "2024-01-15T10:30:05Z"
+}

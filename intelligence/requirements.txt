@@ -1,0 +1,11 @@
+llama-index
+llama-index-vector-stores-postgres
+llama-index-embeddings-huggingface
+sentence-transformers
+telethon
+groq
+sqlalchemy
+psycopg[binary]
+httpx
+beautifulsoup4
+pytest

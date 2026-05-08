@@ -1,0 +1,47 @@
+export default {
+  nav: { brand: 'PHANTOM/ID', onboard: 'ನೋಂದಣಿ', agent: 'ಲೈವ್ ಏಜೆಂಟ್', vault: 'ವಾಲ್ಟ್' },
+  onboard: {
+    headline: 'ಸ್ವಾಯತ್ತ ಗುರುತಿನ ರಕ್ಷಣೆ',
+    sub: 'PhantomID ಡೇಟಾ ಉಲ್ಲಂಘನೆ, ಡಾರ್ಕ್ ವೆಬ್ ಮತ್ತು ಬೆದರಿಕೆ ಫೀಡ್ಗಳನ್ನು 24/7 ಮೇಲ್ವಿಚಾರಣೆ ಮಾಡುತ್ತದೆ।',
+    email: 'ಇಮೇಲ್ ವಿಳಾಸ',
+    phone: 'ಫೋನ್ ಸಂಖ್ಯೆ',
+    pan: 'PAN ಪೂರ್ವಪ್ರತ್ಯಯ (ಮೊದಲ 5 ಅಕ್ಷರಗಳು)',
+    connectGmail: 'Gmail ಸಂಪರ್ಕಿಸಿ',
+    gmailConnected: 'Gmail ಸಂಪರ್ಕಿತ ✓',
+    activate: 'ಏಜೆಂಟ್ ಸಕ್ರಿಯಗೊಳಿಸಿ',
+    activating: 'ಸಕ್ರಿಯಗೊಳಿಸಲಾಗುತ್ತಿದೆ...',
+    privacy: 'ಎಲ್ಲಾ ಗುರುತಿಕೆಗಳನ್ನು ಸಂಗ್ರಹಿಸುವ ಮೊದಲು SHA-256 ಹ್ಯಾಶ್ ಮಾಡಲಾಗುತ್ತದೆ।',
+  },
+  agent: {
+    headline: 'ಏಜೆಂಟ್ ಕನ್ಸೋಲ್',
+    status: { idle: 'ಸ್ಟ್ಯಾಂಡ್ಬೈ', running: 'ಸಕ್ರಿಯ', complete: 'ಪರಿಹರಿಸಲಾಗಿದೆ', error: 'ದೋಷ' },
+    nodes: {
+      perceive: { label: 'ಗ್ರಹಿಸು', sub: 'ಕಣ್ಗಾನ ಏಜೆಂಟ್' },
+      reason:   { label: 'ವಿಶ್ಲೇಷಣೆ', sub: 'ಸಂದರ್ಭ ಏಜೆಂಟ್' },
+      act:      { label: 'ಕ್ರಮ', sub: 'ಪ್ರತಿಕ್ರಿಯಾ ಏಜೆಂಟ್' },
+    },
+    noThreat: 'ಯಾವುದೇ ಸಕ್ರಿಯ ಬೆದರಿಕೆಗಳಿಲ್ಲ. ಏಜೆಂಟ್ ಮೇಲ್ವಿಚಾರಣೆ ಮಾಡುತ್ತಿದೆ.',
+    riskLabel: 'ಅಪಾಯ ಮಟ್ಟ',
+    signalLabel: 'ಸಂದರ್ಭ ಸಂಕೇತಗಳು',
+    historyLabel: 'ಬೆದರಿಕೆ ಇತಿಹಾಸ',
+    noHistory: 'ಇನ್ನೂ ಯಾವುದೇ ಬೆದರಿಕೆ ಪತ್ತೆಯಾಗಿಲ್ಲ.',
+  },
+  vault: {
+    headline: 'ಕ್ರೆಡೆನ್ಶಿಯಲ್ ವಾಲ್ಟ್',
+    sub: 'Solana ನಲ್ಲಿ ಆಂಕರ್ ಮಾಡಲಾದ ಅಚಲ ಪುರಾವೆ ದಾಖಲೆಗಳು.',
+    noCredentials: 'ಇನ್ನೂ ಯಾವುದೇ ಕ್ರೆಡೆನ್ಶಿಯಲ್ಗಳು ನೀಡಲಾಗಿಲ್ಲ.',
+    ipfs: 'IPFS ವರದಿ',
+    solana: 'Solana Tx',
+    download: 'PDF ಡೌನ್ಲೋಡ್',
+    riskLevel: 'ಅಪಾಯ ಮಟ್ಟ',
+    detected: 'ಪತ್ತೆಯಾಗಿದೆ',
+    threatType: 'ಬೆದರಿಕೆ ಪ್ರಕಾರ',
+  },
+  settings: {
+    theme: 'ಥೀಮ್',
+    dark: 'ಡಾರ್ಕ್', light: 'ಲೈಟ್', system: 'ಸಿಸ್ಟಮ್',
+    language: 'ಭಾಷೆ',
+    en: 'English', hi: 'हिन्दी', kn: 'ಕನ್ನಡ',
+  },
+  risk: { LOW: 'ಕಡಿಮೆ', MEDIUM: 'ಮಧ್ಯಮ', HIGH: 'ಹೆಚ್ಚು', CRITICAL: 'ಗಂಭೀರ' }
+}
