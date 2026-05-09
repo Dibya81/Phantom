@@ -1,7 +1,9 @@
 import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useI18n } from '../contexts/I18nContext'
 
 export default function DetectionModal({ isOpen, onClose, data }) {
+  const { t } = useI18n()
   if (!isOpen || !data) return null
 
   const isSafe = data.matches.length === 0
@@ -51,20 +53,20 @@ export default function DetectionModal({ isOpen, onClose, data }) {
             fontFamily: 'Outfit, sans-serif', fontSize: 32, fontWeight: 800, 
             color: '#fff', marginBottom: 12, letterSpacing: '-0.04em' 
           }}>
-            {isSafe ? 'Neural Audit: SECURE' : 'CRITICAL EXPOSURE'}
+            {isSafe ? t.modal.secureHeadline : t.modal.exposureHeadline}
           </h2>
 
           <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.8)', lineHeight: 1.6, marginBottom: 32 }}>
             {isSafe 
-              ? 'Neural audit complete. Your identity demonstrates maximum integrity across all scanned intelligence vectors. No unauthorized exposures detected.' 
-              : `Unauthorized exposure identified. Our intelligence matrix has localized ${data.matches.length} breach signatures linked to your identity profile. Immediate review required.`}
+              ? t.modal.secureSub 
+              : t.modal.exposureSub.replace('{count}', data.matches.length)}
           </p>
 
           {!isSafe && (
             <div style={{ textAlign: 'left', background: 'rgba(0,0,0,0.3)', borderRadius: 16, padding: 20, marginBottom: 32 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 12 }}>
-                <span style={{ fontSize: 12, fontWeight: 700, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.1em' }}>THREAT LEVEL</span>
-                <span style={{ fontSize: 12, fontWeight: 800, color: '#EF4444' }}>{riskLevel}</span>
+                <span style={{ fontSize: 12, fontWeight: 700, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.1em' }}>{t.modal.threatLevel}</span>
+                <span style={{ fontSize: 12, fontWeight: 800, color: '#EF4444' }}>{t.risk[riskLevel] || riskLevel}</span>
               </div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                 {data.matches.map((m, i) => (
@@ -80,7 +82,7 @@ export default function DetectionModal({ isOpen, onClose, data }) {
           )}
           {data.proof_result?.report_hash && (
             <div style={{ textAlign: 'left', background: 'rgba(0,0,100,0.2)', border: '1px solid rgba(0,122,255,0.3)', borderRadius: 16, padding: 16, marginBottom: 32 }}>
-              <span style={{ fontSize: 10, fontWeight: 700, color: '#3B82F6', letterSpacing: '0.1em', display: 'block', marginBottom: 8 }}>ON-CHAIN PROOF HASH</span>
+              <span style={{ fontSize: 10, fontWeight: 700, color: '#3B82F6', letterSpacing: '0.1em', display: 'block', marginBottom: 8 }}>{t.modal.proofHash}</span>
               <p style={{ fontSize: 10, fontFamily: 'JetBrains Mono, monospace', color: '#fff', wordBreak: 'break-all', margin: 0 }}>
                 {data.proof_result.report_hash}
               </p>
@@ -97,7 +99,7 @@ export default function DetectionModal({ isOpen, onClose, data }) {
               cursor: 'pointer', border: 'none'
             }}
           >
-            {isSafe ? 'Continue to Console' : 'Access Risk Report'}
+            {isSafe ? t.modal.continueBtn : t.modal.reportBtn}
           </motion.button>
         </div>
       </motion.div>
