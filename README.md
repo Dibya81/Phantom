@@ -1,28 +1,12 @@
-<div align="center">
+![TRI-ZEROTRO Ecosystem](/Users/dibyabhusal/Downloads/phantomid/agent/frontend/public/3rd.png)
 
-<img src="https://img.shields.io/badge/TRI--ZEROTRO-Autonomous%20Trust%20Ecosystem-0D1117?style=for-the-badge&logoColor=white&labelColor=0D1117&color=6C63FF" />
+<div align="center">
 
 # ⚡ TRI-ZEROTRO ECOSYSTEM
 
 ### *Autonomous Trust & Cybersecurity Ecosystem for 2026*
 
 > **Three Systems. One Intelligence. One Trust Infrastructure.**
-
-[![Solana](https://img.shields.io/badge/Solana-9945FF?style=flat-square&logo=solana&logoColor=white)](https://solana.com)
-[![AI Powered](https://img.shields.io/badge/AI%20Powered-LangGraph-FF6B6B?style=flat-square&logo=openai&logoColor=white)](https://langchain.com)
-[![IPFS](https://img.shields.io/badge/IPFS-65C2CB?style=flat-square&logo=ipfs&logoColor=white)](https://ipfs.io)
-[![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white)](https://supabase.com)
-[![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=next.js&logoColor=white)](https://nextjs.org)
-[![Open Source](https://img.shields.io/badge/Open%20Source-❤️-FF4B4B?style=flat-square)](https://github.com)
-[![LangGraph](https://img.shields.io/badge/LangGraph-Agent%20Orchestration-4A90D9?style=flat-square)](https://langchain.com)
-
----
-
-[![Build Status](https://img.shields.io/badge/Build-Passing-00C851?style=flat-square)](/)
-[![Systems](https://img.shields.io/badge/Systems-3%20Platforms-6C63FF?style=flat-square)](/)
-[![Threats Blocked](https://img.shields.io/badge/Threats%20Blocked-2.4M%2B-FF6B6B?style=flat-square)](/)
-[![Identities Secured](https://img.shields.io/badge/Identities%20Secured-18.7M%2B-00C851?style=flat-square)](/)
-[![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](/)
 
 ---
 
@@ -324,15 +308,11 @@ WITNESSCHAIN is a decentralized civic evidence platform that enables citizens to
 
 ### Architecture Overview — TRI-ZEROTRO Ecosystem 2026
 
-![TRI-ZEROTRO Full System Architecture](./architecture.png)
-
 *Full System Architecture — 6-Layer Autonomous Trust Infrastructure*
 
 ---
 
 ### Autonomous Systems Overview
-
-![Autonomous Systems Built for 2026](./systems.png)
 
 *Three autonomous platforms, one unified AI + Blockchain intelligence core*
 
@@ -861,12 +841,6 @@ Three platforms. One unified intelligence layer. A future where identity is invi
 **Built for 2026. Designed to protect humanity.**
 
 ---
-
-[![AI Powered](https://img.shields.io/badge/AI%20Powered-Autonomous-6C63FF?style=flat-square)](/)
-[![Blockchain Verified](https://img.shields.io/badge/Blockchain-Verified-9945FF?style=flat-square)](/)
-[![Decentralized](https://img.shields.io/badge/Decentralized-IPFS%20%2B%20Solana-65C2CB?style=flat-square)](/)
-[![Autonomous](https://img.shields.io/badge/Autonomous-24%2F7-FF6B6B?style=flat-square)](/)
-[![Scalable](https://img.shields.io/badge/Scalable-Future--Ready-00C851?style=flat-square)](/)
 
 *© 2026 TRI-ZEROTRO Ecosystem — Dibya · Abay · Manash*
 
