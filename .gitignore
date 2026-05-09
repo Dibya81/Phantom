@@ -45,3 +45,6 @@ phantomid_monitor.session
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Large Data Dumps
+breach_data/final_consolidated_dump.sql
