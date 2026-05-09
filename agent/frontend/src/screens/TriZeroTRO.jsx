@@ -306,7 +306,7 @@ export default function TriZeroTRO() {
         
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} style={{ display: 'flex', gap: 16, zIndex: 20 }}>
           <button onClick={() => navigate('/intro')} className="btn-primary" style={{ padding: '16px 32px', fontSize: 14, boxShadow: '0 20px 40px rgba(0,122,255,0.2)' }}>{ec.cta1}</button>
-          <button className="btn-secondary" style={{ padding: '16px 32px', fontSize: 14, background: 'var(--bg-card)', backdropFilter: 'blur(12px)' }}>{ec.cta2}</button>
+          <button onClick={() => window.location.href = 'https://zero-tamper-dashboard.vercel.app/'} className="btn-secondary" style={{ padding: '16px 32px', fontSize: 14, background: 'var(--bg-card)', backdropFilter: 'blur(12px)' }}>{ec.cta2}</button>
           <button onClick={() => window.location.href = 'https://trust-flow-delta-livid.vercel.app/'} className="btn-secondary" style={{ padding: '16px 32px', fontSize: 14, background: 'var(--bg-card)', backdropFilter: 'blur(12px)' }}>{ec.cta3}</button>
         </motion.div>
         
@@ -337,7 +337,7 @@ export default function TriZeroTRO() {
           problem={ec.projects.witness.problem} 
           tech={['React Native', 'IPFS', 'TensorFlow.js']} 
           features={[{ title: ec.projects.witness.f1_title, desc: ec.projects.witness.f1_desc }, { title: ec.projects.witness.f2_title, desc: ec.projects.witness.f2_desc }]} 
-          accent="#8B5CF6" visual={<WitnessVisual />} onClick={() => {}} />
+          accent="#8B5CF6" visual={<WitnessVisual />} onClick={() => window.location.href = 'https://zero-tamper-dashboard.vercel.app/'} />
       </section>
 
       {/* SECTION 3: ARCHITECTURE Visual */}
