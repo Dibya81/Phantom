@@ -14,10 +14,11 @@ export default function CredentialVault() {
     const token = localStorage.getItem('phantom-token')
     if (!token) return
 
+    const API_BASE = 'https://phantom-mlxh.onrender.com'
     try {
       const [profRes, credRes] = await Promise.all([
-        fetch('/api/profile', { headers: { 'X-User-Token': token } }),
-        fetch('/api/credentials', { headers: { 'X-User-Token': token } })
+        fetch(`${API_BASE}/profile`, { headers: { 'X-User-Token': token } }),
+        fetch(`${API_BASE}/credentials`, { headers: { 'X-User-Token': token } })
       ])
       
       const profData = await profRes.json()

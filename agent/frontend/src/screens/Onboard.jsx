@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useI18n } from '../contexts/I18nContext'
 import { useAuth } from '../contexts/AuthContext'
 
-const API = '/api'
+const API_BASE = 'https://phantom-mlxh.onrender.com'
 
 function FloatingInput({ label, value, onChange, type = 'text', placeholder, valid }) {
   return (
@@ -137,7 +137,7 @@ export default function Onboard() {
     setError('')
     
     try {
-      const endpoint = mode === 'register' ? '/api/register' : '/api/login'
+      const endpoint = mode === 'register' ? `${API_BASE}/register` : `${API_BASE}/login`
       const body = mode === 'register' 
         ? { email, phone, password }
         : { email, password }

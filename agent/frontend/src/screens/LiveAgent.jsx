@@ -126,7 +126,8 @@ export default function LiveAgent() {
     pushLog(`${t.agent.logs.initAudit}: ${email}`)
 
     try {
-      const res = await fetch('/api/detect-breach', {
+      const API_BASE = 'https://phantom-mlxh.onrender.com'
+      const res = await fetch(`${API_BASE}/detect-breach`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'X-User-Token': token || '' },
         body: JSON.stringify({ email })
