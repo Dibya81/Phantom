@@ -47,13 +47,9 @@ def mask_preview(raw_line: str, max_len: int = 100) -> str:
 
 
 def build_vector_store() -> PGVectorStore:
-    """Build PGVectorStore using parsed URL components."""
+    """Build PGVectorStore using the direct connection string."""
     return PGVectorStore.from_params(
-        database=_url_part("database"),
-        host=_url_part("host"),
-        password=_url_part("password"),
-        port=int(_url_part("port") or 5432),
-        user=_url_part("username"),   # SQLAlchemy URL uses .username not .user
+        connection_string=SUPABASE_DB_URL,
         table_name=TABLE_NAME,
         embed_dim=384,
     )

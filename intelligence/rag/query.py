@@ -18,7 +18,6 @@ from datetime import datetime
 from typing import Any, Optional, List, Dict
 from dotenv import load_dotenv
 
- import sqlalchemy
 from llama_index.core import VectorStoreIndex, StorageContext
 from llama_index.core.vector_stores import MetadataFilters, MetadataFilter
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
@@ -37,8 +36,47 @@ if SUPABASE_DB_URL:
 TABLE_NAME = "breach_vectors"
 TOP_K = 10
 SIMILARITY_THRESHOLD = 0.70
+EMBED_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 
-# ── Intelligence Functions ──────────────────────────────────────────────────
+# ── Helpers ───────────────────────────────────────────────────────────────────
+
+def _url_part(part: str):
+    """Extract a component from the DB URL using SQLAlchemy."""
+    url = sqlalchemy.engine.make_url(SUPABASE_DB_URL)
+    return getattr(url, part)
+
+def _get_vector_store() -> PGVectorStore:
+    # Use the connection string directly to avoid parsing errors with complex Supabase URLs
+    return PGVectorStore.from_params(
+        connection_string=SUPABASE_DB_URL,
+        table_name=TABLE_NAME,
+        embed_dim=384,
+    )
+
+def _get_index() -> VectorStoreIndex:
+    vector_store = _get_vector_store()
+    embed_model = HuggingFaceEmbedding(model_name=EMBED_MODEL_NAME)
+    storage_context = StorageContext.from_defaults(vector_store=vector_store)
+    return VectorStoreIndex([], storage_context=storage_context, embed_model=embed_model)
+
+def _parse_node_metadata(node: Any) -> dict:
+    meta = node.metadata
+    text = node.get_content()
+    
+    fields = meta.get("exposed_fields", [])
+    if isinstance(fields, str):
+        try:
+            fields = json.loads(fields)
+        except:
+            fields = []
+            
+    return {
+        "source": meta.get("source") or meta.get("breach") or "Unknown Breach",
+        "date": meta.get("date") or datetime.utcnow().date().isoformat(),
+        "exposed_fields": fields,
+        "confidence": node.get_score() if hasattr(node, "get_score") else 0.6,
+        "raw_preview": text[:200] + "..." if len(text) > 200 else text
+    }
 
 
 # ── Intelligence Functions ──────────────────────────────────────────────────
@@ -195,38 +233,53 @@ def _classify_risk(matches: list[dict], risk_score: int) -> str:
 
 def query_breach_db(hashed_identifier: str, raw_identifier: str = None) -> dict:
     """
-    Corrected pipeline: 
-    1. Direct Signal (detection_events) -> 0.9
-    2. Exact Hash (local DB) -> 0.6
-    3. Contextual Search (Domain/Vector) -> 0.4
+    Query the breach_vectors table for direct and contextual matches.
+    Used by the 'perceive' and 'reason' agents.
     """
     all_matches = []
-
-    index = _get_index()
     
-    # Use metadata filtering for exact hash match — HUGE performance & accuracy win
-    filters = MetadataFilters(filters=[
-        MetadataFilter(key="hashed_identifier", value=hashed_identifier)
-    ])
+    # 1. Direct Signal (from local real-time monitors)
+    all_matches.extend(_check_detection_events(hashed_identifier))
     
-    retriever = index.as_retriever(
-        similarity_top_k=TOP_K,
-        filters=filters
-    )
+    # 2. Direct Database Lookup (The Core Logic - High Confidence)
+    if raw_identifier or hashed_identifier:
+        engine = sqlalchemy.create_engine(SUPABASE_DB_URL)
+        # We check if raw_identifier (email) exists in the metadata JSONB
+        query = sqlalchemy.text(
+            "SELECT metadata FROM breach_vectors "
+            "WHERE (metadata->>'email' = :id) "
+            "OR (metadata->>'hashed_identifier' = :h)"
+        )
+        try:
+            with engine.connect() as conn:
+                results = conn.execute(query, {"id": raw_identifier, "h": hashed_identifier})
+                for row in results:
+                    meta = row[0]
+                    fields = meta.get("exposed_fields") or meta.get("fields") or []
+                    if isinstance(fields, str):
+                        try:
+                            fields = json.loads(fields)
+                        except:
+                            fields = [fields] if fields else []
+                    
+                    all_matches.append({
+                        "source": meta.get("breach") or meta.get("source") or "Database Match",
+                        "date": meta.get("date") or meta.get("year") or datetime.utcnow().date().isoformat(),
+                        "exposed_fields": fields,
+                        "confidence": 1.0, # Direct match is 100%
+                        "raw_preview": f"Direct breach match found for {raw_identifier or 'user'}"
+                    })
+        except Exception as e:
+            print(f"[db_query] Direct lookup failed: {e}")
 
-    # We still pass query_text, but the search space is now limited to exact hash matches
-    query_text = f"Hash: {hashed_identifier}"
-    nodes = retriever.retrieve(query_text)
+    # 3. Contextual / Domain Search (Lower Confidence / Advisory)
+    if raw_identifier:
+        try:
+            all_matches.extend(_domain_vector_search(raw_identifier))
+        except Exception as e:
+            print(f"[db_query] Domain search failed: {e}")
 
-    matches = []
-    for node in nodes:
-        # No need to check similarity_threshold or node_hash here anymore 
-        # as the vector store filter handled it.
-        parsed = _parse_node_metadata(node)
-        matches.append(parsed)
-
-    # Deduplicate by source — keep highest confidence per source
-
+    # Deduplicate by source
     seen: dict[str, dict] = {}
     for m in all_matches:
         src = m["source"]

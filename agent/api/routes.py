@@ -11,11 +11,13 @@ from google_auth_oauthlib.flow import Flow
 
 from .ws_manager import manager
 from .db import (
+    get_db,
     store_user,
+    verify_user,
     get_user_by_pseudonym,
     store_gmail_tokens,
     get_threat_history,
-    get_credentials,
+    get_credentials
 )
 from agent.graph.agent import run_agent
 from intelligence.rag.query import query_breach_db
@@ -160,7 +162,6 @@ async def register(body: RegisterRequest):
 async def login(body: LoginRequest):
     print(f"[API] Login request for {body.email}")
     try:
-        from .db import verify_user
         user = await verify_user(body.email, body.password)
         if not user:
             raise HTTPException(status_code=401, detail="Invalid email or password")
@@ -209,7 +210,6 @@ async def detect_breach(body: Request, x_user_token: Optional[str] = Header(None
         # For simplicity, if matches found, we trigger agent if we can find the user
         
         # Look for user by email hash
-        from .db import get_db
         db = get_db()
         user_res = db.table("users").select("*").eq("hashed_email", hashed_email).execute()
         

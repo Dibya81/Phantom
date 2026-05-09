@@ -97,6 +97,7 @@ function NeuralPortal() {
 
 // ─── Cinematic Card ──────────────────────────────────────────────────────────
 function ProjectCard({ title, tagline, problem, tech, features, accent, visual, onClick }) {
+  const { t } = useI18n()
   const cardRef = useRef(null)
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
   const [isHovered, setIsHovered] = useState(false)
@@ -185,6 +186,7 @@ function PhantomVisual() {
 }
 
 function TrustFlowVisual() {
+  const { t } = useI18n()
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div style={{ width: 400, height: 280, background: 'var(--bg-subtle)', borderRadius: 32, border: '1px solid var(--border-strong)', padding: 32, position: 'relative', overflow: 'hidden' }}>
@@ -256,7 +258,19 @@ function DataStream() {
 // ─── Main Screen ─────────────────────────────────────────────────────────────
 export default function TriZeroTRO() {
   const navigate = useNavigate()
+  const { t } = useI18n()
   const ec = t.ecosystem
+  
+  const containerRef = useRef(null)
+  const heroRef = useRef(null)
+  
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  })
+
+  const opacityHero = useTransform(scrollYProgress, [0, 0.8], [1, 0])
+  const scaleHero = useTransform(scrollYProgress, [0, 0.8], [1, 0.9])
 
   return (
     <div ref={containerRef} style={{ position: 'relative', background: 'var(--bg)', color: 'var(--text-primary)' }}>

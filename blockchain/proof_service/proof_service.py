@@ -137,44 +137,16 @@ def _sha256_bytes(data: bytes) -> bytes:
 # Step 3 — Upload to IPFS via Pinata
 # ---------------------------------------------------------------------------
 
-async def _upload_to_pinata(report_bytes: bytes, report_hash: str) -> str:
-    """
-    Upload report_bytes to Pinata and return the IPFS CID.
-    Raises RuntimeError on failure — never returns partial data.
-    """
-    import httpx
+# Step 3 — Placeholder for IPFS (Pinata Removed)
+# ---------------------------------------------------------------------------
 
-    pinata_jwt = os.environ["PINATA_JWT"]
-    url = "https://api.pinata.cloud/pinning/pinJSONToIPFS"
-    headers = {
-        "Authorization": f"Bearer {pinata_jwt}",
-        "Content-Type": "application/json",
-    }
-    body = {
-        "pinataContent": json.loads(report_bytes.decode("utf-8")),
-        "pinataMetadata": {
-            "name": f"phantomid_report_{report_hash[:16]}",
-            "keyvalues": {
-                "report_hash": report_hash,
-                "system": "phantomid",
-            },
-        },
-        "pinataOptions": {"cidVersion": 1},
-    }
-    log.info("Uploading report to Pinata (hash prefix: %s)…", report_hash[:16])
-    async with httpx.AsyncClient() as client:
-        response = await client.post(url, headers=headers, json=body, timeout=30)
-    
-    if response.status_code != 200:
-        raise RuntimeError(
-            f"Pinata upload failed: HTTP {response.status_code} — {response.text}"
-        )
-    cid = response.json().get("IpfsHash")
-
-    if not cid:
-        raise RuntimeError("Pinata returned success but IpfsHash is missing")
-    log.info("Pinata upload successful — CID: %s", cid)
-    return cid
+async def _get_local_cid(report_bytes: bytes, report_hash: str) -> str:
+    """
+    Returns a deterministic placeholder for CID since Pinata is removed.
+    In a production system, this would be the IPFS CID calculated locally.
+    """
+    # Simply prefix the hash to satisfy the 64-char String requirement on-chain
+    return f"phantom_proof_{report_hash[:32]}"
 
 
 # ---------------------------------------------------------------------------
@@ -229,10 +201,9 @@ async def _record_on_chain(
     Returns the confirmed transaction signature string.
     """
     from solana.rpc.async_api import AsyncClient as SolanaClient
-
     from solders.pubkey import Pubkey
     from solders.system_program import ID as SYS_PROGRAM_ID
-    from anchorpy import Program, Provider, Wallet, Idl
+    from anchorpy import Program, Provider, Wallet, Idl, Context
 
     if len(report_cid) > 64:
         raise ValueError(f"report_cid too long ({len(report_cid)} chars, max 64)")
@@ -271,29 +242,100 @@ async def _record_on_chain(
         rpc_url, program_id_str, pda
     )
 
-    sig = await program.rpc["record_threat_event"](
-        user_pseudonym_bytes,
-        report_cid,
-        report_hash_bytes,
-        threat_level,
-        unix_ts,
-        ctx=program.provider.send(
-            accounts={
-                "threat_event": pda,
-                "authority": keypair.pubkey(),
-                "system_program": SYS_PROGRAM_ID,
-            }
-        ),
-    )
-    
-    log.info("Solana tx submitted: %s", sig)
+    # Initialize Anchor Program
+    async with SolanaClient(rpc_url) as client:
+        provider = Provider(client, Wallet(keypair))
+        
+        # Aggressive in-memory IDL fix for Anchor 0.30 -> anchorpy 0.21.0
+        with IDL_PATH.open() as f:
+            raw_idl = json.load(f)
+        
+        def clean_accs(accs):
+            cleaned = []
+            for a in accs:
+                if "accounts" in a: # Nested group
+                    cleaned.append({"name": a["name"], "accounts": clean_accs(a["accounts"])})
+                else:
+                    cleaned.append({
+                        "name": a["name"],
+                        "isMut": a.get("writable", a.get("isMut", False)),
+                        "isSigner": a.get("signer", a.get("isSigner", False))
+                    })
+            return cleaned
 
-    # Poll for confirmation (≤ 30 s)
-    await _await_confirmation(client, sig)
-    return str(sig)
+        def clean_type(t):
+            if isinstance(t, dict):
+                if "array" in t: return {"array": [clean_type(t["array"][0]), t["array"][1]]}
+                if "vec" in t: return {"vec": clean_type(t["vec"])}
+                if "option" in t: return {"option": clean_type(t["option"])}
+                if "defined" in t: return {"defined": t["defined"]}
+            if t == "pubkey": return "publicKey"
+            return t
+
+        fixed_idl = {
+            "version": raw_idl.get("version", "0.1.0"),
+            "name": raw_idl.get("name", "phantom_anchor"),
+            "instructions": [],
+            "accounts": [],
+            "types": [],
+            "errors": raw_idl.get("errors", [])
+        }
+
+        # 1. Instructions
+        for inst in raw_idl.get("instructions", []):
+            fixed_idl["instructions"].append({
+                "name": inst["name"],
+                "accounts": clean_accs(inst.get("accounts", [])),
+                "args": [{"name": arg["name"], "type": clean_type(arg["type"])} for arg in inst.get("args", [])]
+            })
+
+        # 2. Types & Accounts
+        all_types = raw_idl.get("types", [])
+        for typ in all_types:
+            new_typ = {"name": typ["name"], "type": {"kind": "struct", "fields": []}}
+            if "type" in typ and "fields" in typ["type"]:
+                for field in typ["type"]["fields"]:
+                    new_typ["type"]["fields"].append({
+                        "name": field["name"],
+                        "type": clean_type(field["type"])
+                    })
+            fixed_idl["types"].append(new_typ)
+        
+        # In old IDLs, accounts was a subset of types
+        for acc in raw_idl.get("accounts", []):
+            acc_def = next((t for t in fixed_idl["types"] if t["name"] == acc["name"]), None)
+            if acc_def:
+                fixed_idl["accounts"].append(acc_def)
+
+        idl = Idl.from_json(json.dumps(fixed_idl))
+        program = Program(idl, program_id, provider)
+
+        log.info("Submitting record_threat_event transaction...")
+        try:
+            sig = await program.rpc["record_threat_event"](
+                user_pseudonym_bytes,
+                report_cid,
+                report_hash_bytes,
+                threat_level,
+                unix_ts,
+                ctx=Context(
+                    accounts={
+                        "threat_event": pda,
+                        "authority": keypair.pubkey(),
+                        "system_program": SYS_PROGRAM_ID,
+                    }
+                ),
+            )
+            log.info("Solana tx submitted: %s", sig)
+            # Poll for confirmation (≤ 30 s)
+            await _await_confirmation(client, sig)
+            return str(sig)
+        except Exception as e:
+            log.error("Anchor RPC call failed: %s", e)
+            raise RuntimeError(f"Solana transaction failed: {e}")
 
 
-async def _await_confirmation(client, sig: str, timeout: int = 30) -> None:
+async def _await_confirmation(client, sig: str, timeout: int = 60) -> None:
     """Poll devnet until the transaction reaches Confirmed status."""
     deadline = time.time() + timeout
     log.info("Polling Solana for confirmation (timeout=%ds)…", timeout)
@@ -402,9 +444,8 @@ async def generate_proof(threat_assessment: dict) -> dict:
     report_hash_hex = _sha256_hex(report_bytes)
     log.info("Report built — hash: %s", report_hash_hex)
 
-    # 3. Upload to IPFS
-
-    ipfs_cid = await _upload_to_pinata(report_bytes, report_hash_hex)
+    # 3. Create local CID (Pinata removed)
+    ipfs_cid = await _get_local_cid(report_bytes, report_hash_hex)
 
     # 4. Anchor to Solana devnet
     solana_tx_sig = await _record_on_chain(

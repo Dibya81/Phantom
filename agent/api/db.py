@@ -113,13 +113,38 @@ async def get_threat_history(user_pseudonym: str) -> list[dict]:
 
 
 async def get_credentials(user_pseudonym: str) -> list[dict]:
-    db = get_db()
-    result = (
-        db.table("threat_events")
-        .select("proof_result, threat_assessment, risk_level, detected_at")
-        .eq("user_pseudonym", user_pseudonym)
-        .not_.is_("proof_result", "null")
-        .order("detected_at", desc=True)
-        .execute()
-    )
-    return result.data or []
+    # 1. Try Supabase
+    creds = []
+    try:
+        db = get_db()
+        result = (
+            db.table("threat_events")
+            .select("proof_result, threat_assessment, risk_level, detected_at")
+            .eq("user_pseudonym", user_pseudonym)
+            .not_.is_("proof_result", "null")
+            .order("detected_at", desc=True)
+            .execute()
+        )
+        creds = result.data or []
+    except Exception as e:
+        print(f"[db] Supabase credentials fetch error: {e} (falling back to local)")
+
+    # 2. Try Local Vault as fallback/supplement
+    try:
+        from blockchain.credential_vault.credential_vault import get_proof_results
+        local_proofs = get_proof_results(user_pseudonym)
+        
+        # Merge if not already in Supabase results
+        existing_sigs = {c["proof_result"].get("solana_tx_sig") for c in creds if c.get("proof_result")}
+        for lp in local_proofs:
+            if lp.get("solana_tx_sig") not in existing_sigs:
+                creds.append({
+                    "proof_result": lp,
+                    "threat_assessment": {"matches": [], "risk_level": "UNKNOWN", "threat_summary": "Local Vault Record"},
+                    "risk_level": "UNKNOWN",
+                    "detected_at": lp.get("generated_at")
+                })
+    except Exception as e:
+        print(f"[db] Local vault fetch error: {e}")
+
+    return creds

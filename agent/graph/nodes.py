@@ -193,26 +193,20 @@ async def reason(state: dict) -> dict:
 
     await _emit("REASON", "ContextAgent", {"status": "gathering_context"}, state)
 
-    # Gather MCP context signals
-    gmail_sigs    = []
-    calendar_sigs = []
+    # Gather MCP context signals - DISABLED for speed and simplicity as requested
+    # gmail_sigs    = []
+    # calendar_sigs = []
+    # try:
+    #     from agent.api.db import get_gmail_tokens
+    #     tokens = await get_gmail_tokens(user_pseudonym)
+    #     if tokens:
+    #         gmail_sigs    = gmail_signals(user_pseudonym, tokens)
+    #         breach_ts     = matches[0].get("date", datetime.now(timezone.utc).isoformat()) if matches else datetime.now(timezone.utc).isoformat()
+    #         calendar_sigs = calendar_signals(user_pseudonym, breach_ts, tokens)
+    # except Exception as e:
+    #     log.warning("[reason] MCP fetch error: %s (non-fatal)", e)
 
-    try:
-        from agent.api.db import get_gmail_tokens
-        tokens = await get_gmail_tokens(user_pseudonym)
-        if tokens:
-            gmail_sigs    = gmail_signals(user_pseudonym, tokens)
-            breach_ts     = matches[0].get("date", datetime.now(timezone.utc).isoformat()) if matches else datetime.now(timezone.utc).isoformat()
-            calendar_sigs = calendar_signals(user_pseudonym, breach_ts, tokens)
-    except Exception as e:
-        err_msg = f"[reason] MCP fetch error: {e}"
-        errors = list(state.get("errors", []))
-        errors.append(err_msg)
-        state["errors"] = errors  # Update local state for subsequent steps
-        await _emit("ERROR", "ContextAgent", {"error": err_msg}, state)
-        print(f"{err_msg} (non-fatal)")
-
-    context_signals = gmail_sigs + calendar_sigs
+    context_signals = [] # gmail_sigs + calendar_sigs
 
     await _emit("REASON", "ContextAgent", {
         "status": "reasoning",
@@ -343,8 +337,9 @@ async def act(state: dict) -> dict:
     except Exception as e:
         err_msg = f"[act] Supabase store error: {e}"
         errors.append(err_msg)
-        await _emit("ERROR", "SurveillanceAgent", {"error": err_msg}, state)
         print(f"{err_msg} (non-fatal)")
+        # If it's a network error, it might be temporary. 
+        # The local vault storage (next step) will still preserve the data.
 
     # Store in Blockchain Vault SQLite
     try:

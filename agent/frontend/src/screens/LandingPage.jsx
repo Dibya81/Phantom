@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import ScrollyCanvas from '../components/ScrollyCanvas'
 import Overlay from '../components/Overlay'
 import CinematicHover from '../components/CinematicHover'
+import { useI18n } from '../contexts/I18nContext'
 
 function MeshOrb() {
   return (
