@@ -8,6 +8,7 @@ import LandingPage from './screens/LandingPage'
 import Onboard from './screens/Onboard'
 import LiveAgent from './screens/LiveAgent'
 import CredentialVault from './screens/CredentialVault'
+import TriZeroTRO from './screens/TriZeroTRO'
 import VaultEntrance from './components/VaultEntrance'
 
 function NavBar() {
@@ -26,14 +27,14 @@ function NavBar() {
   ]
 
   const THEMES = [
-    { id: 'light',  icon: '☀️', label: 'Light'  },
-    { id: 'dark',   icon: '🌙', label: 'Dark'   },
-    { id: 'system', icon: '💻', label: 'System' },
+    { id: 'light',  icon: '☀️', label: t.settings.light  },
+    { id: 'dark',   icon: '🌙', label: t.settings.dark   },
+    { id: 'system', icon: '💻', label: t.settings.system },
   ]
   const LANGS = [
-    { id: 'en', label: 'EN', full: 'English' },
-    { id: 'hi', label: 'हि', full: 'Hindi'   },
-    { id: 'kn', label: 'ಕ',  full: 'Kannada' },
+    { id: 'en', label: 'EN', full: t.settings.en },
+    { id: 'hi', label: 'हि', full: t.settings.hi   },
+    { id: 'kn', label: 'ಕ',  full: t.settings.kn },
   ]
 
   return (
@@ -43,10 +44,10 @@ function NavBar() {
           {/* Brand */}
           <NavLink to="/" className="flex items-center gap-2 no-underline">
             <div className="w-7 h-7 rounded-lg bg-gray-900 flex items-center justify-center">
-              <span className="text-white text-xs font-bold">P</span>
+              <span className="text-white text-[10px] font-extrabold tracking-tighter">TZ</span>
             </div>
-            <span style={{ fontFamily:'Inter,sans-serif', fontWeight:600, fontSize:15, color:'var(--text-primary)', letterSpacing:'-0.01em' }}>
-              Phantom<span style={{ color:'var(--accent)' }}>ID</span>
+            <span style={{ fontFamily:'Outfit,sans-serif', fontWeight:800, fontSize:16, color:'var(--text-primary)', letterSpacing:'0.05em', textTransform: 'uppercase' }}>
+              Tri-Zero<span style={{ color:'var(--accent)' }}>TRO</span>
             </span>
           </NavLink>
 
@@ -85,7 +86,7 @@ function NavBar() {
                       style={{ position: 'absolute', right: 0, top: 'calc(100% + 8px)', width: 220, background: 'var(--bg-card)', border: '1px solid var(--border-strong)', borderRadius: 16, padding: 12, zIndex: 50, boxShadow: '0 16px 48px rgba(0,0,0,0.12)' }}
                     >
                       {/* Theme */}
-                      <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', color: 'var(--text-muted)', marginBottom: 8, paddingLeft: 4 }}>APPEARANCE</p>
+                      <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', color: 'var(--text-muted)', marginBottom: 8, paddingLeft: 4 }}>{n.appearance}</p>
                       <div style={{ display: 'flex', gap: 4, marginBottom: 14 }}>
                         {THEMES.map(th => (
                           <button key={th.id} onClick={() => setTheme(th.id)}
@@ -98,7 +99,7 @@ function NavBar() {
                       </div>
 
                       {/* Language */}
-                      <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', color: 'var(--text-muted)', marginBottom: 8, paddingLeft: 4 }}>LANGUAGE</p>
+                      <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', color: 'var(--text-muted)', marginBottom: 8, paddingLeft: 4 }}>{n.language}</p>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                         {LANGS.map(l => (
                           <button key={l.id} onClick={() => { changeLang(l.id); }}
@@ -119,7 +120,7 @@ function NavBar() {
             {!isAuthenticated ? (
               <NavLink to="/register">
                 <button className="btn-primary" style={{ padding:'9px 20px', fontSize:13 }}>
-                  Get started
+                  {n.getStarted}
                 </button>
               </NavLink>
             ) : (
@@ -131,7 +132,7 @@ function NavBar() {
                   <div style={{ width:24, height:24, borderRadius:'50%', background:'var(--accent-mid)', color:'var(--accent)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:11, fontWeight:700 }}>
                     {user.email?.charAt(0).toUpperCase() || 'U'}
                   </div>
-                  <span style={{ fontSize:12, fontWeight:500, color:'var(--text-primary)' }}>Account</span>
+                  <span style={{ fontSize:12, fontWeight:500, color:'var(--text-primary)' }}>{n.account}</span>
                   <span style={{ fontSize:9, color:'var(--text-muted)' }}>▼</span>
                 </button>
 
@@ -146,19 +147,22 @@ function NavBar() {
                         style={{ position:'absolute', right:0, top:'calc(100% + 8px)', width:220, background:'var(--bg-card)', border:'1px solid var(--border-strong)', borderRadius:16, padding:8, zIndex:50, boxShadow:'0 16px 48px rgba(0,0,0,0.12)' }}
                       >
                         <div style={{ padding:'12px 14px', borderBottom:'1px solid var(--border)', marginBottom:4 }}>
-                          <p style={{ fontSize:10, fontWeight:700, letterSpacing:'0.1em', color:'var(--text-muted)', textTransform:'uppercase', margin:'0 0 4px' }}>Signed in as</p>
+                          <p style={{ fontSize:10, fontWeight:700, letterSpacing:'0.1em', color:'var(--text-muted)', textTransform:'uppercase', margin:'0 0 4px' }}>{n.signedInAs}</p>
                           <p style={{ fontSize:13, fontWeight:600, color:'var(--text-primary)', margin:0 }}>{user.email}</p>
                           {user.phone && <p style={{ fontSize:11, color:'var(--text-muted)', margin:'2px 0 0' }}>{user.phone}</p>}
                         </div>
-                        {['View Profile','Security Settings'].map(label => (
-                          <button key={label} style={{ width:'100%', textAlign:'left', padding:'8px 14px', fontSize:13, color:'var(--text-primary)', background:'transparent', border:'none', borderRadius:10, cursor:'pointer', transition:'background 0.15s' }}
+                        {[
+                          { label: n.profile, action: () => {} },
+                          { label: n.settings, action: () => {} },
+                        ].map(item => (
+                          <button key={item.label} style={{ width:'100%', textAlign:'left', padding:'8px 14px', fontSize:13, color:'var(--text-primary)', background:'transparent', border:'none', borderRadius:10, cursor:'pointer', transition:'background 0.15s' }}
                             onMouseEnter={e => e.target.style.background='var(--bg-soft)'}
-                            onMouseLeave={e => e.target.style.background='transparent'}>{label}</button>
+                            onMouseLeave={e => e.target.style.background='transparent'}>{item.label}</button>
                         ))}
                         <div style={{ height:1, background:'var(--border)', margin:'4px 0' }} />
                         <button onClick={logout} style={{ width:'100%', textAlign:'left', padding:'8px 14px', fontSize:13, fontWeight:600, color:'#EF4444', background:'transparent', border:'none', borderRadius:10, cursor:'pointer', transition:'background 0.15s' }}
                           onMouseEnter={e => e.target.style.background='rgba(239,68,68,0.06)'}
-                          onMouseLeave={e => e.target.style.background='transparent'}>Log out</button>
+                          onMouseLeave={e => e.target.style.background='transparent'}>{n.logout}</button>
                       </motion.div>
                     </>
                   )}
@@ -195,7 +199,7 @@ function NavBar() {
               {/* Mobile lang + theme */}
               <div style={{ display:'flex', gap:8 }}>
                 {LANGS.map(l => (
-                  <button key={l.id} onClick={() => changeLang(l.id)} style={{ padding:'8px 14px', borderRadius:10, fontSize:13, fontWeight:600, border:`1px solid ${lang===l.id?'var(--accent)':'var(--border)'}`, background:lang===l.id?'var(--accent-soft)':'transparent', color:lang===l.id?'var(--accent)':'var(--text-secondary)', cursor:'pointer' }}>{l.full}</button>
+                  <button key={l.id} onClick={() => { changeLang(l.id); setMobileOpen(false); }} style={{ padding:'8px 14px', borderRadius:10, fontSize:13, fontWeight:600, border:`1px solid ${lang===l.id?'var(--accent)':'var(--border)'}`, background:lang===l.id?'var(--accent-soft)':'transparent', color:lang===l.id?'var(--accent)':'var(--text-secondary)', cursor:'pointer' }}>{l.full}</button>
                 ))}
               </div>
               <div style={{ display:'flex', gap:8 }}>
@@ -227,9 +231,10 @@ function AnimatedRoutes() {
         <Routes location={location}>
           <Route path="/" element={
             <VaultEntrance>
-              <LandingPage />
+              <TriZeroTRO />
             </VaultEntrance>
           } />
+          <Route path="/intro" element={<LandingPage />} />
           <Route path="/register" element={<Onboard />} />
           <Route path="/agent"    element={<LiveAgent />} />
           <Route path="/vault"    element={<CredentialVault />} />

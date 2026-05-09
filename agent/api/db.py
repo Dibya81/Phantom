@@ -21,16 +21,18 @@ async def store_user(
     user_pseudonym: str,
     hashed_email: str,
     hashed_phone: str,
-    hashed_pan: str,
     raw_phone: str,
+    password: str,
 ) -> dict:
+    import hashlib
+    password_hash = hashlib.sha256(password.encode()).hexdigest()
     db = get_db()
     row = {
         "user_pseudonym": user_pseudonym,
         "hashed_email": hashed_email,
         "hashed_phone": hashed_phone,
-        "hashed_pan": hashed_pan,
-        "raw_phone": raw_phone,           # only field stored un-hashed — needed for WhatsApp
+        "password_hash": password_hash,
+        "raw_phone": raw_phone,
         "gmail_connected": False,
     }
     result = db.table("users").upsert(row, on_conflict="user_pseudonym").execute()
@@ -41,6 +43,20 @@ async def get_user_by_pseudonym(user_pseudonym: str) -> dict | None:
     db = get_db()
     result = db.table("users").select("*").eq("user_pseudonym", user_pseudonym).execute()
     return result.data[0] if result.data else None
+
+
+async def verify_user(email: str, password: str) -> dict | None:
+    import hashlib
+    db = get_db()
+    email_hash = hashlib.sha256(email.strip().lower().encode()).hexdigest()
+    password_hash = hashlib.sha256(password.encode()).hexdigest()
+    
+    result = db.table("users").select("*").eq("hashed_email", email_hash).execute()
+    if result.data:
+        user = result.data[0]
+        if user.get("password_hash") == password_hash:
+            return user
+    return None
 
 
 async def store_gmail_tokens(user_pseudonym: str, tokens: dict) -> None:
@@ -65,6 +81,14 @@ async def store_proof_result(
     proof_result: dict | None,
 ) -> None:
     db = get_db()
+    # Ensure user exists (auto-provision minimal profile for background scans)
+    # We use upsert with a dummy email if it doesn't exist
+    db.table("users").upsert({
+        "user_pseudonym": user_pseudonym,
+        "hashed_email": user_pseudonym, # Use pseudonym as hash fallback
+        "gmail_connected": False
+    }, on_conflict="user_pseudonym").execute()
+
     row = {
         "user_pseudonym": user_pseudonym,
         "threat_assessment": threat_assessment,

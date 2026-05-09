@@ -42,34 +42,23 @@ async def _emit(event: str, node: str, payload: dict, state: dict):
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }
     broadcaster = state.get("broadcaster")
-    if broadcaster:
+    if (broadcaster):
+        print(f"[debug] Emitting {event} from {node} to broadcaster")
         await broadcaster(ev)
+    else:
+        print(f"[debug] WARNING: No broadcaster found in state for event {event}")
 
-# ── Person 1 import with mock fallback ───────────────────────────────────────
-try:
-    from intelligence.rag.query import query_breach_db as _real_query
-    query_breach_db = _real_query
-    print("[perceive] Using REAL query_breach_db from intelligence layer")
-except ImportError:
-    print("[perceive] Person 1 not ready — using mock breach data")
-    _PERCEIVE_MOCK = True
-    def query_breach_db(hashed_identifier: str) -> dict:
-        mock_path = os.path.abspath(
-            os.path.join(os.path.dirname(__file__), "../../../contracts/mock/breach_match.mock.json")
-        )
-        with open(mock_path) as f:
-            data = json.load(f)
-        data["identifier_queried"] = hashed_identifier
-        return data
+# ── Intelligence Layer ────────────────────────────────────────────────────────
+from intelligence.rag.query import query_breach_db
+print("[perceive] Using REAL query_breach_db from intelligence layer")
 
-# ── Person 2 import with mock fallback ───────────────────────────────────────
+# ── Blockchain Layer ─────────────────────────────────────────────────────────
 try:
     from blockchain.proof_service import generate_proof as _real_proof
     generate_proof = _real_proof
     print("[act] Using REAL generate_proof from blockchain layer")
 except (ImportError, Exception):
-    print("[act] Person 2 not ready — using mock proof data via stub")
-    _ACT_MOCK = True
+    print("[act] Blockchain service not configured — using stub")
     from blockchain.proof_service.proof_service_stub import generate_proof_stub as generate_proof
 
 # ── MCP imports ───────────────────────────────────────────────────────────────
@@ -97,6 +86,7 @@ def _get_llm():
 
 # ── REQUIRED field validator ──────────────────────────────────────────────────
 _BREACH_MATCH_FIELDS = {"matches", "risk_score", "identifier_queried"}
+_MATCH_ITEM_FIELDS = {"source", "date", "exposed_fields", "confidence", "raw_preview"}
 _THREAT_ASSESSMENT_FIELDS = {"user_pseudonym", "threat_summary", "matches", "risk_level", "context_signals", "timestamp"}
 
 def _validate_breach_match(data: dict) -> bool:
@@ -131,10 +121,14 @@ async def perceive(state: dict) -> dict:
             "loop_count": loop_count + 1,
         }
 
+    errors = list(state.get("errors", []))
     try:
-        result = await asyncio.to_thread(query_breach_db, hashed_id)
+        raw_id = state.get("raw_identifier")
+        result = await asyncio.to_thread(query_breach_db, hashed_id, raw_id)
     except Exception as e:
-        await _emit("ERROR", "SurveillanceAgent", {"error": str(e)}, state)
+        err_msg = f"[perceive] SurveillanceAgent error: {e}"
+        errors.append(err_msg)
+        await _emit("ERROR", "SurveillanceAgent", {"error": err_msg}, state)
         return {
             "breach_match": {
                 "matches": [],
@@ -142,32 +136,50 @@ async def perceive(state: dict) -> dict:
                 "identifier_queried": hashed_id,
             },
             "loop_count": loop_count + 1,
+            "errors": errors,
         }
 
     # Defensive: log and strip extra fields, don't crash on unexpected data
     if not _validate_breach_match(result):
+        err_msg = "[perceive] BreachMatch schema mismatch"
+        errors.append(err_msg)
         await _emit("ERROR", "SurveillanceAgent", {
-            "error": "BreachMatch schema mismatch",
+            "error": err_msg,
             "received_keys": list(result.keys()),
         }, state)
         return {
             "breach_match": {"matches": [], "risk_score": 0, "identifier_queried": hashed_id},
             "loop_count": loop_count + 1,
+            "errors": errors,
         }
 
-    # Strip any extra fields Person 1 may have added
+    # Strip any extra fields and sanitize individual matches
     safe_result = {k: result[k] for k in _BREACH_MATCH_FIELDS}
+    
+    sanitized_matches = []
+    for m in result.get("matches", []):
+        # Extract only allowed fields
+        sm = {k: m[k] for k in _MATCH_ITEM_FIELDS if k in m}
+        
+        # Ensure date is ISO-8601 date-time (e.g., 2018-12-01 -> 2018-12-01T00:00:00Z)
+        if "date" in sm and len(sm["date"]) == 10:
+            sm["date"] = f"{sm['date']}T00:00:00Z"
+            
+        sanitized_matches.append(sm)
+    
+    safe_result["matches"] = sanitized_matches
 
     await _emit("PERCEIVE", "SurveillanceAgent", {
         "status": "complete",
         "risk_score": safe_result["risk_score"],
         "match_count": len(safe_result["matches"]),
-        "mode": "MOCK" if globals().get("_PERCEIVE_MOCK") else "REAL",
+        "mode": "REAL",
     }, state)
 
     return {
         "breach_match": safe_result,
         "loop_count": loop_count + 1,
+        "errors": errors,
     }
 
 
@@ -193,7 +205,12 @@ async def reason(state: dict) -> dict:
             breach_ts     = matches[0].get("date", datetime.now(timezone.utc).isoformat()) if matches else datetime.now(timezone.utc).isoformat()
             calendar_sigs = calendar_signals(user_pseudonym, breach_ts, tokens)
     except Exception as e:
-        print(f"[reason] MCP fetch error (non-fatal): {e}")
+        err_msg = f"[reason] MCP fetch error: {e}"
+        errors = list(state.get("errors", []))
+        errors.append(err_msg)
+        state["errors"] = errors  # Update local state for subsequent steps
+        await _emit("ERROR", "ContextAgent", {"error": err_msg}, state)
+        print(f"{err_msg} (non-fatal)")
 
     context_signals = gmail_sigs + calendar_sigs
 
@@ -212,7 +229,7 @@ async def reason(state: dict) -> dict:
     context_block = "\n".join(f"- {s}" for s in context_signals) if context_signals else "- No additional context signals."
 
     prompt = f"""You are a cybersecurity threat analyst for PhantomID.
-A user's hashed identity was found in breach data. Analyze the following and produce a concise threat summary.
+A user's identity was analyzed for exposure. Produce a concise, expert threat assessment.
 
 BREACH MATCHES:
 {matches_summary}
@@ -221,21 +238,29 @@ CONTEXT SIGNALS (from Gmail and Calendar):
 {context_block}
 
 OVERALL RISK SCORE: {breach_match['risk_score']}/100
+RISK CLASSIFICATION: {breach_match.get('risk_level', 'UNKNOWN')}
 
-Write a 1-3 sentence plain-English threat summary. Be specific about sources and exposure.
-State the risk level as one of: LOW, MEDIUM, HIGH, CRITICAL — based on risk_score and context.
+Your Task:
+1. Identify the specific breach sources and the types of data exposed.
+2. Evaluate the severity based on the risk score and context signals.
+3. Provide a clear, jargon-free summary for the user.
+4. State the risk level (LOW, MEDIUM, HIGH, CRITICAL).
+
 Format your response as exactly two lines:
-SUMMARY: <your 1-3 sentence summary>
+SUMMARY: <your 1-3 sentence specific explanation and actionable insight>
 RISK_LEVEL: <LOW|MEDIUM|HIGH|CRITICAL>
 
 No JSON. No extra text. No bullet points. Two lines only."""
 
+    errors = list(state.get("errors", []))
     try:
         llm = _get_llm()
         response = await asyncio.to_thread(llm.invoke, prompt)
         raw = response.content.strip()
     except Exception as e:
-        await _emit("ERROR", "ContextAgent", {"error": f"LLM call failed: {e}"}, state)
+        err_msg = f"[reason] ContextAgent LLM failure: {e}"
+        errors.append(err_msg)
+        await _emit("ERROR", "ContextAgent", {"error": err_msg}, state)
         raw = f"SUMMARY: Breach detected in {matches[0].get('source', 'unknown source') if matches else 'unknown source'}. Manual review required.\nRISK_LEVEL: HIGH"
 
     # Parse LLM output
@@ -271,7 +296,12 @@ No JSON. No extra text. No bullet points. Two lines only."""
         "context_signals": context_signals,
     }, state)
 
-    return {"threat_assessment": threat_assessment}
+    await _emit("REASON", "ReasoningAgent", {"threat_assessment": threat_assessment}, state)
+    return {
+        "threat_assessment": threat_assessment,
+        "loop_count": state.get("loop_count", 0) + 1,
+        "errors": errors,
+    }
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -284,11 +314,21 @@ async def act(state: dict) -> dict:
     await _emit("ACT", "ResponseAgent", {"status": "generating_proof"}, state)
 
     # Call Person 2
+    print(f"[act] Anchoring threat event for pseudonym: {threat_assessment['user_pseudonym']}")
+    await _emit("ACT", "EvidenceAgent", {"status": "anchoring", "pseudonym": threat_assessment["user_pseudonym"]}, state)
+    
     proof_result = None
+    errors = list(state.get("errors", []))
     try:
         proof_result = await generate_proof(threat_assessment)
+
     except Exception as e:
-        await _emit("ERROR", "EvidenceAgent", {"error": f"generate_proof failed: {e}"}, state)
+        err_msg = f"[act] EvidenceAgent blockchain error: {e}"
+        errors.append(err_msg)
+        print(f"CRITICAL: {err_msg}")
+        import traceback
+        traceback.print_exc()
+        await _emit("ERROR", "EvidenceAgent", {"error": err_msg}, state)
         # Don't crash — continue to notify user, store None
         proof_result = None
 
@@ -301,7 +341,10 @@ async def act(state: dict) -> dict:
             proof_result=proof_result,
         )
     except Exception as e:
-        print(f"[act] Supabase store error (non-fatal): {e}")
+        err_msg = f"[act] Supabase store error: {e}"
+        errors.append(err_msg)
+        await _emit("ERROR", "SurveillanceAgent", {"error": err_msg}, state)
+        print(f"{err_msg} (non-fatal)")
 
     # Store in Blockchain Vault SQLite
     try:
@@ -309,20 +352,34 @@ async def act(state: dict) -> dict:
         if proof_result:
             vault_store(threat_assessment["user_pseudonym"], proof_result)
     except Exception as e:
-        print(f"[act] Vault store error (non-fatal): {e}")
+        err_msg = f"[act] Vault store error: {e}"
+        errors.append(err_msg)
+        await _emit("ERROR", "SurveillanceAgent", {"error": err_msg}, state)
+        print(f"{err_msg} (non-fatal)")
 
-    # Send WhatsApp notification
-    if phone_number and threat_assessment["matches"]:
+    # Send WhatsApp notification (phone is forced to sandbox in whatsapp.py)
+    if threat_assessment["matches"]:
+        print(f"[act] Found {len(threat_assessment['matches'])} matches. Triggering WhatsApp alert...")
         try:
             from agent.notifications.whatsapp import send_alert
-            await send_alert(
+            res = await send_alert(
                 phone=phone_number,
                 match=threat_assessment["matches"][0],
                 risk_level=threat_assessment["risk_level"],
-                user_pseudonym=threat_assessment["user_pseudonym"],
+                user_pseudonym=threat_assessment["user_pseudonym"]
             )
+            if not res:
+                err_msg = "[act] WhatsApp alert failed (check Twilio logs)"
+                errors.append(err_msg)
+                await _emit("ERROR", "SurveillanceAgent", {"error": err_msg}, state)
+            print(f"[act] send_alert returned: {res}")
         except Exception as e:
-            print(f"[act] WhatsApp send error (non-fatal): {e}")
+            err_msg = f"[act] WhatsApp notification error: {e}"
+            errors.append(err_msg)
+            await _emit("ERROR", "SurveillanceAgent", {"error": err_msg}, state)
+            print(f"CRITICAL: {err_msg}")
+            import traceback
+            traceback.print_exc()
 
     await _emit("COMPLETE", "EvidenceAgent", {
         "status": "complete",
@@ -331,4 +388,4 @@ async def act(state: dict) -> dict:
         "mode": "MOCK" if globals().get("_ACT_MOCK") else "REAL",
     }, state)
 
-    return {"proof_result": proof_result}
+    return {"proof_result": proof_result, "errors": errors}

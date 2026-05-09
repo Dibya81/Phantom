@@ -82,7 +82,22 @@ const EVENTS = [
 ]
 const PILL = { HIGH: 'badge-red', INFO: 'badge-blue', CRIT: 'badge-red', OK: 'badge-green', WARN: 'badge-amber' }
 
+// ─── System Pipeline Visual ────────────────────────────────────────────────
+function Pipeline() {
+  const { t } = useI18n()
+  return (
+    <div style={{ width: '100%', height: '100vh', background: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 20 }}>
+      <div style={{ width: '100%', height: '100%', backgroundImage: 'url(/Gemini_Generated_Image_xiykwzxiykwzxiyk.png)', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center center' }} />
+      <div style={{ position: 'absolute', top: 64, left: 64, maxWidth: 600 }}>
+        <h2 style={{ fontSize: 48, fontWeight: 900, color: '#fff', marginBottom: 24 }}>{t.ecosystem.architecture.pipelineTitle}</h2>
+        <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>{t.ecosystem.architecture.pipelineDesc}</p>
+      </div>
+    </div>
+  )
+}
+
 function LiveLog() {
+  const { t } = useI18n()
   const [shown, setShown] = useState([])
   const idx = useRef(0)
   useEffect(() => {
@@ -95,8 +110,8 @@ function LiveLog() {
   return (
     <div className="card p-8" style={{ fontFamily: 'JetBrains Mono,monospace', fontSize: 13 }}>
       <div className="flex items-center justify-between mb-6">
-        <span className="label-overline">System Event Log</span>
-        <span className="badge badge-green" style={{ fontSize: 10 }}>● LIVE ACTIVE</span>
+        <span className="label-overline">{t.agent.systemLogs}</span>
+        <span className="badge badge-green" style={{ fontSize: 10 }}>● {t.agent.liveLabel} {t.vault.liveStatus}</span>
       </div>
       <div style={{ minHeight: 180 }} className="flex flex-col gap-1">
         <AnimatePresence initial={false}>
@@ -117,15 +132,17 @@ function LiveLog() {
 
 export default function LandingPage() {
   const navigate = useNavigate()
+  const { t } = useI18n()
   const scrollContainerRef = useRef(null)
+  const l = t.landing
 
   const FEATURES = [
-    { icon: '🛰', title: 'Surveillance Agent', body: 'Real-time breach monitoring using SHA-256 hashed identifiers. Absolute privacy by design.', accent: '#007AFF' },
-    { icon: '🧠', title: 'Context Intelligence', body: 'Groq LLaMA 3.1 architecture reasons over breach vectors and calendar anomalies.', accent: '#7C3AED' },
-    { icon: '⚡', title: 'Autonomous Response', body: 'Automated IPFS report pinning and Solana state updates with WhatsApp dispatch.', accent: '#D97706' },
-    { icon: '🔗', title: 'Blockchain Proof', body: 'Verifiable Credentials anchored on Solana. Immutable, cryptographic evidence of security.', accent: '#7C3AED' },
-    { icon: '📱', title: 'WhatsApp Alerts', body: 'Instant threat notification with deep-linked credentials and exposure analysis.', accent: '#059669' },
-    { icon: '🔐', title: 'Zero-Knowledge', body: 'Client-side hashing ensures your raw identity remains unknown, even to the agent.', accent: '#DC2626' },
+    { icon: '🛰', title: t.onboard.headline, body: t.onboard.sub, accent: '#007AFF' },
+    { icon: '🧠', title: t.agent.synthesisLabel, body: t.agent.logs.reasoning, accent: '#7C3AED' },
+    { icon: '⚡', title: t.agent.status.running, body: t.agent.logs.reqAccepted, accent: '#D97706' },
+    { icon: '🔗', title: t.agent.toast.verified, body: t.vault.sub, accent: '#7C3AED' },
+    { icon: '📱', title: t.nav.notifs, body: t.agent.toast.fingerprint, accent: '#059669' },
+    { icon: '🔐', title: t.onboard.secureVault, body: t.modal.secureSub, accent: '#DC2626' },
   ]
 
   return (
@@ -150,10 +167,9 @@ export default function LandingPage() {
       <section className="py-32 px-6 bg-white relative z-20">
         <div className="max-w-7xl mx-auto">
           <div className="mb-20">
-            <span className="label-overline block mb-4 text-[#007aff]">Core Capabilities</span>
+            <span className="label-overline block mb-4 text-[#007aff]">{l.capabilities}</span>
             <h2 className="text-4xl md:text-6xl font-light max-w-2xl leading-tight text-gray-900 tracking-tight">
-              A perimeter that <br />
-              <span className="text-gray-400 font-medium">never sleeps.</span>
+              {l.perimeterHeadline}
             </h2>
           </div>
 
@@ -166,22 +182,22 @@ export default function LandingPage() {
       {/* PREMIUM INTERACTIVE SCENE */}
       <CinematicHover />
 
+      {/* SYSTEM PIPELINE VISUAL */}
+      <Pipeline />
+
       {/* LIVE SYSTEM PREVIEW */}
       <section className="bg-[#FAFAFA] py-32 px-6 relative z-20 border-t border-gray-100" id="rl5c2e">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
-            <span className="label-overline block mb-4 text-[#007aff]">Live Monitoring</span>
-            <h2 className="text-4xl font-bold mb-8 text-gray-900 tracking-tight">Clinical Oversight.</h2>
+            <span className="label-overline block mb-4 text-[#007aff]">{t.agent.liveLabel}</span>
+            <h2 className="text-4xl font-bold mb-8 text-gray-900 tracking-tight">{l.clinicalOversight}</h2>
             <p className="text-gray-500 text-lg mb-10 leading-relaxed font-light">
-              Every action taken by Phantom is logged, hashed, and available for your review. 
-              The system thinks in real-time, delivering high-fidelity intelligence.
+              {l.clinicalDesc}
             </p>
             <div className="flex gap-8">
               <div>
-              </div>
-              <div>
                 <p className="text-3xl font-medium text-[#00d2ff] mb-1">99.9%</p>
-                <p className="text-xs font-bold text-gray-500 tracking-wider uppercase">Precision</p>
+                <p className="text-xs font-bold text-gray-500 tracking-wider uppercase">{l.precision}</p>
               </div>
             </div>
           </div>
@@ -202,11 +218,11 @@ export default function LandingPage() {
           >
             <div style={{ position: 'absolute', inset: 0, opacity: 0.1, background: 'radial-gradient(circle at 50% 120%, #007AFF 0%, transparent 70%)' }} />
             <div className="relative z-10">
-              <span className="text-blue-600 font-bold tracking-[0.3em] uppercase text-[10px] block mb-8">Deploy Now</span>
-              <h2 className="text-4xl md:text-5xl font-light mb-8 max-w-2xl mx-auto tracking-tight">Your identity is the asset. Protect it autonomously.</h2>
-              <p className="text-gray-500 mb-12 text-lg font-light">Join the perimeter. Activate your Phantom agent today.</p>
+              <span className="text-blue-600 font-bold tracking-[0.3em] uppercase text-[10px] block mb-8">{l.deployNow}</span>
+              <h2 className="text-4xl md:text-5xl font-light mb-8 max-w-2xl mx-auto tracking-tight">{l.assetHeadline}</h2>
+              <p className="text-gray-500 mb-12 text-lg font-light">{l.joinPerimeter}</p>
               <button className="bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:scale-105 transition-transform shadow-lg" onClick={() => navigate('/register')}>
-                Initialize Perimeter
+                {l.initPerimeter}
               </button>
             </div>
           </motion.div>
@@ -220,14 +236,14 @@ export default function LandingPage() {
             <div className="w-8 h-8 bg-gray-900 rounded-xl flex items-center justify-center">
               <span className="text-white font-bold text-sm">P</span>
             </div>
-            <span className="font-light text-xl tracking-tight text-gray-900">Phantom<span className="text-blue-600 font-medium">ID</span></span>
+            <span className="font-light text-xl tracking-tight text-gray-900">Tri-Zero<span className="text-blue-600 font-medium">TRO</span></span>
           </div>
           <div className="flex gap-10 text-sm font-light text-gray-500">
-            <a href="#" className="hover:text-gray-900 transition-colors">Privacy</a>
-            <a href="#" className="hover:text-gray-900 transition-colors">Security</a>
-            <a href="#" className="hover:text-gray-900 transition-colors">Documentation</a>
+            <a href="#" className="hover:text-gray-900 transition-colors">{l.privacy}</a>
+            <a href="#" className="hover:text-gray-900 transition-colors">{l.security}</a>
+            <a href="#" className="hover:text-gray-900 transition-colors">{l.docs}</a>
           </div>
-          <p className="text-sm text-gray-600 font-light">© 2026 Phantom Intelligence.</p>
+          <p className="text-sm text-gray-600 font-light">{l.copyright}</p>
         </div>
       </footer>
     </div>

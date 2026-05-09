@@ -25,6 +25,7 @@ CONTRACT RULES (enforced here):
 
 from __future__ import annotations
 
+import asyncio
 import hashlib
 import json
 import logging
@@ -169,6 +170,7 @@ async def _upload_to_pinata(report_bytes: bytes, report_hash: str) -> str:
             f"Pinata upload failed: HTTP {response.status_code} — {response.text}"
         )
     cid = response.json().get("IpfsHash")
+
     if not cid:
         raise RuntimeError("Pinata returned success but IpfsHash is missing")
     log.info("Pinata upload successful — CID: %s", cid)
@@ -180,16 +182,29 @@ async def _upload_to_pinata(report_bytes: bytes, report_hash: str) -> str:
 # ---------------------------------------------------------------------------
 
 def _load_keypair():
-    """Load the Solana keypair from the configured wallet path."""
+    """Load the Solana keypair from environment or configured wallet path."""
     from solders.keypair import Keypair
 
+    # 1. Try environment variable first (raw JSON array string)
+    env_key = os.getenv("SOLANA_PRIVATE_KEY")
+    if env_key:
+        try:
+            secret = json.loads(env_key)
+            return Keypair.from_bytes(bytes(secret))
+        except Exception as e:
+            log.warning("Failed to load SOLANA_PRIVATE_KEY from env: %s", e)
+
+    # 2. Fall back to file path
     wallet_path_str = os.getenv(
         "SOLANA_WALLET_PATH",
         str(Path.home() / ".config" / "solana" / "id.json")
     )
     wallet_path = Path(wallet_path_str).expanduser()
     if not wallet_path.exists():
-        raise FileNotFoundError(f"Solana wallet not found: {wallet_path}")
+        log.error("Solana wallet NOT found at %s. Ensure SOLANA_PRIVATE_KEY or SOLANA_WALLET_PATH is set.", wallet_path)
+        raise FileNotFoundError(f"Solana wallet not found and no SOLANA_PRIVATE_KEY in env: {wallet_path}")
+    
+    log.info("Loading Solana keypair from: %s", wallet_path)
     with wallet_path.open() as f:
         secret = json.load(f)
     return Keypair.from_bytes(bytes(secret))
@@ -214,11 +229,10 @@ async def _record_on_chain(
     Returns the confirmed transaction signature string.
     """
     from solana.rpc.async_api import AsyncClient as SolanaClient
+
     from solders.pubkey import Pubkey
     from solders.system_program import ID as SYS_PROGRAM_ID
-    from anchorpy import Program, Provider, Wallet
-    from anchorpy.idl import _Idl  # type: ignore
-    import asyncio
+    from anchorpy import Program, Provider, Wallet, Idl
 
     if len(report_cid) > 64:
         raise ValueError(f"report_cid too long ({len(report_cid)} chars, max 64)")
@@ -227,31 +241,23 @@ async def _record_on_chain(
     program_id_str = os.environ["ANCHOR_PROGRAM_ID"]
 
     keypair = _load_keypair()
-    client = SolanaClient(rpc_url)
-    wallet = Wallet(keypair)
-    provider = Provider(client, wallet)
-
-    # Load IDL
-    if not IDL_PATH.exists():
-        raise FileNotFoundError(
-            f"Anchor IDL not found at {IDL_PATH}. Run 'anchor build' first."
-        )
-    with IDL_PATH.open() as f:
-        idl_raw = json.load(f)
-    idl = _Idl.from_json(idl_raw)
     program_id = Pubkey.from_string(program_id_str)
-    program = Program(idl, program_id, provider)
+    
+    # Convert hex strings to raw bytes
+    user_pseudonym_bytes = bytes.fromhex(user_pseudonym_hex)
+    report_hash_bytes = bytes.fromhex(report_hash_hex)
 
-    # Convert hex strings to raw bytes (as lists for anchorpy)
-    user_pseudonym_bytes = list(bytes.fromhex(user_pseudonym_hex))
-    report_hash_bytes = list(bytes.fromhex(report_hash_hex))
+    if len(user_pseudonym_bytes) != 32:
+        raise ValueError(f"user_pseudonym must be 32 bytes (got {len(user_pseudonym_bytes)})")
+    if len(report_hash_bytes) != 32:
+        raise ValueError(f"report_hash must be 32 bytes (got {len(report_hash_bytes)})")
 
     # Derive PDA — seeds must match the Rust contract
     pda, _bump = Pubkey.find_program_address(
         [
             b"threat_event",
-            bytes.fromhex(user_pseudonym_hex),
-            bytes.fromhex(report_hash_hex),
+            user_pseudonym_bytes,
+            report_hash_bytes,
         ],
         program_id,
     )
@@ -261,8 +267,8 @@ async def _record_on_chain(
     unix_ts = int(dt.timestamp())
 
     log.info(
-        "Sending Solana tx — program=%s pda=%s threat_level=%d",
-        program_id_str, pda, threat_level
+        "Connecting to Solana RPC: %s | Program: %s | PDA: %s",
+        rpc_url, program_id_str, pda
     )
 
     sig = await program.rpc["record_threat_event"](
@@ -296,10 +302,11 @@ async def _await_confirmation(client, sig: str, timeout: int = 30) -> None:
         statuses = resp.value
         if statuses and statuses[0] is not None:
             status = statuses[0]
+
             if status.err:
-                raise RuntimeError(f"Solana transaction failed on-chain: {status.err}")
+                raise RuntimeError(f"Transaction failed on-chain: {status.err}")
             if status.confirmation_status in ("confirmed", "finalized"):
-                log.info("Solana tx confirmed: %s", sig)
+                log.info("Transaction confirmed! Status: %s", status.confirmation_status)
                 return
         await asyncio.sleep(1.5)
     raise TimeoutError(
@@ -339,6 +346,7 @@ async def _issue_vc(
     log.info("Invoking vc_issuer subprocess…")
     
     # Use asyncio.create_subprocess_exec for non-blocking execution
+
     proc = await asyncio.create_subprocess_exec(
         node_bin, str(issuer_script),
         stdin=asyncio.subprocess.PIPE,
@@ -369,20 +377,7 @@ async def _issue_vc(
 async def generate_proof(threat_assessment: dict) -> dict:
     """
     Generate immutable proof for a confirmed identity threat.
-
-    Args:
-        threat_assessment: A dict matching contracts/threat_assessment.schema.json.
-                           Caller is responsible for passing a valid structure,
-                           but this function performs its own validation.
-
-    Returns:
-        A dict matching contracts/proof_result.schema.json exactly.
-        Fields: ipfs_cid, solana_tx_sig, vc_json, report_hash, generated_at
-
-    Raises:
-        jsonschema.ValidationError  — if input schema is violated
-        RuntimeError / TimeoutError — if any pipeline step fails
-        Exception is always raised on failure — never partial data returned.
+    Returns a dict matching contracts/proof_result.schema.json exactly.
     """
     pseudonym_preview = str(threat_assessment.get("user_pseudonym", "?"))[:16] + "…"
     log.info(
@@ -395,6 +390,9 @@ async def generate_proof(threat_assessment: dict) -> dict:
     _validate_threat_assessment(threat_assessment)
 
     user_pseudonym: str = threat_assessment["user_pseudonym"]
+    if user_pseudonym.startswith("anon_"):
+        user_pseudonym = user_pseudonym[len("anon_"):]
+
     risk_level: str = threat_assessment["risk_level"]
     detection_timestamp: str = threat_assessment["timestamp"]
     threat_level_u8: int = _risk_level_to_u8(risk_level)
@@ -405,6 +403,7 @@ async def generate_proof(threat_assessment: dict) -> dict:
     log.info("Report built — hash: %s", report_hash_hex)
 
     # 3. Upload to IPFS
+
     ipfs_cid = await _upload_to_pinata(report_bytes, report_hash_hex)
 
     # 4. Anchor to Solana devnet
@@ -443,4 +442,5 @@ async def generate_proof(threat_assessment: dict) -> dict:
         ipfs_cid,
         solana_tx_sig[:20] + "…",
     )
+    print(f"🔗 Solana Explorer: https://explorer.solana.com/tx/{solana_tx_sig}?cluster=devnet")
     return proof_result
