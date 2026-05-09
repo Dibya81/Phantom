@@ -1,9 +1,10 @@
 # PhantomID — Unified Ecosystem Dependencies
 # Optimized for Render Free Tier (512MB RAM)
-# Using FastEmbed (ONNX) instead of PyTorch to save memory.
+# Using the latest FastEmbed (ONNX) which supports Python 3.12+
 
 # ── AI LAYER (Lightweight & High Performance) ──
-llama-index-embeddings-fastembed
+fastembed>=0.4.0
+llama-index-embeddings-fastembed>=0.2.0
 llama-index
 
 # ── CORE ──
