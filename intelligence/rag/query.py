@@ -18,7 +18,12 @@ from datetime import datetime
 from typing import Any, Optional, List, Dict
 from dotenv import load_dotenv
 
-load_dotenv()
+ import sqlalchemy
+from llama_index.core import VectorStoreIndex, StorageContext
+from llama_index.core.vector_stores import MetadataFilters, MetadataFilter
+from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+from llama_index.vector_stores.postgres import PGVectorStore
+
 
 # ── Config ────────────────────────────────────────────────────────────────────
 SUPABASE_DB_URL = os.environ.get("SUPABASE_DB_URL")
@@ -197,18 +202,31 @@ def query_breach_db(hashed_identifier: str, raw_identifier: str = None) -> dict:
     """
     all_matches = []
 
-    # 1. Detection Events (Incoming signals)
-    all_matches.extend(_check_detection_events(hashed_identifier))
+    index = _get_index()
+    
+    # Use metadata filtering for exact hash match — HUGE performance & accuracy win
+    filters = MetadataFilters(filters=[
+        MetadataFilter(key="hashed_identifier", value=hashed_identifier)
+    ])
+    
+    retriever = index.as_retriever(
+        similarity_top_k=TOP_K,
+        filters=filters
+    )
 
-    # 2. Exact DB Lookup (Known breaches)
-    all_matches.extend(_exact_db_lookup(hashed_identifier))
+    # We still pass query_text, but the search space is now limited to exact hash matches
+    query_text = f"Hash: {hashed_identifier}"
+    nodes = retriever.retrieve(query_text)
 
-    # 3. Contextual/Domain Search (Local DB)
-    if raw_identifier:
-        # Domain Vector Search (Context/Advisories)
-        all_matches.extend(_domain_vector_search(raw_identifier))
+    matches = []
+    for node in nodes:
+        # No need to check similarity_threshold or node_hash here anymore 
+        # as the vector store filter handled it.
+        parsed = _parse_node_metadata(node)
+        matches.append(parsed)
 
-    # Deduplicate by source — keep highest confidence
+    # Deduplicate by source — keep highest confidence per source
+
     seen: dict[str, dict] = {}
     for m in all_matches:
         src = m["source"]

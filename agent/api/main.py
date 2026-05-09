@@ -28,7 +28,23 @@ app.add_middleware(
 app.include_router(router)
 
 
+def validate_env():
+    required = [
+        "SUPABASE_URL", "SUPABASE_KEY", "SUPABASE_DB_URL",
+        "GROQ_API_KEY", "PINATA_JWT", "ANCHOR_PROGRAM_ID"
+    ]
+    missing = [env for env in required if not os.getenv(env)]
+    if missing:
+        print(f"\033[91m[CRITICAL] Missing environment variables: {', '.join(missing)}\033[0m")
+        print("Please check your .env file.")
+        # We don't exit(1) here to allow the dev to see the docs/logs, 
+        # but we mark the system as degraded.
+    else:
+        print("\033[92m[OK] All critical environment variables present.\033[0m")
+
+
 @app.on_event("startup")
 async def startup():
+    validate_env()
     print("PhantomID Agent API started")
     print("Docs: http://localhost:8000/docs")

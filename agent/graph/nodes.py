@@ -321,13 +321,7 @@ async def act(state: dict) -> dict:
     errors = list(state.get("errors", []))
     try:
         proof_result = await generate_proof(threat_assessment)
-        if proof_result:
-            print(f"[act] Blockchain anchoring SUCCESS. Hash: {proof_result.get('report_hash')} | Sig: {proof_result.get('solana_tx_sig')[:16]}...")
-            await _emit("ACT", "EvidenceAgent", {
-                "status": "anchored", 
-                "report_hash": proof_result.get("report_hash"),
-                "solana_tx_sig": proof_result.get("solana_tx_sig")
-            }, state)
+
     except Exception as e:
         err_msg = f"[act] EvidenceAgent blockchain error: {e}"
         errors.append(err_msg)

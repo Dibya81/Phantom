@@ -21,6 +21,15 @@ from agent.graph.agent import run_agent
 from intelligence.rag.query import query_breach_db
 
 router = APIRouter()
+ 
+@router.get("/")
+async def root():
+    return {
+        "status": "online",
+        "service": "PhantomID Agent API",
+        "version": "1.0.0",
+        "timestamp": datetime.now(timezone.utc).isoformat()
+    }
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 

@@ -162,16 +162,15 @@ async def _upload_to_pinata(report_bytes: bytes, report_hash: str) -> str:
         "pinataOptions": {"cidVersion": 1},
     }
     log.info("Uploading report to Pinata (hash prefix: %s)…", report_hash[:16])
-    async with httpx.AsyncClient(timeout=30.0) as client:
-        response = await client.post(url, headers=headers, json=body)
-        if response.status_code != 200:
-            raise RuntimeError(
-                f"Pinata upload failed: HTTP {response.status_code} — {response.text}"
-            )
-        cid = response.json().get("IpfsHash")
-        if not cid:
-            raise RuntimeError(f"Pinata response missing IpfsHash: {response.text}")
-        return cid
+    async with httpx.AsyncClient() as client:
+        response = await client.post(url, headers=headers, json=body, timeout=30)
+    
+    if response.status_code != 200:
+        raise RuntimeError(
+            f"Pinata upload failed: HTTP {response.status_code} — {response.text}"
+        )
+    cid = response.json().get("IpfsHash")
+
     if not cid:
         raise RuntimeError("Pinata returned success but IpfsHash is missing")
     log.info("Pinata upload successful — CID: %s", cid)
@@ -229,7 +228,8 @@ async def _record_on_chain(
     Call record_threat_event on the Anchor contract and wait for confirmation.
     Returns the confirmed transaction signature string.
     """
-    from solana.rpc.async_api import AsyncClient
+    from solana.rpc.async_api import AsyncClient as SolanaClient
+
     from solders.pubkey import Pubkey
     from solders.system_program import ID as SYS_PROGRAM_ID
     from anchorpy import Program, Provider, Wallet, Idl
@@ -271,83 +271,47 @@ async def _record_on_chain(
         rpc_url, program_id_str, pda
     )
 
-    async with AsyncClient(rpc_url) as client:
-        wallet = Wallet(keypair)
-        provider = Provider(client, wallet)
-
-        # Load IDL
-        if not IDL_PATH.exists():
-            raise FileNotFoundError(f"Anchor IDL not found at {IDL_PATH}")
-        with IDL_PATH.open() as f:
-            idl_json = f.read()
-        idl = Idl.from_json(idl_json)
-        program = Program(idl, program_id, provider)
-
-        log.info("Submitting transaction... (Namespace check: methods=%s, rpc=%s)", hasattr(program, 'methods'), hasattr(program, 'rpc'))
-        try:
-            # Try modern 'methods' API first
-            if hasattr(program, "methods"):
-                tx_sig = await program.methods.record_threat_event(
-                    user_pseudonym_bytes,
-                    report_cid,
-                    report_hash_bytes,
-                    threat_level,
-                    unix_ts,
-                ).accounts({
-                    "threat_event": pda,
-                    "authority": keypair.pubkey(),
-                    "system_program": SYS_PROGRAM_ID,
-                }).signers([keypair]).rpc()
-            else:
-                # Fallback to older 'rpc' API
-                tx_sig = await program.rpc["record_threat_event"](
-                    user_pseudonym_bytes,
-                    report_cid,
-                    report_hash_bytes,
-                    threat_level,
-                    unix_ts,
-                    ctx={
-                        "accounts": {
-                            "threat_event": pda,
-                            "authority": keypair.pubkey(),
-                            "system_program": SYS_PROGRAM_ID,
-                        },
-                        "signers": [keypair],
-                    }
-                )
-            
-            sig_str = str(tx_sig)
-            log.info("Transaction submitted. Signature: %s", sig_str)
-            
-            # Wait for confirmation
-            log.info("Waiting for transaction confirmation (finalized)…")
-            await _await_confirmation_async(client, tx_sig)
-            return sig_str
-            
-        except Exception as e:
-            log.error("Anchor transaction failed: %s", e)
-            raise RuntimeError(f"Solana transaction execution error: {e}")
-
-
-async def _await_confirmation_async(client, sig, timeout: int = 45) -> None:
-    """Poll devnet until the transaction reaches Finalized status."""
-    from solana.rpc.commitment import Finalized
+    sig = await program.rpc["record_threat_event"](
+        user_pseudonym_bytes,
+        report_cid,
+        report_hash_bytes,
+        threat_level,
+        unix_ts,
+        ctx=program.provider.send(
+            accounts={
+                "threat_event": pda,
+                "authority": keypair.pubkey(),
+                "system_program": SYS_PROGRAM_ID,
+            }
+        ),
+    )
     
-    # Using the standard client.confirm_transaction or manual polling
-    log.info("Polling for confirmation…")
-    start = time.time()
-    while time.time() - start < timeout:
+    log.info("Solana tx submitted: %s", sig)
+
+    # Poll for confirmation (≤ 30 s)
+    await _await_confirmation(client, sig)
+    return str(sig)
+
+
+async def _await_confirmation(client, sig: str, timeout: int = 30) -> None:
+    """Poll devnet until the transaction reaches Confirmed status."""
+    deadline = time.time() + timeout
+    log.info("Polling Solana for confirmation (timeout=%ds)…", timeout)
+    while time.time() < deadline:
         resp = await client.get_signature_statuses([sig])
-        if resp.value and resp.value[0]:
-            status = resp.value[0]
+        statuses = resp.value
+        if statuses and statuses[0] is not None:
+            status = statuses[0]
+
             if status.err:
                 raise RuntimeError(f"Transaction failed on-chain: {status.err}")
             if status.confirmation_status in ("confirmed", "finalized"):
                 log.info("Transaction confirmed! Status: %s", status.confirmation_status)
                 return
-        await asyncio.sleep(2)
-    
-    raise TimeoutError(f"Transaction {sig} failed to confirm within {timeout}s")
+        await asyncio.sleep(1.5)
+    raise TimeoutError(
+        f"Solana transaction {sig} did not confirm within {timeout} seconds"
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -381,18 +345,22 @@ async def _issue_vc(
     node_bin = os.getenv("NODE_BIN", "node")
     log.info("Invoking vc_issuer subprocess…")
     
+    # Use asyncio.create_subprocess_exec for non-blocking execution
+
     proc = await asyncio.create_subprocess_exec(
         node_bin, str(issuer_script),
         stdin=asyncio.subprocess.PIPE,
         stdout=asyncio.subprocess.PIPE,
         stderr=asyncio.subprocess.PIPE,
     )
+    
     stdout, stderr = await proc.communicate(input=payload_json.encode())
-
+    
     if proc.returncode != 0:
-        raise RuntimeError(f"VC issuer subprocess failed:\n{stderr.decode()}")
+        err_msg = stderr.decode(errors="replace")
+        raise RuntimeError(f"VC issuer subprocess failed (code {proc.returncode}):\n{err_msg}")
 
-    vc_raw = stdout.decode().strip()
+    vc_raw = stdout.decode(errors="replace").strip()
     try:
         vc_json = json.loads(vc_raw)
     except json.JSONDecodeError as exc:
@@ -435,7 +403,7 @@ async def generate_proof(threat_assessment: dict) -> dict:
     log.info("Report built — hash: %s", report_hash_hex)
 
     # 3. Upload to IPFS
-    # Note: Pinata JWT must be set in .env. Falling back is no longer allowed to ensure data integrity.
+
     ipfs_cid = await _upload_to_pinata(report_bytes, report_hash_hex)
 
     # 4. Anchor to Solana devnet
