@@ -20,7 +20,7 @@ from dotenv import load_dotenv
 
 from llama_index.core import VectorStoreIndex, StorageContext
 from llama_index.core.vector_stores import MetadataFilters, MetadataFilter
-from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+from llama_index.embeddings.fastembed import FastEmbedEmbedding
 from llama_index.vector_stores.postgres import PGVectorStore
 
 
@@ -55,7 +55,7 @@ def _get_vector_store() -> PGVectorStore:
 
 def _get_index() -> VectorStoreIndex:
     vector_store = _get_vector_store()
-    embed_model = HuggingFaceEmbedding(model_name=EMBED_MODEL_NAME)
+    embed_model = FastEmbedEmbedding(model_name=EMBED_MODEL_NAME)
     storage_context = StorageContext.from_defaults(vector_store=vector_store)
     return VectorStoreIndex([], storage_context=storage_context, embed_model=embed_model)
 

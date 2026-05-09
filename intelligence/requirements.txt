@@ -1,8 +1,6 @@
---extra-index-url https://download.pytorch.org/whl/cpu
 llama-index
 llama-index-vector-stores-postgres
-llama-index-embeddings-huggingface
-sentence-transformers
+llama-index-embeddings-fastembed
 groq
 sqlalchemy
 psycopg[binary]

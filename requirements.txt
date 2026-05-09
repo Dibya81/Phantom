@@ -1,11 +1,10 @@
 # PhantomID — Unified Ecosystem Dependencies
 # Optimized for Render Free Tier (512MB RAM)
+# Using FastEmbed (ONNX) instead of PyTorch to save memory.
 
-# ── CPU-ONLY AI LAYER (Prevents 500MB+ NVIDIA/CUDA downloads) ──
---extra-index-url https://download.pytorch.org/whl/cpu
-torch --index-url https://download.pytorch.org/whl/cpu
-sentence-transformers
-llama-index-embeddings-huggingface
+# ── AI LAYER (Lightweight & High Performance) ──
+llama-index-embeddings-fastembed
+llama-index
 
 # ── CORE ──
 fastapi==0.111.0
@@ -21,7 +20,6 @@ langchain-groq==0.1.5
 groq
 
 # ── DATA ──
-llama-index
 llama-index-vector-stores-postgres
 supabase==2.5.0
 psycopg[binary]
