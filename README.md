@@ -1,4 +1,4 @@
-![TRI-ZEROTRO Ecosystem](/Users/dibyabhusal/Downloads/phantomid/agent/frontend/public/3rd.png)
+![TRI-ZEROTRO Ecosystem](./agent/frontend/public/3rd.png)
 
 <div align="center">
 
