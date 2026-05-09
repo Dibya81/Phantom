@@ -136,7 +136,7 @@ def _sha256_bytes(data: bytes) -> bytes:
 # Step 3 — Upload to IPFS via Pinata
 # ---------------------------------------------------------------------------
 
-def _upload_to_pinata(report_bytes: bytes, report_hash: str) -> str:
+async def _upload_to_pinata(report_bytes: bytes, report_hash: str) -> str:
     """
     Upload report_bytes to Pinata and return the IPFS CID.
     Raises RuntimeError on failure — never returns partial data.
@@ -161,7 +161,9 @@ def _upload_to_pinata(report_bytes: bytes, report_hash: str) -> str:
         "pinataOptions": {"cidVersion": 1},
     }
     log.info("Uploading report to Pinata (hash prefix: %s)…", report_hash[:16])
-    response = httpx.post(url, headers=headers, json=body, timeout=30)
+    async with httpx.AsyncClient() as client:
+        response = await client.post(url, headers=headers, json=body, timeout=30)
+    
     if response.status_code != 200:
         raise RuntimeError(
             f"Pinata upload failed: HTTP {response.status_code} — {response.text}"
@@ -200,7 +202,7 @@ def _risk_level_to_u8(risk_level: str) -> int:
     return level
 
 
-def _record_on_chain(
+async def _record_on_chain(
     user_pseudonym_hex: str,
     report_cid: str,
     report_hash_hex: str,
@@ -211,7 +213,7 @@ def _record_on_chain(
     Call record_threat_event on the Anchor contract and wait for confirmation.
     Returns the confirmed transaction signature string.
     """
-    from solana.rpc.api import Client as SolanaClient
+    from solana.rpc.async_api import AsyncClient as SolanaClient
     from solders.pubkey import Pubkey
     from solders.system_program import ID as SYS_PROGRAM_ID
     from anchorpy import Program, Provider, Wallet
@@ -263,37 +265,34 @@ def _record_on_chain(
         program_id_str, pda, threat_level
     )
 
-    async def _send() -> str:
-        tx = await program.rpc["record_threat_event"](
-            user_pseudonym_bytes,
-            report_cid,
-            report_hash_bytes,
-            threat_level,
-            unix_ts,
-            ctx=program.provider.send(
-                accounts={
-                    "threat_event": pda,
-                    "authority": keypair.pubkey(),
-                    "system_program": SYS_PROGRAM_ID,
-                }
-            ),
-        )
-        return str(tx)
-
-    sig = asyncio.run(_send())
+    sig = await program.rpc["record_threat_event"](
+        user_pseudonym_bytes,
+        report_cid,
+        report_hash_bytes,
+        threat_level,
+        unix_ts,
+        ctx=program.provider.send(
+            accounts={
+                "threat_event": pda,
+                "authority": keypair.pubkey(),
+                "system_program": SYS_PROGRAM_ID,
+            }
+        ),
+    )
+    
     log.info("Solana tx submitted: %s", sig)
 
     # Poll for confirmation (≤ 30 s)
-    _await_confirmation(client, sig)
-    return sig
+    await _await_confirmation(client, sig)
+    return str(sig)
 
 
-def _await_confirmation(client, sig: str, timeout: int = 30) -> None:
+async def _await_confirmation(client, sig: str, timeout: int = 30) -> None:
     """Poll devnet until the transaction reaches Confirmed status."""
     deadline = time.time() + timeout
     log.info("Polling Solana for confirmation (timeout=%ds)…", timeout)
     while time.time() < deadline:
-        resp = client.get_signature_statuses([sig])
+        resp = await client.get_signature_statuses([sig])
         statuses = resp.value
         if statuses and statuses[0] is not None:
             status = statuses[0]
@@ -302,7 +301,7 @@ def _await_confirmation(client, sig: str, timeout: int = 30) -> None:
             if status.confirmation_status in ("confirmed", "finalized"):
                 log.info("Solana tx confirmed: %s", sig)
                 return
-        time.sleep(1.5)
+        await asyncio.sleep(1.5)
     raise TimeoutError(
         f"Solana transaction {sig} did not confirm within {timeout} seconds"
     )
@@ -312,7 +311,7 @@ def _await_confirmation(client, sig: str, timeout: int = 30) -> None:
 # Step 5 — W3C Verifiable Credential via Node.js subprocess
 # ---------------------------------------------------------------------------
 
-def _issue_vc(
+async def _issue_vc(
     user_pseudonym: str,
     ipfs_cid: str,
     solana_tx_sig: str,
@@ -338,17 +337,22 @@ def _issue_vc(
 
     node_bin = os.getenv("NODE_BIN", "node")
     log.info("Invoking vc_issuer subprocess…")
-    result = subprocess.run(
-        [node_bin, str(issuer_script)],
-        input=payload_json.encode(),
-        capture_output=True,
-        timeout=30,
+    
+    # Use asyncio.create_subprocess_exec for non-blocking execution
+    proc = await asyncio.create_subprocess_exec(
+        node_bin, str(issuer_script),
+        stdin=asyncio.subprocess.PIPE,
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE,
     )
-    if result.returncode != 0:
-        stderr = result.stderr.decode(errors="replace")
-        raise RuntimeError(f"VC issuer subprocess failed:\n{stderr}")
+    
+    stdout, stderr = await proc.communicate(input=payload_json.encode())
+    
+    if proc.returncode != 0:
+        err_msg = stderr.decode(errors="replace")
+        raise RuntimeError(f"VC issuer subprocess failed (code {proc.returncode}):\n{err_msg}")
 
-    vc_raw = result.stdout.decode(errors="replace").strip()
+    vc_raw = stdout.decode(errors="replace").strip()
     try:
         vc_json = json.loads(vc_raw)
     except json.JSONDecodeError as exc:
@@ -362,7 +366,7 @@ def _issue_vc(
 # Public contract function
 # ---------------------------------------------------------------------------
 
-def generate_proof(threat_assessment: dict) -> dict:
+async def generate_proof(threat_assessment: dict) -> dict:
     """
     Generate immutable proof for a confirmed identity threat.
 
@@ -401,10 +405,10 @@ def generate_proof(threat_assessment: dict) -> dict:
     log.info("Report built — hash: %s", report_hash_hex)
 
     # 3. Upload to IPFS
-    ipfs_cid = _upload_to_pinata(report_bytes, report_hash_hex)
+    ipfs_cid = await _upload_to_pinata(report_bytes, report_hash_hex)
 
     # 4. Anchor to Solana devnet
-    solana_tx_sig = _record_on_chain(
+    solana_tx_sig = await _record_on_chain(
         user_pseudonym_hex=user_pseudonym,
         report_cid=ipfs_cid,
         report_hash_hex=report_hash_hex,
@@ -413,7 +417,7 @@ def generate_proof(threat_assessment: dict) -> dict:
     )
 
     # 5. Issue W3C VC
-    vc_json = _issue_vc(
+    vc_json = await _issue_vc(
         user_pseudonym=user_pseudonym,
         ipfs_cid=ipfs_cid,
         solana_tx_sig=solana_tx_sig,

@@ -19,6 +19,15 @@ from .db import (
 from agent.graph.agent import run_agent
 
 router = APIRouter()
+ 
+@router.get("/")
+async def root():
+    return {
+        "status": "online",
+        "service": "PhantomID Agent API",
+        "version": "1.0.0",
+        "timestamp": datetime.now(timezone.utc).isoformat()
+    }
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 

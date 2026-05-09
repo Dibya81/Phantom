@@ -16,6 +16,7 @@ from typing import Any
 
 import sqlalchemy
 from llama_index.core import VectorStoreIndex, StorageContext
+from llama_index.core.vector_stores import MetadataFilters, MetadataFilter
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.vector_stores.postgres import PGVectorStore
 
@@ -127,19 +128,26 @@ def query_breach_db(hashed_identifier: str) -> dict:
         )
 
     index = _get_index()
-    retriever = index.as_retriever(similarity_top_k=TOP_K)
+    
+    # Use metadata filtering for exact hash match — HUGE performance & accuracy win
+    filters = MetadataFilters(filters=[
+        MetadataFilter(key="hashed_identifier", value=hashed_identifier)
+    ])
+    
+    retriever = index.as_retriever(
+        similarity_top_k=TOP_K,
+        filters=filters
+    )
 
+    # We still pass query_text, but the search space is now limited to exact hash matches
     query_text = f"Hash: {hashed_identifier}"
     nodes = retriever.retrieve(query_text)
 
     matches = []
     for node in nodes:
-        if node.score is not None and node.score < SIMILARITY_THRESHOLD:
-            continue
+        # No need to check similarity_threshold or node_hash here anymore 
+        # as the vector store filter handled it.
         parsed = _parse_node_metadata(node)
-        node_hash = node.metadata.get("hashed_identifier", "")
-        if node_hash != hashed_identifier:
-            continue
         matches.append(parsed)
 
     # Deduplicate by source — keep highest confidence per source

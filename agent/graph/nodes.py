@@ -286,7 +286,7 @@ async def act(state: dict) -> dict:
     # Call Person 2
     proof_result = None
     try:
-        proof_result = await asyncio.to_thread(generate_proof, threat_assessment)
+        proof_result = await generate_proof(threat_assessment)
     except Exception as e:
         await _emit("ERROR", "EvidenceAgent", {"error": f"generate_proof failed: {e}"}, state)
         # Don't crash — continue to notify user, store None
