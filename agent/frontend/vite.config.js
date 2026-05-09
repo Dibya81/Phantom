@@ -6,8 +6,8 @@ export default defineConfig({
   server: {
     port: 5173,
     proxy: {
-      '/api': { target: 'http://127.0.0.1:8000', changeOrigin: true, rewrite: p => p.replace(/^\/api/, '') },
-      '/ws':  { target: 'ws://127.0.0.1:8000',   ws: true }
+      '/api': { target: 'https://phantom-mlxh.onrender.com', changeOrigin: true, rewrite: p => p.replace(/^\/api/, '') },
+      '/ws':  { target: 'wss://phantom-mlxh.onrender.com',   ws: true }
     }
   }
 })

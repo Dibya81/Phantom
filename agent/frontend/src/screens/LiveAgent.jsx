@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useI18n } from '../contexts/I18nContext'
 import DetectionModal from '../components/DetectionModal'
 
-const WS_URL = `ws://127.0.0.1:8000/ws/agent`
+const WS_URL = `wss://phantom-mlxh.onrender.com/ws/agent`
 
 function AmbientBg() {
   return (
