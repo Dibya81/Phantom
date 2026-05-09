@@ -307,7 +307,7 @@ export default function TriZeroTRO() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} style={{ display: 'flex', gap: 16, zIndex: 20 }}>
           <button onClick={() => navigate('/intro')} className="btn-primary" style={{ padding: '16px 32px', fontSize: 14, boxShadow: '0 20px 40px rgba(0,122,255,0.2)' }}>{ec.cta1}</button>
           <button className="btn-secondary" style={{ padding: '16px 32px', fontSize: 14, background: 'var(--bg-card)', backdropFilter: 'blur(12px)' }}>{ec.cta2}</button>
-          <button className="btn-secondary" style={{ padding: '16px 32px', fontSize: 14, background: 'var(--bg-card)', backdropFilter: 'blur(12px)' }}>{ec.cta3}</button>
+          <button onClick={() => window.location.href = 'https://trust-flow-delta-livid.vercel.app/'} className="btn-secondary" style={{ padding: '16px 32px', fontSize: 14, background: 'var(--bg-card)', backdropFilter: 'blur(12px)' }}>{ec.cta3}</button>
         </motion.div>
         
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }} style={{ position: 'absolute', bottom: 64, left: '50%', transform: 'translateX(-50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}><span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', color: 'var(--text-muted)' }}>{t.nav.scrollExpl}</span><div style={{ width: 1, height: 60, background: 'linear-gradient(to bottom, var(--accent), transparent)' }} /></motion.div>
@@ -329,7 +329,7 @@ export default function TriZeroTRO() {
           problem={ec.projects.trustflow.problem} 
           tech={['Solana', 'FastAPI', 'GitHub', 'Claude AI']} 
           features={[{ title: ec.projects.trustflow.f1_title, desc: ec.projects.trustflow.f1_desc }, { title: ec.projects.trustflow.f2_title, desc: ec.projects.trustflow.f2_desc }]} 
-          accent="#D97706" visual={<TrustFlowVisual />} onClick={() => {}} />
+          accent="#D97706" visual={<TrustFlowVisual />} onClick={() => window.location.href = 'https://trust-flow-delta-livid.vercel.app/'} />
         
         <ProjectCard 
           title={ec.projects.witness.title} 
