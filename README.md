@@ -1,3 +1,10 @@
+working prototype(https://phantom-sigma-rust.vercel.app/)
+
+members
+1.https://github.com/leaderofARS
+2.https://github.com/dragonbiter745
+3.https://github.com/Dibya81
+
 ![TRI-ZEROTRO Ecosystem](./agent/frontend/public/3rd.png)
 
 <div align="center">
